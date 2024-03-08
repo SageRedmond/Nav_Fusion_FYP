@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/NavApp.unity
+    guid: 0b21c74dcd0f444108b268a0e033a878
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: bfb8d7ae52bfc4a54b42765b9bd32490, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 798016f2147d94f168d6852a093cff7d, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: ae5e545b06cbc43ae8bd656bde8dd9a4, type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 65fd6319b5eb84126abba04dd9eb6294, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d8610e46f27cf42f6b2fe3f2ffb2f984, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 95e5b21e0b7234a688fd512c7513b84f, type: 2}
