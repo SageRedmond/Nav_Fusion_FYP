@@ -12,7 +12,7 @@ namespace AR_NAV_FYP.Navigation {
         private Transform destination;
 
         public List<Node> path = new List<Node>();
-        private int currNodeIndex = 0;
+        public int currNodeIndex = 0;
         private float maxDistance = 1.1f;
 
         private bool _initialized = false;
