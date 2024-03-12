@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - OcculsionModel
+  - waypoint
+  - DestinationNode
   layers:
   - Default
   - TransparentFX

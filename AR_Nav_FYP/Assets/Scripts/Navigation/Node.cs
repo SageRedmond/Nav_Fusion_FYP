@@ -2,49 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour
-{
-    public Vector3 position;
-    private Vector3 scale;
-    public bool isDestinationNode = false;
+namespace AR_NAV_FYP.Navigation {
+    public class Node : MonoBehaviour {
+        public Vector3 position;
+        private Vector3 scale;
+        public bool isDestinationNode = false;
 
-    [Header("A*")]
-    public List<Node> neighbors = new List<Node>();
-    public float FCost { get { return GCost + HCost; } } // Combined Hueuristic Cost
-    public float HCost { get; set; } // Distance to end node
-    public float GCost { get; set; } // Total cost of path so far
-    public float Cost { get; set; }
+        [Header("A*")]
+        public List<Node> neighbors = new List<Node>();
+        public float FCost { get { return GCost + HCost; } } // Combined Hueuristic Cost
+        public float HCost { get; set; } // Distance to end node
+        public float GCost { get; set; } // Total cost of path so far
+        public float Cost { get; set; }
 
-    public Node Parent { get; set; }
+        public Node Parent { get; set; }
 
-    public Node NextInList { get; set; } //next node in navigation list
+        public Node NextInList { get; set; } //next node in navigation list
 
-    private void Awake() {
-        //gameObject.SetActive(false);
+        private void Awake() {
+            //transform.GetChild(0).gameObject.SetActive(false);
+            Activate(false);
 
-        position = transform.position;
-        scale = transform.localScale;
-        //FindNeighbors(1.0f);
-    }
-
-    void Update() {
-        //make pulsate
-        if (isDestinationNode)
-            transform.localScale = scale * (1 + Mathf.Sin(Mathf.PI * Time.time) * .2f);
-    }
-
-    public void Activate(bool active) {
-        gameObject.SetActive(active);
-        if (NextInList != null) {
-            transform.LookAt(NextInList.transform);
+            position = transform.position;
+            scale = transform.localScale;
+            //FindNeighbors(1.0f);
         }
-    }
 
-    public void FindNeighbors(float maxDistance) {
-        foreach (Node node in FindObjectsOfType<Node>()) {
-            if (Vector3.Distance(node.position, this.position) < maxDistance) {
-                neighbors.Add(node);
+        //void Update() {
+        //    //make pulsate
+        //    if (isDestinationNode)
+        //        transform.localScale = scale * (1 + Mathf.Sin(Mathf.PI * Time.time) * .2f);
+        //}
+
+        public void Activate(bool active) {
+            if (!isDestinationNode) {
+                transform.GetChild(0).gameObject.SetActive(active);
+                if (NextInList != null) {
+                    transform.LookAt(NextInList.transform);
+                }
             }
+        }
+
+        public void FindNeighbors(float maxDistance) {
+            foreach (Node node in FindObjectsOfType<Node>()) {
+                if (Vector3.Distance(node.position, this.position) < maxDistance) {
+                    neighbors.Add(node);
+                }
+            }
+        }
+
+        public void resetPositionOnLocalization() {
+            position = transform.position;
         }
     }
 }
