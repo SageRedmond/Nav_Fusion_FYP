@@ -2151,7 +2151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnFirstSuccessfulLocalization.m_PersistentCalls.m_Calls.Array.size
@@ -2176,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 388112347}
+      objectReference: {fileID: 1972700084}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -2215,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Pause
+      value: ResetNodePositions
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -2243,7 +2243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Immersal.Samples.LocalizerSettingsPanel, Immersal.Samples.Core
+      value: AR_NAV_FYP.Navigation.NodeManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4174534150879381888, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
       propertyPath: OnSuccessfulLocalizations.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -2401,6 +2401,7 @@ GameObject:
   - component: {fileID: 915302343}
   - component: {fileID: 915302342}
   - component: {fileID: 915302346}
+  - component: {fileID: 915302347}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2866,6 +2867,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &915302347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915302330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7f03c4237f748138eb551e4821313e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NavController: {fileID: 915302345}
+  line: {fileID: 915302346}
 --- !u!1001 &944640992
 PrefabInstance:
   m_ObjectHideFlags: 0

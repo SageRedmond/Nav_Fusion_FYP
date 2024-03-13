@@ -13,11 +13,23 @@ public class LineVisualisation : MonoBehaviour
     private LineRenderer line;
 
     private void Update() {
-        Transform nextPoint = NavController.path[NavController.currNodeIndex].transform;
-        Vector3[] positions = new Vector3[2];
+        //Transform nextPoint = NavController.path[NavController.currNodeIndex].transform;
+
+        int currentIndex = NavController.currNodeIndex;
+        List<Node> path = NavController.path;
+
+        Vector3[] positions = new Vector3[path.Count];
 
         //Add Camera position
-        //Then add nextPoint
+
+        int i = 0;
+        foreach(Node node in path) {
+            positions[i] = node.position;
+            positions[i].y -= 1.0f;
+            i++;
+        }
+
+        line.positionCount = positions.Length;
         line.SetPositions(positions);
     }
 }
