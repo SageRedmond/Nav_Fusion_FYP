@@ -40,7 +40,9 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=Unity.XR.OpenXR;
 --assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
+--assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
 --assembly-defines=Unity.XR.OpenXR.Features.MockRuntime;
+--assembly-defines=Unity.XR.OpenXR.Features.OculusQuestSupport;
 --assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --linker-options=min-ios-version=12.0
@@ -94,7 +96,9 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=Unity.XR.OpenXR;
 --assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
+--assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
 --assembly-defines=Unity.XR.OpenXR.Features.MockRuntime;
+--assembly-defines=Unity.XR.OpenXR.Features.OculusQuestSupport;
 --assembly-defines=Unity.XR.OpenXR.Features.RuntimeDebugger;
 --assembly-defines=UnityEngine;
 --linker-options=min-ios-version=12.0

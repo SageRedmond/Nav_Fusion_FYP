@@ -92,6 +92,11 @@ namespace AR_NAV_FYP.Navigation {
                     node.Activate(false);
                 }
             }
+            GameObject[] goals = GameObject.FindGameObjectsWithTag("DestinationNode");
+            foreach (GameObject goal in goals) {
+                goal.SetActive(false);
+            }
+            target.gameObject.SetActive(true);
 
             _initialized = false;
             _initializedComplete = false;
