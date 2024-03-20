@@ -19,6 +19,8 @@ namespace AR_NAV_FYP.Navigation {
 
         public Node NextInList { get; set; } //next node in navigation list
 
+        public NodeLocation Location;
+
         private void Awake() {
             //transform.GetChild(0).gameObject.SetActive(false);
             Activate(false);
@@ -54,5 +56,35 @@ namespace AR_NAV_FYP.Navigation {
         public void resetPositionOnLocalization() {
             position = transform.position;
         }
+
+        public bool ApplyWheelChairPolicy() {
+            bool stayInGraph;
+
+            switch (Location) {
+                case NodeLocation.Stairs:
+                    stayInGraph = false;
+                    break;
+                case NodeLocation.WheelChairInaccessablePath:
+                    stayInGraph = false;
+                    break;
+                default:
+                    stayInGraph = true;
+                    break;
+            }
+
+            //if (profile.wheelchairuser) stayInGraph = false;
+
+            return stayInGraph;
+        }
     }
+
+    public enum NodeLocation {
+        defualt,
+        Stairs,
+        Elevator,
+        Ramp,
+        keyCardDoor,
+        WheelChairInaccessablePath
+    }
+
 }

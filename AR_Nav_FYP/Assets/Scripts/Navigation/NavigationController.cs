@@ -6,6 +6,8 @@ using System.Linq;
 //Attached To Player/Indicator
 
 namespace AR_NAV_FYP.Navigation {
+    using AR_NAV_FYP.Policy;
+
     public class NavigationController : MonoBehaviour {
         public AStar AStar;
         public Node target;
@@ -18,6 +20,9 @@ namespace AR_NAV_FYP.Navigation {
         private bool _initialized = false;
         private bool _initializedComplete = false;
 
+        [SerializeField] private UserProfile user;
+
+        
         // Start is called before the first frame update
         void Start() {
 #if UNITY_EDITOR
@@ -36,9 +41,20 @@ namespace AR_NAV_FYP.Navigation {
 
                 //Node target = GameObject.Find("Door").GetComponent<Node>();
 
-                foreach (Node node in allNodes) {
-                    node.FindNeighbors(maxDistance);
+
+                if (user.IsWheelchairUser) {
+                    foreach (Node node in allNodes) {
+                        if (node.ApplyWheelChairPolicy()) {
+                            node.FindNeighbors(maxDistance);
+                        }
+                    }
                 }
+                else {
+                    foreach (Node node in allNodes) {
+                        node.FindNeighbors(maxDistance);
+                    }
+                }
+                
 
 
                 path = AStar.FindPath(closestNode, target, allNodes);
