@@ -8,6 +8,9 @@ namespace AR_NAV_FYP.Navigation {
         private Vector3 scale;
         public bool isDestinationNode = false;
 
+        private readonly float elevationChangeMax = 2.5f;
+
+
         [Header("A*")]
         public List<Node> neighbors = new List<Node>();
         public float FCost { get { return GCost + HCost; } } // Combined Hueuristic Cost
@@ -30,12 +33,6 @@ namespace AR_NAV_FYP.Navigation {
             //FindNeighbors(1.0f);
         }
 
-        //void Update() {
-        //    //make pulsate
-        //    if (isDestinationNode)
-        //        transform.localScale = scale * (1 + Mathf.Sin(Mathf.PI * Time.time) * .2f);
-        //}
-
         public void Activate(bool active) {
             if (!isDestinationNode) {
                 transform.GetChild(0).gameObject.SetActive(active);
@@ -47,9 +44,15 @@ namespace AR_NAV_FYP.Navigation {
 
         public void FindNeighbors(float maxDistance) {
             foreach (Node node in FindObjectsOfType<Node>()) {
+                // Floor Change
                 if (Vector3.Distance(node.position, this.position) < maxDistance) {
-                    neighbors.Add(node);
+                    if (Mathf.Abs(node.position.y - this.position.y) < elevationChangeMax) {
+                        neighbors.Add(node);
+                    }
                 }
+                //if (Vector3.Distance(node.position, this.position) < maxDistance) {
+                //    neighbors.Add(node);
+                //}
             }
         }
 
