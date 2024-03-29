@@ -13,13 +13,13 @@ public class AbleBlockerManager : MonoBehaviour
 
     public void SwitchOn() {
         foreach (AbleBlocker block in AbleBlockers) {
-            block.gameObject.SetActive(true);
+            block.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
     public void SwitchOff() {
         foreach (AbleBlocker block in AbleBlockers) {
-            block.gameObject.SetActive(false);
+            block.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

@@ -10,7 +10,7 @@ public class NavController : MonoBehaviour
     public Vector3 TargetPosition { get; set; } = Vector3.zero;
     public NavMeshPath CalculatedPath { get; private set; }
 
-    private Transform cameraPose;
+    public Transform cameraPose;
 
     private bool managerInitialized = false;
 
@@ -90,6 +90,10 @@ public class NavController : MonoBehaviour
 
         CalculatedPath = path;
         return collapsedCorners;
+    }
+
+    public Vector3 nextPathPointVector() {
+        return CalculatedPath.corners[0];
     }
 
     private void InitializeNavManager() {
