@@ -10,6 +10,8 @@ public class CompassNeedle : MonoBehaviour
     private Vector3 _mTempVector;
     private float _mTempAngle;
 
+    private Vector3 zAxis = new Vector3(0, 0, 1);
+
     public bool compassActive = false;
     private void Update() {
         if (compassActive) {
@@ -18,6 +20,7 @@ public class CompassNeedle : MonoBehaviour
             _mTempVector = _mTempVector.normalized;
 
             kReferenceVector = NavInfo.nextPathPointVector();
+            kReferenceVector.y = 0f;
 
             _mTempVector = _mTempVector - kReferenceVector;
             _mTempVector.y = 0;
@@ -30,11 +33,11 @@ public class CompassNeedle : MonoBehaviour
             //  add 90 degrees to set it relative to the z-axis
 
             _mTempAngle = Mathf.Atan2(_mTempVector.x, _mTempVector.z);
-            _mTempAngle = (_mTempAngle * Mathf.Rad2Deg + 90.0f) * 2f;
+            _mTempAngle = (_mTempAngle * Mathf.Rad2Deg);
 
             Debug.Log("Angle: " + _mTempAngle);
 
-            transform.rotation = Quaternion.AngleAxis(_mTempAngle, kReferenceVector);
+            transform.rotation = Quaternion.AngleAxis(_mTempAngle, zAxis);
         }
     }
 }

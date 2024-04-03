@@ -93,7 +93,13 @@ public class NavController : MonoBehaviour
     }
 
     public Vector3 nextPathPointVector() {
-        return CalculatedPath.corners[0];
+        //return CalculatedPath.corners[0];
+        try {
+            return CalculatedPath.corners[0];
+        }
+        catch (System.IndexOutOfRangeException) {
+            return Vector3.zero;
+        }
     }
 
     private void InitializeNavManager() {

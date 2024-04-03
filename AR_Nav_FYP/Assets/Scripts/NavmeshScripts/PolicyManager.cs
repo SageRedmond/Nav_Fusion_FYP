@@ -13,6 +13,7 @@ public class PolicyManager : MonoBehaviour{
 
     [SerializeField] private AbleBlockerManager AbleBlockers;
     [SerializeField] private StairsBlockersManager StairsBlockers;
+    [SerializeField] private KeycardAccessManager KeycardBlockers;
 
     [SerializeField] private TMP_Dropdown ProfileDropdown;
 
