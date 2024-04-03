@@ -36,7 +36,7 @@ public class UiPickDestination : MonoBehaviour {
         Debug.Log("Button clicked for: " + destination.name);
 
         NavController.TargetPosition = destination.transform.position;
-        Debug.Log(NavController.TargetPosition);
+        Debug.Log("Position: " +  NavController.TargetPosition);
         //NavController.MakePath();
 
         UIGoalPanel.SetActive(false);

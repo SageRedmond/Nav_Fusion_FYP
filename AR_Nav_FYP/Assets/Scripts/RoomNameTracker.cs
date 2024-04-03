@@ -25,12 +25,13 @@ public class RoomNameTracker : MonoBehaviour
 
     public void ShowRoomName(int[] mapIDs) {
         Debug.Log("Room Name function invoked");
+        Debug.Log(string.Join(",",mapIDs));
 
-        int count = mapIDs.Length;
-        string roomName = RoomIDs[mapIDs[count]];
+        string roomName = RoomIDs[mapIDs[0]];
         UI_RoomText.text = roomName;
 
         CurrentRoomName = roomName;
+        Debug.Log(CurrentRoomName);
     }
 
     public void AddRoomIDs() {

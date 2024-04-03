@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8731471927646164700}
   - component: {fileID: 6382472282503023653}
   - component: {fileID: 4121678703174211325}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavmeshWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4131633248292035421}
   - component: {fileID: 7478271873809957692}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AbleBlocker(Rename)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,3 +167,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9521cdd38ee68f43b306e96832c9775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 

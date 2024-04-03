@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7152651847280581183}
   - component: {fileID: 5291928950453787790}
   - component: {fileID: 5569373899287506233}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavmeshWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047311338346572012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KeycardBlockerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

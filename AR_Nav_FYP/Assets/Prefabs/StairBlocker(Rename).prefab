@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1609697292550764019}
   - component: {fileID: 253230130265296284}
   - component: {fileID: 1786818697887427108}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavmeshWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3480927787072091991}
   - component: {fileID: 123336258033693280}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: StairBlocker(Rename)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

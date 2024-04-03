@@ -24,6 +24,9 @@ public class NavController : MonoBehaviour
     [SerializeField]
     private float heightOffset = 0.5f;
 
+    [HideInInspector]
+    public List<Vector3> corners;
+
     private void Start() {
         InitializeNavManager();
         CalculatedPath = new NavMeshPath();
@@ -37,7 +40,7 @@ public class NavController : MonoBehaviour
 
     private void MakePath() {
 
-        List<Vector3> corners;
+        //List<Vector3> corners;
 
         Vector3 startPosition = cameraPose.position;
         Vector3 targetPosition = TargetPosition;
@@ -75,18 +78,21 @@ public class NavController : MonoBehaviour
                 corners[i] = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, corners[i]);
             }
 
-            for (int i = 0; i < corners.Count - 1; i++) {
-                Vector3 currentPoint = corners[i];
-                Vector3 nextPoint = corners[i + 1];
-                float threshold = 0.75f;
+            return corners;
+            //for (int i = 0; i < corners.Count - 1; i++) {
+            //    Vector3 currentPoint = corners[i];
+            //    Vector3 nextPoint = corners[i + 1];
+            //    float threshold = 0.75f;
 
-                if (Vector3.Distance(currentPoint, nextPoint) > threshold) {
-                    collapsedCorners.Add(currentPoint);
-                }
-            }
+            //    if (Vector3.Distance(currentPoint, nextPoint) > threshold) {
+            //        collapsedCorners.Add(currentPoint);
+            //    }
+            //}
 
-            collapsedCorners.Add(corners[corners.Count - 1]);
+            //collapsedCorners.Add(corners[corners.Count - 1]);
         }
+        // Make Notification
+        // Vibrate
 
         CalculatedPath = path;
         return collapsedCorners;

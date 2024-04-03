@@ -10,7 +10,7 @@ public class PathLineVisual : MonoBehaviour
     [SerializeField] private LineRenderer line;
     [SerializeField] private Slider navigationYOffset;
 
-    private NavMeshPath path;
+    //private NavMeshPath path;
     private Vector3[] calculatedPathAndOffset;
 
     void Start() {
@@ -21,20 +21,22 @@ public class PathLineVisual : MonoBehaviour
     }
 
     private void Update() {
-        path = navigationController.CalculatedPath;
-        AddOffsetToPath();
+        //path = navigationController.CalculatedPath;
+        calculatedPathAndOffset = navigationController.corners.ToArray();
+
+        //AddOffsetToPath();
         AddLineOffset();
         SetLineRendererPositions();
 
 
     }
 
-    private void AddOffsetToPath() {
-        calculatedPathAndOffset = new Vector3[path.corners.Length];
-        for (int i = 0; i < path.corners.Length; i++) {
-            calculatedPathAndOffset[i] = new Vector3(path.corners[i].x, path.corners[i].y, path.corners[i].z);
-        }
-    }
+    //private void AddOffsetToPath() {
+    //    calculatedPathAndOffset = new Vector3[path.corners.Length];
+    //    for (int i = 0; i < path.corners.Length; i++) {
+    //        calculatedPathAndOffset[i] = new Vector3(path.corners[i].x, path.corners[i].y, path.corners[i].z);
+    //    }
+    //}
 
     private void AddLineOffset() {
         if (navigationYOffset.value != 0) {

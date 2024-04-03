@@ -18,6 +18,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tem
 --assembly-defines=System.Net.Http;
 --assembly-defines=System.Numerics;
 --assembly-defines=System.Xml;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=Unity.InputSystem;
@@ -47,6 +48,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tem
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/Burst
+--debug=Full
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.10f1/PlaybackEngines/AndroidPlayer
 --decode-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Library/Burst
 --output=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
@@ -80,6 +82,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tem
 --assembly-defines=System.Net.Http;
 --assembly-defines=System.Numerics;
 --assembly-defines=System.Xml;
+--assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=Unity.InputSystem;
@@ -109,6 +112,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tem
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/Burst
+--debug=Full
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.10f1/PlaybackEngines/AndroidPlayer
 --decode-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Library/Burst
 --output=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
