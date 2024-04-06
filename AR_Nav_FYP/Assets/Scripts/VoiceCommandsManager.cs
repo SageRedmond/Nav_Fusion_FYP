@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class VoiceCommandsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] RoomNameTracker roomName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //[SerializeField] public TMP_Text ListeningText;
+
+    public void getRoomName() {
+        Debug.Log(roomName.CurrentRoomName);
     }
 }
