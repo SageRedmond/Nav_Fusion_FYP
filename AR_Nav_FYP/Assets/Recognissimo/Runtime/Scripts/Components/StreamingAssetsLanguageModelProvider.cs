@@ -50,6 +50,7 @@ namespace Recognissimo.Components
 
         private void OnEnable()
         {
+            Debug.Log("Streaming Asset Enabled");
             _streamingAssetsProvider = StreamingAssetsProviderFactory.MaybeCreate();
 
             if (_streamingAssetsProvider != null)

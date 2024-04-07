@@ -10,12 +10,12 @@ public class VoiceCommandsManager : MonoBehaviour
 
     const string LANG_CODE = "en-US";
 
-    //private void Start() {
-    //    SetupTextToSpeach(LANG_CODE);
+    private void Start() {
+        SetupTextToSpeach(LANG_CODE);
 
-    //    TextToSpeech.Instance.onStartCallBack = OnSpeakStart;
-    //    TextToSpeech.Instance.onDoneCallback = OnSpeakStop;
-    //}
+        TextToSpeech.Instance.onStartCallBack = OnSpeakStart;
+        TextToSpeech.Instance.onDoneCallback = OnSpeakStop;
+    }
 
     #region Voice Commands
     public void getRoomName() {
