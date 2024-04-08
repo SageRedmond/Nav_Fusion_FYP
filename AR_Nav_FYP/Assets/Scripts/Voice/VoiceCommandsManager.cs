@@ -19,9 +19,10 @@ public class VoiceCommandsManager : MonoBehaviour
 
     #region Voice Commands
     public void getRoomName() {
-        Debug.Log(roomName.CurrentRoomName);
+        Debug.Log("Your are in " + roomName.CurrentRoomName);
 
-        StartSpeeking(roomName.CurrentRoomName);
+        //StartSpeeking(roomName.CurrentRoomName);
+
     }
     #endregion
 
