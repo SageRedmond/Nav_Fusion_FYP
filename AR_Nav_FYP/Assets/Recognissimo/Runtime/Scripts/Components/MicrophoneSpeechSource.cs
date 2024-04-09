@@ -101,6 +101,7 @@ namespace Recognissimo.Components
         {
             if (Microphone.RequiresPermission())
             {
+                Debug.Log("Recognissimo: Permission Required");
                 RegisterInitializationTask("Check microphone permissions", CheckMicrophonePermissions,
                     CallCondition.Always);
             }
@@ -118,6 +119,7 @@ namespace Recognissimo.Components
 
             if (!Microphone.HasPermission())
             {
+                Debug.Log("Recognissimo: Microphone Permission Denied");
                 FailInitialization(new InvalidOperationException("Permission to use a microphone is denied"));
             }
         }

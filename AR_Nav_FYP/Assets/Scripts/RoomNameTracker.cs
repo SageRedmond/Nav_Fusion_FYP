@@ -40,8 +40,9 @@ public class RoomNameTracker : MonoBehaviour
 
     public void AddRoomIDs() {
         RoomIDs.Add(96011, "Upstairs Lab");
-        RoomIDs.Add(96096, "2nd-Floor Hallway");
-        RoomIDs.Add(96206, "EE Staff Offices");
-        RoomIDs.Add(96293, "2nd-to-3rd Stairs");
+        RoomIDs.Add(96096, "2nd Floor Hallway");
+        RoomIDs.Add(96206, "Engineering Staff Offices");
+        RoomIDs.Add(97734, "1rst Floor Elevator Landing");
+        RoomIDs.Add(97972, "1rst Floor Stairs Landing");
     }
 }
