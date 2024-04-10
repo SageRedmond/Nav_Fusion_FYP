@@ -71,7 +71,7 @@ namespace Recognissimo.Utils.Network
                 return false;
             }
 
-            remoteFile = content.SingleOrDefault(item => item.url == url);
+            remoteFile = content.FirstOrDefault(item => item.url == url);
             return !remoteFile.Equals(default);
         }
     }

@@ -81,7 +81,7 @@ namespace Recognissimo.Components
                 return false;
             }
 
-            var model = languageModels.SingleOrDefault(model => model.language == downloadedLanguage);
+            var model = languageModels.FirstOrDefault(model => model.language == downloadedLanguage);
 
             return !model.Equals(default) &&
                    _downloadManager.IsDownloaded(RemoteLanguageModelArchiveToRemoteFile(model), true);
@@ -93,7 +93,7 @@ namespace Recognissimo.Components
         /// <param name="removeLanguage">The language whose files are to be removed.</param>
         public void RemoveLanguageModelFiles(SystemLanguage removeLanguage)
         {
-            var model = languageModels.SingleOrDefault(model => model.language == removeLanguage);
+            var model = languageModels.FirstOrDefault(model => model.language == removeLanguage);
 
             if (model.Equals(default))
             {
@@ -125,7 +125,7 @@ namespace Recognissimo.Components
                 throw new InvalidOperationException("List of language models is missing.");
             }
 
-            var model = languageModels.SingleOrDefault(model => model.language == language);
+            var model = languageModels.FirstOrDefault(model => model.language == language);
 
             if (model.Equals(default))
             {

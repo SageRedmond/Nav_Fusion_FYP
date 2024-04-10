@@ -305,7 +305,7 @@ namespace Recognissimo.Utils.Network
 
             public bool TryGetByRemote(RemoteFile remote, out DownloadedFileDescription downloaded)
             {
-                downloaded = content.SingleOrDefault(downloaded => downloaded.source.Equals(remote));
+                downloaded = content.FirstOrDefault(downloaded => downloaded.source.Equals(remote));
 
                 return !downloaded.Equals(default);
             }

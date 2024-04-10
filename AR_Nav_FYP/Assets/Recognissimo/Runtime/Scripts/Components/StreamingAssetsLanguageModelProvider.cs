@@ -69,7 +69,7 @@ namespace Recognissimo.Components
                 throw new InvalidOperationException("List of language models is missing.");
             }
 
-            var model = languageModels.SingleOrDefault(model => model.language == language);
+            var model = languageModels.FirstOrDefault(model => model.language == language);
 
             if (model.Equals(default))
             {
