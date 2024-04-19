@@ -36,7 +36,7 @@ public class PolicyManager : MonoBehaviour{
         ApplyPolicy();
     }
 
-    private void ApplyPolicy(){
+    public void ApplyPolicy(){
         switch (UserProfile) {
             case Profiles.Able: {
                     AbleBlockers.SwitchOn();

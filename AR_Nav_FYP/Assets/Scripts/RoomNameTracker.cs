@@ -50,13 +50,19 @@ public class RoomNameTracker : MonoBehaviour
         RoomIDs.Add(97734, "1rst Floor Elevator Landing");
         RoomIDs.Add(97972, "1rst Floor Stairs Landing");
     }
-
+    
     public void GetMaps() {
         XRMap[] allMaps = FindObjectsOfType<XRMap>();
 
         foreach( XRMap map in allMaps) {
-            RoomIDs.Add(map.mapId, map.mapName);
-            //Debug.Log(map.mapName);
+            string mapName = string.Concat(map.mapName.Select(x => char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
+            if(map.mapId == 98492) { //I don't like the map name I gave it in Immersal. I could probably change it on the immersal portal but ehh
+                RoomIDs.Add(map.mapId, "Foyer");
+            }
+            else {
+                RoomIDs.Add(map.mapId, mapName);
+                //Debug.Log(str);
+            }
         }
     }
 }
