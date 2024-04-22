@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4127418773128228929}
   - component: {fileID: 7355662289314718381}
   - component: {fileID: 6330269868393206885}
+  - component: {fileID: 3643162120429413591}
   m_Layer: 0
   m_Name: DestinationNode
   m_TagString: DestinationNode
@@ -49,6 +50,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   isDestinationNode: 1
   neighbors: []
+  Location: 0
 --- !u!135 &6330269868393206885
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +72,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3643162120429413591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307380045512513112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b970c805eac1542dd87e1daf82ead2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2476942647202122038
 PrefabInstance:
   m_ObjectHideFlags: 0

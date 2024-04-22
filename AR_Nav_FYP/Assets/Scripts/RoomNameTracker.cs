@@ -11,6 +11,9 @@ public class RoomNameTracker : MonoBehaviour
     //public Localizer ImmersalLocalizer;
 
     [SerializeField] public TMP_Text UI_RoomText;
+    public string DestinationName;
+    public string DestinationFloorLevelString;
+    public FloorLevel DestinationFloorLevelEnum;
 
     private Dictionary<int, string> RoomIDs = new Dictionary<int, string>();
 

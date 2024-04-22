@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 
 public class UiPickDestination : MonoBehaviour {
     //public List<Node> DestinationNodes = new List<Node>();
     public List<GameObject> Goals = new List<GameObject>();
+    [SerializeField] private RoomNameTracker infoToGive;
 
     [SerializeField]
     private NavController NavController;
@@ -33,11 +35,17 @@ public class UiPickDestination : MonoBehaviour {
     }
 
     void ButtonClicked(GameObject destination) {
-        Debug.Log("Button clicked for: " + destination.name);
+        string TargetName = destination.name;
+        Debug.Log("Button clicked for: " + TargetName);
 
         NavController.TargetPosition = destination.transform.position;
         Debug.Log("Position: " +  NavController.TargetPosition);
-        //NavController.MakePath();
+
+        string floorLevel = destination.GetComponent<Goal>().Level.ToString();
+
+        infoToGive.DestinationFloorLevelString = string.Concat(floorLevel.Select(x => char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
+        infoToGive.DestinationFloorLevelEnum = destination.GetComponent<Goal>().Level;
+        infoToGive.DestinationName = string.Concat(TargetName.Select(x => char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
 
         UIGoalPanel.SetActive(false);
     }
