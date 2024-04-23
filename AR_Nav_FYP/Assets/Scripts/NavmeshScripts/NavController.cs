@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Immersal.XR;
 
 public class NavController : MonoBehaviour
@@ -13,6 +14,11 @@ public class NavController : MonoBehaviour
     public Transform cameraPose;
 
     private bool managerInitialized = false;
+
+    private bool AtDestination = false;
+
+    public UnityEvent atDestination;
+    public UnityEvent Traveling;
 
     [Header("Path Visual")]
     [SerializeField]
@@ -33,8 +39,11 @@ public class NavController : MonoBehaviour
     }
 
     private void Update() {
-        if (managerInitialized && TargetPosition != Vector3.zero) {
-            MakePath();
+        if(!AtDestination){
+            Traveling.Invoke();
+            if (managerInitialized && TargetPosition != Vector3.zero) {
+                MakePath();
+            }
         }
     }
 
@@ -53,8 +62,11 @@ public class NavController : MonoBehaviour
 
         if (distanceToTarget < ArrivedDistanceThreshold) {
             Debug.Log("Arrived");
+            AtDestination = true;
+            atDestination.Invoke();
             return;
         }
+
         corners = FindPathNavMesh(startPosition, targetPosition);
 
         //if (NavMesh.CalculatePath(cameraPose.transform.position, TargetPosition, NavMesh.AllAreas, CalculatedPath)) {

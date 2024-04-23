@@ -48,6 +48,11 @@ public class PolicyManager : MonoBehaviour{
                     StairsBlockers.SwitchOn();
                     break;
                 }
+            case Profiles.Vision: {
+                    AbleBlockers.SwitchOff();
+                    StairsBlockers.SwitchOn();
+                    break;
+                }
         }
     }
 
@@ -69,4 +74,5 @@ public class PolicyManager : MonoBehaviour{
 public enum Profiles {
     Able,
     Mobility,
+    Vision,
 }

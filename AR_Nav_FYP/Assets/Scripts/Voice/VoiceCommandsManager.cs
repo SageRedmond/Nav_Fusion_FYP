@@ -8,6 +8,7 @@ using Recognissimo.Components;
 public class VoiceCommandsManager : MonoBehaviour
 {
     [SerializeField] RoomNameTracker roomNameTracker;
+    [SerializeField] PolicyManager policyInfo;
 
     const string LANG_CODE = "en-US";
 
@@ -15,9 +16,9 @@ public class VoiceCommandsManager : MonoBehaviour
         var voiceControl = gameObject.GetComponent<VoiceControl>();
 
         voiceControl.Commands = new List<VoiceControlCommand> {
-            new VoiceControlCommand("Where am I", () => getRoomName()),
-            new VoiceControlCommand(@"\b(?:elevator.*button|button.*elevator)\b", () => ElevatorPressButtonPrompt()),
-            new VoiceControlCommand("What floor is my destination on", () => getDestinationFloorLevel()),
+            new VoiceControlCommand(@"\bWhere\s+(?:am\s+I|are\s+we)\b", getRoomName),
+            new VoiceControlCommand(@"\b(?:elevator.*button|button.*elevator)\b", ElevatorPressButtonPrompt),
+            new VoiceControlCommand(@"\b(?:destination.*level|level.*destination)\b", getDestinationFloorLevel)
         };
     }
 
@@ -57,6 +58,12 @@ public class VoiceCommandsManager : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void ArrivedAtDestinationInfo() {
+        if(policyInfo.UserProfile == Profiles.Vision) {
+            StartSpeeking("You have Arrived at " + roomNameTracker.DestinationName);
         }
     }
     #endregion
