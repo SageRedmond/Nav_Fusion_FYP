@@ -9,6 +9,7 @@ public class ElevatorTrigger : MonoBehaviour
     [SerializeField] VoiceCommandsManager SpeechCommands;
     [SerializeField] Collider player; //this is the variable that will hold the colliding object
     [SerializeField] LocalizerSettingsPanel Localizer;
+    [SerializeField] GameObject ARContent;
     private bool triggered = false; //If we only want to detect the first time it's triggered
 
     private void OnTriggerEnter(Collider other) {
@@ -19,12 +20,13 @@ public class ElevatorTrigger : MonoBehaviour
         }
         triggered = true;
         SpeechCommands.ElevatorPressButtonPrompt();
-        Localizer.Pause();
+        Localizer.StopLocalizing();
+        ARContent.SetActive(false);
     }
 
     private void OnTriggerExit(Collider other) {
         Debug.Log("Elevator Trigger Zone Left");
         triggered = false;
-        Localizer.Resume();
+        Localizer.StartLocalizing();
     }
 }

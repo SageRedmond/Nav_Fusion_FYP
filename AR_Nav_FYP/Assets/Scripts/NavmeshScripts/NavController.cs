@@ -113,9 +113,10 @@ public class NavController : MonoBehaviour
     public Vector3 nextPathPointVector() {
         //return CalculatedPath.corners[0];
         try {
-            return CalculatedPath.corners[0];
+            return corners[1];
         }
         catch (System.IndexOutOfRangeException) {
+            Debug.Log("Out of Bounds");
             return Vector3.zero;
         }
     }
