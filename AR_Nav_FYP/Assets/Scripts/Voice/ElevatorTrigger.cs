@@ -28,5 +28,6 @@ public class ElevatorTrigger : MonoBehaviour
         Debug.Log("Elevator Trigger Zone Left");
         triggered = false;
         Localizer.StartLocalizing();
+        ARContent.SetActive(false);
     }
 }
