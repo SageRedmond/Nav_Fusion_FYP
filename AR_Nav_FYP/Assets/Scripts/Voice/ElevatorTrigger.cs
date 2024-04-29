@@ -20,14 +20,16 @@ public class ElevatorTrigger : MonoBehaviour
         }
         triggered = true;
         SpeechCommands.ElevatorPressButtonPrompt();
-        Localizer.StopLocalizing();
-        ARContent.SetActive(false);
+        //Localizer.StopLocalizing();
+        Localizer.Pause();
+        //ARContent.SetActive(false);
     }
 
     private void OnTriggerExit(Collider other) {
         Debug.Log("Elevator Trigger Zone Left");
         triggered = false;
-        Localizer.StartLocalizing();
-        ARContent.SetActive(false);
+        //Localizer.StartLocalizing();
+        Localizer.Resume();
+        //ARContent.SetActive(false);
     }
 }
