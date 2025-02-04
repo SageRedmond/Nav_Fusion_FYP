@@ -10,6 +10,8 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --target-framework=NetFramework
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CandyCoded.HapticFeedback;
+--assembly-defines=CandyCoded.HapticFeedback.iOS;
 --assembly-defines=Estrada;
 --assembly-defines=Immersal.Core;
 --assembly-defines=Immersal.Samples.Core;
@@ -54,6 +56,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --linker-options=min-ios-version=12.0
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/Burst
+--debug=Full
 --generate-static-linkage-methods
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.10f1/PlaybackEngines/iOSSupport
 --decode-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Library/Burst
@@ -72,6 +75,8 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --float-precision=Standard
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
+--assembly-defines=CandyCoded.HapticFeedback;
+--assembly-defines=CandyCoded.HapticFeedback.iOS;
 --assembly-defines=Estrada;
 --assembly-defines=Immersal.Core;
 --assembly-defines=Immersal.Samples.Core;
@@ -116,6 +121,7 @@ Library: /Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOutput/Sta
 --linker-options=min-ios-version=12.0
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Temp/Burst
+--debug=Full
 --generate-static-linkage-methods
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.10f1/PlaybackEngines/iOSSupport
 --decode-folder=/Users/ee-mu/Desktop/Dev/Nav_Fusion_FYP/AR_Nav_FYP/Library/Burst
