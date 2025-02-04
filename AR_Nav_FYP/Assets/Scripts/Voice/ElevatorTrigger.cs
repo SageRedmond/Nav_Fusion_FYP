@@ -6,7 +6,7 @@ using Immersal.XR;
 
 public class ElevatorTrigger : MonoBehaviour
 {
-    [SerializeField] VoiceCommandsManager SpeechCommands;
+    // [SerializeField] VoiceCommandsManager SpeechCommands;
     [SerializeField] Collider player; //this is the variable that will hold the colliding object
     [SerializeField] LocalizerSettingsPanel Localizer;
     [SerializeField] GameObject ARContent;
@@ -19,7 +19,7 @@ public class ElevatorTrigger : MonoBehaviour
             return; //don't do anything if it's not our target
         }
         triggered = true;
-        SpeechCommands.ElevatorPressButtonPrompt();
+        // SpeechCommands.ElevatorPressButtonPrompt();
         //Localizer.StopLocalizing();
         Localizer.Pause();
         //ARContent.SetActive(false);
