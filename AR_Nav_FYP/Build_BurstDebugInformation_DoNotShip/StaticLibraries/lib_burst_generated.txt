@@ -24,7 +24,6 @@ Library: /Users/redmond/Documents/GitHub/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOut
 --assembly-defines=System.Net.Http;
 --assembly-defines=System.Numerics;
 --assembly-defines=System.Xml;
---assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.InputSystem;
 --assembly-defines=Unity.Mathematics;
@@ -91,7 +90,6 @@ Library: /Users/redmond/Documents/GitHub/Nav_Fusion_FYP/AR_Nav_FYP/Temp/BurstOut
 --assembly-defines=System.Net.Http;
 --assembly-defines=System.Numerics;
 --assembly-defines=System.Xml;
---assembly-defines=Unity.AI.Navigation;
 --assembly-defines=Unity.Burst;
 --assembly-defines=Unity.InputSystem;
 --assembly-defines=Unity.Mathematics;
