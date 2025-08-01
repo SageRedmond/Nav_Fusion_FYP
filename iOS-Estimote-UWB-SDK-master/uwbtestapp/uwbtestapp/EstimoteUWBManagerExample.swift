@@ -10,7 +10,7 @@ import EstimoteUWB
 
 class EstimoteUWBManagerExample: NSObject, ObservableObject {
   @Published var distance: Float = 0.0
-  
+  let beaconID = "d04567bc3557ff70ca197e3c8c236119"
   private var unity = Unity.shared
   private var uwbManager: EstimoteUWBManager?
   
@@ -44,7 +44,7 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
     // if shouldHandleConnectivity is set to true - then you could call manager.connect(to: device)
     // additionally you can globally call discoonect from the scope where you have inititated EstimoteUWBManager -> disconnect(from: device) or disconnect(from: publicId)
     
-    if device.publicIdentifier == "70f0576ae14090a92231974cccec402d"{
+    if device.publicIdentifier == self.beaconID{
       uwbManager?.connect(to: device)
     }
   }
