@@ -1,6 +1,10 @@
 struct NativeState
 {
+    const char* _Nonnull beaconId;
     const float distance;
+    const float x_direction;
+    const float y_direction;
+    const float z_direction;
 };
 
 typedef void (*SetNativeStateCallback)(struct NativeState nextState);

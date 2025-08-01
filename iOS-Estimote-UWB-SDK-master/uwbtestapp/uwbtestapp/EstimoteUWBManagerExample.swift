@@ -35,6 +35,12 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
     DispatchQueue.main.async{
       self.distance =  device.distance
       self.unity.setDistance(to: device.distance)
+      if let direction = device.vector{
+        self.unity.setDirection(to: direction)
+      }
+      else{
+        self.unity.setNoDirection()
+      }
     }
   }
   

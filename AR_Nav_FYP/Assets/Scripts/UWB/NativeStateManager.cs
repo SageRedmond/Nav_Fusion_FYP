@@ -6,7 +6,11 @@ using UnityEngine;
 
 public readonly struct NativeState
 {
+    public readonly string beaconId;
     public readonly float distance;
+    public readonly float x_direction;
+    public readonly float y_direction;
+    public readonly float z_direction;
 }
 
 public static class NativeStateManager

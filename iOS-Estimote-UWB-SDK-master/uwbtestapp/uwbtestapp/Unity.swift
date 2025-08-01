@@ -7,11 +7,20 @@
 
 import UnityFramework
 import MetalKit
+import EstimoteUWB
+
+struct Vector{
+  var x: Float
+  var y: Float
+  var z: Float
+}
 
 class Unity: SetsNativeState, ObservableObject{
   static let shared = Unity()
   
+  @Published var beaconID: String = "" { didSet { stateDidSet() } }
   @Published var distance: Float = 1 { didSet { stateDidSet() } }
+  @Published var direction: Vector = Vector(x: 0, y: 0, z: 0) { didSet { stateDidSet() } }
   
   private var loaded = false
   private let framework: UnityFramework
@@ -91,9 +100,27 @@ class Unity: SetsNativeState, ObservableObject{
     self.distance = value
   }
   
+  public func setDirection(to vector: EstimoteUWB.Vector){
+    let x = vector.x
+    let y = vector.y
+    let z = vector.z
+    
+    self.direction = Vector(x: x, y: y, z: z)
+  }
+  
+  public func setNoDirection(){
+    let x: Float = 0.0
+    let y: Float = 0.0
+    let z: Float = 0.0
+    
+    self.direction = Vector(x: x, y: y, z: z)
+  }
+  
   private func stateDidSet() {
-    let nativeState = NativeState(distance: distance)
-    setNativeState?(nativeState)
+    beaconID.withCString { beaconId_c in
+      let nativeState = NativeState(beaconId: beaconId_c, distance: distance, x_direction: direction.x, y_direction: direction.y, z_direction: direction.z)
+      setNativeState?(nativeState)
+    }
   }
   
   /* When a Unity script calls the NativeState plugin's OnSetNativeState function this

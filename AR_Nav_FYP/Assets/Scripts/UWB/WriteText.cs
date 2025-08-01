@@ -9,7 +9,7 @@ public class WriteText : MonoBehaviour
 {
     [SerializeField] public TMP_Text DistanceText;
 
-    private int counter;
+    // private int counter;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class WriteText : MonoBehaviour
         string distanceText = state.distance.ToString("F2");
         writeDistanceText(distanceText);
     }
-    
+
     void writeDistanceText(string text)
     {
         DistanceText.text = text;
