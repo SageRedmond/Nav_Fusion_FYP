@@ -14,7 +14,7 @@ public class TrackedImageManager : MonoBehaviour
 
     [SerializeField] private GameObject axisPrefab;
 
-    private GameObject axisSpawned;
+    public GameObject imageMarker;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class TrackedImageManager : MonoBehaviour
 
         try
         {
-            axisSpawned = Instantiate(axisPrefab, Vector3.zero, Quaternion.identity);
+            imageMarker = Instantiate(axisPrefab, Vector3.zero, Quaternion.identity);
 
         }
         catch (System.Exception e)
@@ -55,7 +55,7 @@ public class TrackedImageManager : MonoBehaviour
 
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         { //Image tracking lost
-            axisSpawned.SetActive(false);
+            imageMarker.SetActive(false);
             ImageTransformText.text = "No Image";
         }
     }
@@ -66,9 +66,9 @@ public class TrackedImageManager : MonoBehaviour
         Vector3 position = trackedImage.transform.position;
         Quaternion rotation = trackedImage.transform.rotation;
 
-        axisSpawned.transform.position = position;
-        axisSpawned.transform.rotation = rotation;
-        axisSpawned.SetActive(true);
+        imageMarker.transform.position = position;
+        imageMarker.transform.rotation = rotation;
+        imageMarker.SetActive(true);
         setTransformText(position, rotation);
     }
 
