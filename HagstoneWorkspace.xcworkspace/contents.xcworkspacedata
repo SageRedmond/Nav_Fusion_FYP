@@ -7,4 +7,7 @@
    <FileRef
       location = "absolute:/Users/redmond/Documents/GitHub/Nav_Fusion_FYP/AR_Nav_FYP/Build/Unity-iPhone.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:AR_Nav_FYP/Build/Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

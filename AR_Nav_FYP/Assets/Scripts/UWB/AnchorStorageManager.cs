@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Firebase.Extensions;
 using Firebase.Database;
 using System.Threading.Tasks;
 
@@ -76,8 +77,9 @@ public class AnchorStorageManager : MonoBehaviour
     btn.onClick.AddListener(MarkAnchor);
   }
 
-  private void Start()
+  public void StartDatabase()
   {
+    Debug.Log("Starting Database after Firebase call");
     m_Database = FirebaseDatabase.DefaultInstance;
 
     sceneAnchorList.Clear();
@@ -120,18 +122,22 @@ public class AnchorStorageManager : MonoBehaviour
       m_Anchors.Add(anchor.AnchorID, anchor.transform.localPosition);
       // m_Positions.Add(anchor.transform.localPosition);
     }
-
     m_AnchorSavefile.Anchors = m_Anchors;
 
-    string jsonstring = JsonUtility.ToJson(m_AnchorSavefile, true);
+    string jsonstring = JsonUtility.ToJson(m_AnchorSavefile);
     // string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
     // File.WriteAllText(dataPath, jsonstring);
 
+    if (m_Database == null)
+    {
+      print("The null is m_Database");
+    }
     m_Database.GetReference(ANCHOR_KEY).SetRawJsonValueAsync(jsonstring);
   }
 
   public void LoadAnchors()
   {
+    Debug.Log("Loading Database");
     if (coroutine == null)
     {
       coroutine = StartCoroutine(LoadAnchorsCoroutine());
@@ -157,6 +163,7 @@ public class AnchorStorageManager : MonoBehaviour
 
   public async Task<AnchorSavefile?> LoadAnchorsDatabaseAsync()
   {
+    Debug.Log("Loading Database async");
     var databaseSnapshot = await m_Database.GetReference(ANCHOR_KEY).GetValueAsync();
 
     if (!databaseSnapshot.Exists)
