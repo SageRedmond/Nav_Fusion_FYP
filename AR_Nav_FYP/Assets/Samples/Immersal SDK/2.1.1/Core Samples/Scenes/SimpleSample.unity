@@ -250,7 +250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Mark Anchor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -277,8 +277,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32.83
+  m_fontSizeBase: 32.83
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88278352}
-  - component: {fileID: 88278351}
+  - component: {fileID: 88278353}
   m_Layer: 0
   m_Name: AnchorManager
   m_TagString: Untagged
@@ -344,21 +344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &88278351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88278350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc592fa8ea9574e3a900d384e116d7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testAnchor: {fileID: 2068092750}
-  m_XRSpace: {fileID: 1959774578}
-  m_ContentPrefab: {fileID: 7552867463103445968, guid: 7deda7ec791f2416fad2d7a3a7ff3bd1, type: 3}
 --- !u!4 &88278352
 Transform:
   m_ObjectHideFlags: 0
@@ -368,12 +353,30 @@ Transform:
   m_GameObject: {fileID: 88278350}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.40696776, y: 0.045955718, z: 0.6446084}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88278353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88278350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224afb892dcf14db8b848940fd68f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnchorMarkerBtn: {fileID: 2025591103}
+  imageTracker: {fileID: 322393159}
+  contentList: []
+  m_AnchorPrefab: {fileID: 2698772874205177774, guid: 3924a3a2900c745728fd4cb6679b9d8b, type: 3}
+  m_XRSpace: {fileID: 1959774578}
+  m_Filename: content.json
 --- !u!1 &104878427
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageTransformText: {fileID: 1531632001}
   axisPrefab: {fileID: 7552867463103445968, guid: 7deda7ec791f2416fad2d7a3a7ff3bd1, type: 3}
+  imageMarker: {fileID: 0}
 --- !u!1 &349457170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3034,7 +3038,7 @@ GameObject:
   - component: {fileID: 2025591104}
   - component: {fileID: 2025591103}
   m_Layer: 5
-  m_Name: Place Anchor
+  m_Name: MarkAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3055,10 +3059,10 @@ RectTransform:
   - {fileID: 36067059}
   m_Father: {fileID: 1377195111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 765}
+  m_SizeDelta: {x: 341.3043, y: 63.994507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025591103
 MonoBehaviour:
@@ -3104,7 +3108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 88278351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnchorPoseManager, Assembly-CSharp
         m_MethodName: printTestAnchorPose
         m_Mode: 1
@@ -3129,14 +3133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7347811, g: 0.8207547, b: 0.5149074, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: ea5b05896a6a746d89099adb283d6a03, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

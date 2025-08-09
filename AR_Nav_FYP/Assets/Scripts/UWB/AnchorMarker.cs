@@ -6,23 +6,27 @@ using UnityEngine;
 // Should be attached to the prefab used by AnchorStorageManager
 public class AnchorMarker : MonoBehaviour
 {
-    // public String AnchorID;
+    public String AnchorID;
 
-    // When one of these little guys are instantiated, they auto add themselfs to the content list
-    private void StoreContent()
+    public void StoreContent()
     {
-        if (!AnchorStorageManager.Instance.contentList.Contains(this))
+        Debug.Log("Storing Anchor");
+
+        NativeState state = NativeStateManager.State;
+        AnchorID = state.beaconId;
+
+        if (!AnchorStorageManager.Instance.sceneAnchorList.Contains(this))
         {
-            AnchorStorageManager.Instance.contentList.Add(this);
+            AnchorStorageManager.Instance.sceneAnchorList.Add(this);
         }
         AnchorStorageManager.Instance.SaveAnchors();
     }
 
     public void RemoveContent()
     {
-        if (AnchorStorageManager.Instance.contentList.Contains(this))
+        if (AnchorStorageManager.Instance.sceneAnchorList.Contains(this))
         {
-            AnchorStorageManager.Instance.contentList.Remove(this);
+            AnchorStorageManager.Instance.sceneAnchorList.Remove(this);
         }
         AnchorStorageManager.Instance.SaveAnchors();
         Destroy(gameObject);

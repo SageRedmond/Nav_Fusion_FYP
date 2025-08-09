@@ -14,7 +14,7 @@ public class AnchorStorageManager : MonoBehaviour
   private TrackedImageManager imageTracker;
 
   [HideInInspector]
-  public List<AnchorMarker> contentList = new List<AnchorMarker>();
+  public List<AnchorMarker> sceneAnchorList = new List<AnchorMarker>();
 
   [SerializeField]
   private GameObject m_AnchorPrefab = null; // Should have the AnchorMarker script attached
@@ -24,14 +24,17 @@ public class AnchorStorageManager : MonoBehaviour
 
   [SerializeField]
   private string m_Filename = "content.json";
-  private Savefile m_Savefile;
+  private AnchorSavefile m_AnchorSavefile;
   private List<Vector3> m_Positions = new List<Vector3>();
 
+  public Dictionary<string, Vector3> m_Anchors = new Dictionary<string, Vector3>();
+
   [System.Serializable]
-  public struct Savefile
+  public struct AnchorSavefile
   {
     //TODO: Assocaite with Beacon ID
-      public List<Vector3> positions;
+    // public List<Vector3> positions;
+    public Dictionary<string, Vector3> Anchors;
   }
 
   public static AnchorStorageManager Instance
@@ -78,7 +81,7 @@ public class AnchorStorageManager : MonoBehaviour
 
   private void Start()
   {
-    contentList.Clear();
+    sceneAnchorList.Clear();
     LoadAnchors();
   }
 
@@ -94,16 +97,19 @@ public class AnchorStorageManager : MonoBehaviour
   /// </summary>
   public void MarkAnchor()
   {
+    // TODO: Ensure Native State has a beaconID
+    // TODO: Ensure imageTackerTransform isn't 0,0,0
     Transform imageMarker = imageTracker.imageMarker.transform;
     // By parenting the anchor to the XR space, we automattically convert it's position from the camera space to the XR space
     GameObject go = Instantiate(m_AnchorPrefab, imageMarker.position, Quaternion.identity, m_XRSpace.transform);
+    go.GetComponent<AnchorMarker>().StoreContent();
   }
 
   public void DeleteAllAnchors()
   {
     List<AnchorMarker> copy = new List<AnchorMarker>();
 
-    foreach (AnchorMarker content in contentList)
+    foreach (AnchorMarker content in sceneAnchorList)
     {
       copy.Add(content);
     }
@@ -116,14 +122,18 @@ public class AnchorStorageManager : MonoBehaviour
 
   public void SaveAnchors()
   {
-    m_Positions.Clear();
-    foreach (AnchorMarker content in contentList)
-    {
-      m_Positions.Add(content.transform.localPosition);
-    }
-    m_Savefile.positions = m_Positions;
+    // m_Positions.Clear();
+    m_Anchors.Clear();
 
-    string jsonstring = JsonUtility.ToJson(m_Savefile, true);
+    foreach (AnchorMarker anchor in sceneAnchorList)
+    {
+      m_Anchors.Add(anchor.AnchorID, anchor.transform.localPosition);
+      // m_Positions.Add(anchor.transform.localPosition);
+    }
+
+    m_AnchorSavefile.Anchors = m_Anchors;
+
+    string jsonstring = JsonUtility.ToJson(m_AnchorSavefile, true);
     string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
     File.WriteAllText(dataPath, jsonstring);
   }
@@ -135,12 +145,13 @@ public class AnchorStorageManager : MonoBehaviour
 
     try
     {
-      Savefile loadFile = JsonUtility.FromJson<Savefile>(File.ReadAllText(dataPath));
+      AnchorSavefile loadFile = JsonUtility.FromJson<AnchorSavefile>(File.ReadAllText(dataPath));
 
-      foreach (Vector3 pos in loadFile.positions)
+      foreach (var (anchorId, pose) in loadFile.Anchors)
       {
         GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
-        go.transform.localPosition = pos;
+        go.transform.localPosition = pose;
+        go.GetComponent<AnchorMarker>().AnchorID = anchorId;
       }
 
       Debug.Log("Successfully loaded file!");
