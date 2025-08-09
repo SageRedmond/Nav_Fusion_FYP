@@ -130,3 +130,8 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsetting
+
+#Firebase
+firebase-debug.log
+firebase-debug.*.log
+**/Assets/Firebase

@@ -10,7 +10,8 @@ import EstimoteUWB
 
 class EstimoteUWBManagerExample: NSObject, ObservableObject {
   @Published var distance: Float = 0.0
-  let beaconID = "d04567bc3557ff70ca197e3c8c236119"
+//  let beaconID = "d04567bc3557ff70ca197e3c8c236119"
+  let beaconID = "70f0576ae14090a92231974cccec402d"
   private var unity = Unity.shared
   private var uwbManager: EstimoteUWBManager?
   
