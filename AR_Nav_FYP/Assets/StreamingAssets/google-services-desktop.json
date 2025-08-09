@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "1029013475754",
+    "project_id": "hagstone-3a7e7",
+    "storage_bucket": "hagstone-3a7e7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029013475754:ios:c363deb62c7409d3c99bd3",
+        "android_client_info": {
+          "package_name": "com.MollyDolly.AR-Nav-FYP"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiLbb5LfbP5wqliYTeWKtcWEJ5jaEm088"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

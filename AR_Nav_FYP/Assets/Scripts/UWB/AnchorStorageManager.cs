@@ -1,41 +1,38 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Firebase.Database;
+using System.Threading.Tasks;
 
 public class AnchorStorageManager : MonoBehaviour
 {
-  [SerializeField]
-  private Button AnchorMarkerBtn;
+  [SerializeField] private Button AnchorMarkerBtn;
+  [SerializeField] private TrackedImageManager imageTracker;
+  [HideInInspector] public List<AnchorMarker> sceneAnchorList = new List<AnchorMarker>();
+  [SerializeField] private GameObject m_AnchorPrefab = null; // Should have the AnchorMarker script attached
+
+  [FormerlySerializedAs("m_ARSpace")]
+  [SerializeField] private Immersal.XR.XRSpace m_XRSpace;
 
   [SerializeField]
-  private TrackedImageManager imageTracker;
-
-  [HideInInspector]
-  public List<AnchorMarker> sceneAnchorList = new List<AnchorMarker>();
-
-  [SerializeField]
-  private GameObject m_AnchorPrefab = null; // Should have the AnchorMarker script attached
-
-  [FormerlySerializedAs("m_ARSpace")] [SerializeField]
-  private Immersal.XR.XRSpace m_XRSpace;
-
-  [SerializeField]
-  private string m_Filename = "content.json";
   private AnchorSavefile m_AnchorSavefile;
-  private List<Vector3> m_Positions = new List<Vector3>();
 
   public Dictionary<string, Vector3> m_Anchors = new Dictionary<string, Vector3>();
 
   [System.Serializable]
   public struct AnchorSavefile
   {
-    //TODO: Assocaite with Beacon ID
     // public List<Vector3> positions;
     public Dictionary<string, Vector3> Anchors;
   }
+
+  private FirebaseDatabase m_Database;
+  private const string ANCHOR_KEY = "UWB_ANCHORS";
+  private Coroutine coroutine;
 
   public static AnchorStorageManager Instance
   {
@@ -81,20 +78,13 @@ public class AnchorStorageManager : MonoBehaviour
 
   private void Start()
   {
+    m_Database = FirebaseDatabase.DefaultInstance;
+
     sceneAnchorList.Clear();
+
     LoadAnchors();
   }
 
-  // Old Method
-  // public void AddContent()
-  // {
-  //   Transform cameraTransform = Camera.main.transform;
-  //   GameObject go = Instantiate(m_AnchorPrefab, cameraTransform.position + cameraTransform.forward, Quaternion.identity, m_XRSpace.transform);
-  // }
-
-  /// <summary>
-  /// Uses the current pose of the tracked image to position the anchor in XR space
-  /// </summary>
   public void MarkAnchor()
   {
     // TODO: Ensure Native State has a beaconID
@@ -134,37 +124,57 @@ public class AnchorStorageManager : MonoBehaviour
     m_AnchorSavefile.Anchors = m_Anchors;
 
     string jsonstring = JsonUtility.ToJson(m_AnchorSavefile, true);
-    string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
-    File.WriteAllText(dataPath, jsonstring);
+    // string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
+    // File.WriteAllText(dataPath, jsonstring);
+
+    m_Database.GetReference(ANCHOR_KEY).SetRawJsonValueAsync(jsonstring);
   }
 
   public void LoadAnchors()
   {
-    string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
-    Debug.LogFormat("Trying to load file: {0}", dataPath);
-
-    try
+    if (coroutine == null)
     {
-      AnchorSavefile loadFile = JsonUtility.FromJson<AnchorSavefile>(File.ReadAllText(dataPath));
+      coroutine = StartCoroutine(LoadAnchorsCoroutine());
+    }
+  }
 
-      foreach (var (anchorId, pose) in loadFile.Anchors)
+  private IEnumerator LoadAnchorsCoroutine()
+  {
+    var loadAnchorsDatabaseTask = LoadAnchorsDatabaseAsync();
+    yield return new WaitUntil(() => loadAnchorsDatabaseTask.IsCompleted);
+    var anhcorData = loadAnchorsDatabaseTask.Result;
+    if (anhcorData.HasValue)
+    {
+      foreach (var (anchorId, pose) in anhcorData.Value.Anchors)
       {
         GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
         go.transform.localPosition = pose;
         go.GetComponent<AnchorMarker>().AnchorID = anchorId;
       }
+    }
+    coroutine = null;
+  }
 
-      Debug.Log("Successfully loaded file!");
-    }
-    catch (FileNotFoundException e)
+  public async Task<AnchorSavefile?> LoadAnchorsDatabaseAsync()
+  {
+    var databaseSnapshot = await m_Database.GetReference(ANCHOR_KEY).GetValueAsync();
+
+    if (!databaseSnapshot.Exists)
     {
-      Debug.LogWarningFormat("{0}\n.json file for content storage not found. Created a new file!", e.Message);
-      File.WriteAllText(dataPath, "");
+      return null;
     }
-    catch (NullReferenceException err)
-    {
-      Debug.LogWarningFormat("{0}\n.json file for content storage not found. Created a new file!", err.Message);
-      File.WriteAllText(dataPath, "");
-    }
+
+    return JsonUtility.FromJson<AnchorSavefile>(databaseSnapshot.GetRawJsonValue());
+  }
+
+  public async Task<bool> CheckSaveExists()
+  {
+    var databaseSnapshot = await m_Database.GetReference(ANCHOR_KEY).GetValueAsync();
+    return databaseSnapshot.Exists;
+  }
+
+  public void EraseSave()
+  {
+    
   }
 }
