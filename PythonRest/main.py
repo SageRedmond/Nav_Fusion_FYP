@@ -49,7 +49,11 @@ async def lifespan(app: FastAPI):
   print("Shutdown")
   saveToJson()
 
-# Start server: uvicorn main:app --reload
+# Start server during dev: uvicorn main:app --reload
+# Start server localy: uvicorn main:app
+# Start server to listen on all IP's: uvicorn main:app --host 0.0.0.0 --port 8080
+# Enter http://0.0.0.0:80 or http://localhost:80 as url into browser to connect
+# Use ifconfig | grep "inet " on mac to get ip address (Starts with 192)
 app = FastAPI(lifespan=lifespan)
 
 # if item is of type str: curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:8000/items?item=orange'
