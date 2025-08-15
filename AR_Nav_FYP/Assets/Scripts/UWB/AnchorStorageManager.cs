@@ -23,7 +23,7 @@ public class AnchorStorageManager : MonoBehaviour
   private AnchorSavefile m_AnchorSavefile;
 
   public Dictionary<string, Vector3> m_Anchors = new Dictionary<string, Vector3>();
-
+  
   [System.Serializable]
   public struct AnchorSavefile
   {
@@ -76,7 +76,7 @@ public class AnchorStorageManager : MonoBehaviour
     Button btn = AnchorMarkerBtn.GetComponent<Button>();
     btn.onClick.AddListener(MarkAnchor);
   }
-
+  
   public void StartDatabase()
   {
     Debug.Log("Starting Database after Firebase call");
