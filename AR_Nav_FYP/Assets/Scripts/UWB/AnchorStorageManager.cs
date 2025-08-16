@@ -78,7 +78,7 @@ public class AnchorStorageManager : MonoBehaviour
     Button btn = AnchorMarkerBtn.GetComponent<Button>();
     btn.onClick.AddListener(MarkAnchor);
   }
-  
+
   public void Start()
   {
     Debug.Log("Starting Database");
@@ -139,18 +139,18 @@ public class AnchorStorageManager : MonoBehaviour
     // UnityWebRequest www = UnityWebRequest.Put($"http://{ip}/anchors", anchorJsonString);
     var request = new UnityWebRequest(url, "PUT");
     byte[] bodyRaw = Encoding.UTF8.GetBytes(anchorJsonString);
-    request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
-    request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+    request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+    request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
     request.SetRequestHeader("Content-Type", "application/json");
 
     yield return request.SendWebRequest();
     if (request.result != UnityWebRequest.Result.Success)
     {
-        Debug.Log(request.error);
+      Debug.Log(request.error);
     }
     else
     {
-        Debug.Log("Anchor upload complete!");
+      Debug.Log("Anchor upload complete!");
     }
 
     coroutine = null;
@@ -192,14 +192,33 @@ public class AnchorStorageManager : MonoBehaviour
 
       foreach (Anchor anchor in m_AnchorSavefile.anchors)
       {
-        GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
-        go.transform.localPosition = anchor.position;
-        AnchorMarker marker = go.GetComponent<AnchorMarker>();
-        marker.AnchorID = anchor.id;
+        // GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
+        // go.transform.localPosition = anchor.position;
+        // AnchorMarker marker = go.GetComponent<AnchorMarker>();
+        // marker.AnchorID = anchor.id;
+        SpawnLoadedAnchor(anchor);
         // TODO: Add to scenen list
 
       }
     }
     coroutine = null;
+  }
+
+  public void SpawnLoadedAnchor(Anchor anchorObject)
+  {
+    GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
+    go.transform.localPosition = anchorObject.position;
+    AnchorMarker marker = go.GetComponent<AnchorMarker>();
+    marker.AnchorID = anchorObject.id;
+  }
+
+  public void EditorLoadAnchors(string requestResultJson)
+  {
+    AnchorSavefile savefile = JsonUtility.FromJson<AnchorSavefile>(requestResultJson);
+
+    foreach (Anchor anchor in savefile.anchors)
+    {
+      SpawnLoadedAnchor(anchor);
+    }
   }
 }
