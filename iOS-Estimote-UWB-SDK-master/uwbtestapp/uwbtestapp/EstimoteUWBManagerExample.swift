@@ -7,14 +7,17 @@
 
 import SwiftUI
 import EstimoteUWB
+import OSLog
 
 class EstimoteUWBManagerExample: NSObject, ObservableObject {
+  @Published var connectedBeaconId: String = ""
   @Published var distance: Float = 0.0
 //  let beaconID = "d04567bc3557ff70ca197e3c8c236119"
   let beaconID = "70f0576ae14090a92231974cccec402d"
   private var unity = Unity.shared
   private var uwbManager: EstimoteUWBManager?
   
+  let logger = Logger()
   override init() {
     super.init()
     setupUWB()
@@ -31,9 +34,13 @@ class EstimoteUWBManagerExample: NSObject, ObservableObject {
 // REQUIRED PROTOCOL
 extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
   func didUpdatePosition(for device: EstimoteUWBDevice) {
-    print("Position updated for device: \(device)")
+    self.logger.info("Position updated for device: \(device)")
     
     DispatchQueue.main.async{
+      if device.id != self.connectedBeaconId{
+        self.connectedBeaconId = device.id
+        self.unity.setBeaconID(to: device.id)
+      }
       self.distance =  device.distance
       self.unity.setDistance(to: device.distance)
       if let direction = device.vector{

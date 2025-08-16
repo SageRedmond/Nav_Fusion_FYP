@@ -96,6 +96,10 @@ class Unity: SetsNativeState, ObservableObject{
     loaded = false
   }
   
+  public func setBeaconID(to value: String){
+    self.beaconID = value
+  }
+  
   public func setDistance(to value:Float){
     self.distance = value
   }

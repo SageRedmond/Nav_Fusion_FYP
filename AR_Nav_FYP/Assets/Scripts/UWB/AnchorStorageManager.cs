@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using System.Text;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
-using UnityEngine.InputSystem;
 
 public class AnchorStorageManager : MonoBehaviour
 {
   [SerializeField] private Button AnchorMarkerBtn;
   [SerializeField] private TrackedImageManager imageTracker;
-  [HideInInspector] public List<AnchorMarker> sceneAnchorList = new List<AnchorMarker>();
+  // [HideInInspector] public List<AnchorMarker> sceneAnchorList = new List<AnchorMarker>();
   [SerializeField] private GameObject m_AnchorPrefab = null; // Should have the AnchorMarker script attached
 
   [FormerlySerializedAs("m_ARSpace")]
   [SerializeField] private Immersal.XR.XRSpace m_XRSpace;
-
-  public Dictionary<string, Vector3> m_Anchors = new Dictionary<string, Vector3>();
 
   // JSON Class
   [System.Serializable]
@@ -85,7 +83,7 @@ public class AnchorStorageManager : MonoBehaviour
   {
     Debug.Log("Starting Database");
 
-    sceneAnchorList.Clear();
+    // sceneAnchorList.Clear();
 
     LoadAnchors();
   }
@@ -97,41 +95,65 @@ public class AnchorStorageManager : MonoBehaviour
     Transform imageMarker = imageTracker.imageMarker.transform;
     // By parenting the anchor to the XR space, we automattically convert it's position from the camera space to the XR space
     GameObject go = Instantiate(m_AnchorPrefab, imageMarker.position, Quaternion.identity, m_XRSpace.transform);
-    go.GetComponent<AnchorMarker>().StoreContent();
+    NativeState state = NativeStateManager.State;
+    string AnchorID = state.beaconId;
+    go.GetComponent<AnchorMarker>().AnchorID = AnchorID;
+
+    Anchor newAnchor = new Anchor();
+    newAnchor.id = AnchorID;
+    newAnchor.position = go.transform.position;
+
+    SaveAnchor(newAnchor);
   }
 
-  public void DeleteAllAnchors()
+  // public void DeleteAllAnchors()
+  // {
+  //   List<AnchorMarker> copy = new List<AnchorMarker>();
+
+  //   foreach (AnchorMarker content in sceneAnchorList)
+  //   {
+  //     copy.Add(content);
+  //   }
+
+  //   foreach (AnchorMarker content in copy)
+  //   {
+  //     content.RemoveContent();
+  //   }
+  // }
+
+  public void SaveAnchor(Anchor anchorObject)
   {
-    List<AnchorMarker> copy = new List<AnchorMarker>();
-
-    foreach (AnchorMarker content in sceneAnchorList)
+    Debug.Log("Saving Anchor");
+    if (coroutine == null)
     {
-      copy.Add(content);
-    }
-
-    foreach (AnchorMarker content in copy)
-    {
-      content.RemoveContent();
+      coroutine = StartCoroutine(SaveAnchorCoroutine(anchorObject));
     }
   }
 
-  public void SaveAnchors()
+  private IEnumerator SaveAnchorCoroutine(Anchor anchorObject)
   {
-    // m_Positions.Clear();
-    m_Anchors.Clear();
+    // string ip = "192.168.0.71:8080";
+    string url = "http://192.168.0.71:8080/anchors";
+    string anchorJsonString = JsonUtility.ToJson(anchorObject);
+    Debug.Log(anchorJsonString);
+    // UnityWebRequest www = UnityWebRequest.Put($"http://{ip}/anchors", anchorJsonString);
+    var request = new UnityWebRequest(url, "PUT");
+    byte[] bodyRaw = Encoding.UTF8.GetBytes(anchorJsonString);
+    request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+    request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+    request.SetRequestHeader("Content-Type", "application/json");
 
-    foreach (AnchorMarker anchor in sceneAnchorList)
+    yield return request.SendWebRequest();
+    if (request.result != UnityWebRequest.Result.Success)
     {
-      m_Anchors.Add(anchor.AnchorID, anchor.transform.localPosition);
-      // m_Positions.Add(anchor.transform.localPosition);
+        Debug.Log(request.error);
     }
-    // m_AnchorSavefile.Anchors = m_Anchors;
+    else
+    {
+        Debug.Log("Anchor upload complete!");
+    }
 
-    // string jsonstring = JsonUtility.ToJson(m_AnchorSavefile);
-    // string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
-    // File.WriteAllText(dataPath, jsonstring);
-
-    // TODO: Write out to REST API
+    coroutine = null;
   }
 
   public void LoadAnchors()
@@ -147,7 +169,7 @@ public class AnchorStorageManager : MonoBehaviour
   {
     /* 
       ! NOTE: I've enbled "Allows downloads over HTTP" in player settings for dev builds. 
-      ! This allows unsecure HTTP connections.
+      ! This allows unsecure HTTP connections!
     */
     string ip = "192.168.0.71:8080";
 
@@ -172,14 +194,12 @@ public class AnchorStorageManager : MonoBehaviour
       {
         GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
         go.transform.localPosition = anchor.position;
-        go.GetComponent<AnchorMarker>().AnchorID = anchor.id;
+        AnchorMarker marker = go.GetComponent<AnchorMarker>();
+        marker.AnchorID = anchor.id;
+        // TODO: Add to scenen list
+
       }
     }
     coroutine = null;
-  }
-
-  public void EraseSave()
-  {
-    
   }
 }

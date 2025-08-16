@@ -1,12 +1,16 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from pydantic.json import pydantic_encoder
 import json
 import os
 from threading import Lock
+import logging
 
 anchors_lock = Lock()
+
+logger = logging.getLogger('uvicorn.error')
+logger.setLevel(logging.DEBUG)
 
 class Vector3(BaseModel):
   x: float
@@ -62,16 +66,12 @@ app = FastAPI(lifespan=lifespan)
 
 # if item is of type str: curl -X POST -H "Content-Type: application/json" 'http://127.0.0.1:8000/items?item=orange'
 # if item is a json object: curl -X POST -H "Content-Type: application/json" -d '{"text":"apple"}' 'http://127.0.0.1:8000/items'
-@app.post("/anchors")
-def create_acnhor(anchor: Anchor):
+@app.put("/anchors")
+def create_anchor(anchor: Anchor, request: Request):
+  logger.debug("test")
   anchors.append(anchor)
   saveToJson()
   return anchor
-
-# curl -X GET 'http://127.0.0.1:8000/items?limit=3'
-# @app.get("/anchors", response_model=list[Anchor])
-# def list_items():
-#   return anchors
 
 @app.get("/anchors", response_model=anchorsModel)
 def list_items():
