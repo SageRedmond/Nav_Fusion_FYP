@@ -17,6 +17,10 @@ class Anchor(BaseModel):
   id: str
   position: Vector3
 
+class anchorsModel(BaseModel):
+  anchors: list[Anchor] = []
+  
+
 def makeFilePath() -> str:
   folderPath = os.getcwd()
   os.makedirs(folderPath, exist_ok=True)
@@ -65,6 +69,15 @@ def create_acnhor(anchor: Anchor):
   return anchor
 
 # curl -X GET 'http://127.0.0.1:8000/items?limit=3'
-@app.get("/anchors", response_model=list[Anchor])
+# @app.get("/anchors", response_model=list[Anchor])
+# def list_items():
+#   return anchors
+
+@app.get("/anchors", response_model=anchorsModel)
 def list_items():
-  return anchors
+  anchorsList = anchorsModel(anchors=anchors)
+  return anchorsList
+
+@app.get("/")
+def root():
+    return {"Hello" : "World"}

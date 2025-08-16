@@ -5,9 +5,9 @@ using System;
 using System.IO;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Firebase.Extensions;
-using Firebase.Database;
+using UnityEngine.Networking;
 using System.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 public class AnchorStorageManager : MonoBehaviour
 {
@@ -19,20 +19,24 @@ public class AnchorStorageManager : MonoBehaviour
   [FormerlySerializedAs("m_ARSpace")]
   [SerializeField] private Immersal.XR.XRSpace m_XRSpace;
 
-  [SerializeField]
-  private AnchorSavefile m_AnchorSavefile;
-
   public Dictionary<string, Vector3> m_Anchors = new Dictionary<string, Vector3>();
-  
+
+  // JSON Class
   [System.Serializable]
-  public struct AnchorSavefile
+  public class AnchorSavefile
   {
-    // public List<Vector3> positions;
-    public Dictionary<string, Vector3> Anchors;
+    public Anchor[] anchors;
+  }
+  [System.Serializable]
+  public class Anchor
+  {
+    public string id;
+    public Vector3 position;
   }
 
-  private FirebaseDatabase m_Database;
-  private const string ANCHOR_KEY = "UWB_ANCHORS";
+  [SerializeField] public AnchorSavefile m_AnchorSavefile = new AnchorSavefile();
+
+
   private Coroutine coroutine;
 
   public static AnchorStorageManager Instance
@@ -77,10 +81,9 @@ public class AnchorStorageManager : MonoBehaviour
     btn.onClick.AddListener(MarkAnchor);
   }
   
-  public void StartDatabase()
+  public void Start()
   {
-    Debug.Log("Starting Database after Firebase call");
-    m_Database = FirebaseDatabase.DefaultInstance;
+    Debug.Log("Starting Database");
 
     sceneAnchorList.Clear();
 
@@ -122,17 +125,13 @@ public class AnchorStorageManager : MonoBehaviour
       m_Anchors.Add(anchor.AnchorID, anchor.transform.localPosition);
       // m_Positions.Add(anchor.transform.localPosition);
     }
-    m_AnchorSavefile.Anchors = m_Anchors;
+    // m_AnchorSavefile.Anchors = m_Anchors;
 
-    string jsonstring = JsonUtility.ToJson(m_AnchorSavefile);
+    // string jsonstring = JsonUtility.ToJson(m_AnchorSavefile);
     // string dataPath = Path.Combine(Application.persistentDataPath, m_Filename);
     // File.WriteAllText(dataPath, jsonstring);
 
-    if (m_Database == null)
-    {
-      print("The null is m_Database");
-    }
-    m_Database.GetReference(ANCHOR_KEY).SetRawJsonValueAsync(jsonstring);
+    // TODO: Write out to REST API
   }
 
   public void LoadAnchors()
@@ -146,38 +145,37 @@ public class AnchorStorageManager : MonoBehaviour
 
   private IEnumerator LoadAnchorsCoroutine()
   {
-    var loadAnchorsDatabaseTask = LoadAnchorsDatabaseAsync();
-    yield return new WaitUntil(() => loadAnchorsDatabaseTask.IsCompleted);
-    var anhcorData = loadAnchorsDatabaseTask.Result;
-    if (anhcorData.HasValue)
+    /* 
+      ! NOTE: I've enbled "Allows downloads over HTTP" in player settings for dev builds. 
+      ! This allows unsecure HTTP connections.
+    */
+    string ip = "192.168.0.71:8080";
+
+    UnityWebRequest www = UnityWebRequest.Get($"http://{ip}/anchors");
+    yield return www.SendWebRequest();
+    if (www.result != UnityWebRequest.Result.Success)
     {
-      foreach (var (anchorId, pose) in anhcorData.Value.Anchors)
+      Debug.Log("REST error");
+      Debug.Log(www.error);
+    }
+    else
+    {
+      // Show results as text
+      Debug.Log("REST Success");
+      Debug.Log(www.downloadHandler.text);
+      string requestResult = www.downloadHandler.text;
+      m_AnchorSavefile = JsonUtility.FromJson<AnchorSavefile>(requestResult);
+      // Or retrieve results as binary data
+      // byte[] results = www.downloadHandler.data;
+
+      foreach (Anchor anchor in m_AnchorSavefile.anchors)
       {
         GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
-        go.transform.localPosition = pose;
-        go.GetComponent<AnchorMarker>().AnchorID = anchorId;
+        go.transform.localPosition = anchor.position;
+        go.GetComponent<AnchorMarker>().AnchorID = anchor.id;
       }
     }
     coroutine = null;
-  }
-
-  public async Task<AnchorSavefile?> LoadAnchorsDatabaseAsync()
-  {
-    Debug.Log("Loading Database async");
-    var databaseSnapshot = await m_Database.GetReference(ANCHOR_KEY).GetValueAsync();
-
-    if (!databaseSnapshot.Exists)
-    {
-      return null;
-    }
-
-    return JsonUtility.FromJson<AnchorSavefile>(databaseSnapshot.GetRawJsonValue());
-  }
-
-  public async Task<bool> CheckSaveExists()
-  {
-    var databaseSnapshot = await m_Database.GetReference(ANCHOR_KEY).GetValueAsync();
-    return databaseSnapshot.Exists;
   }
 
   public void EraseSave()
