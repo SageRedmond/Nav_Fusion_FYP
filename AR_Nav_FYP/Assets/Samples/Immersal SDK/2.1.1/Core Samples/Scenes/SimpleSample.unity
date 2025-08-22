@@ -373,9 +373,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnchorMarkerBtn: {fileID: 2025591103}
   imageTracker: {fileID: 322393159}
-  sceneAnchorList: []
   m_AnchorPrefab: {fileID: 2698772874205177774, guid: 3924a3a2900c745728fd4cb6679b9d8b, type: 3}
   m_XRSpace: {fileID: 1959774578}
+  m_AnchorSavefile:
+    anchors: []
 --- !u!1 &104878427
 GameObject:
   m_ObjectHideFlags: 0

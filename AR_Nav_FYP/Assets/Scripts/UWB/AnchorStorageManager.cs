@@ -133,7 +133,7 @@ public class AnchorStorageManager : MonoBehaviour
   private IEnumerator SaveAnchorCoroutine(Anchor anchorObject)
   {
     // string ip = "192.168.0.71:8080";
-    string url = "http://192.168.0.71:8080/anchors";
+    string url = "http://192.168.0.25:8080/anchors";
     string anchorJsonString = JsonUtility.ToJson(anchorObject);
     Debug.Log(anchorJsonString);
     // UnityWebRequest www = UnityWebRequest.Put($"http://{ip}/anchors", anchorJsonString);
