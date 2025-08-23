@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
+using System.Linq;
 
 public class AnchorStorageManager : MonoBehaviour
 {
@@ -219,6 +220,20 @@ public class AnchorStorageManager : MonoBehaviour
     foreach (Anchor anchor in savefile.anchors)
     {
       SpawnLoadedAnchor(anchor);
+    }
+  }
+
+  public Vector3? GetAnchorPoseByID(string id)
+  {
+    IEnumerable<Anchor> query = m_AnchorSavefile.anchors.Where(a => a.id == id);
+
+    if (query.Count() > 0)
+    {
+      return query.FirstOrDefault().position;
+    }
+    else
+    {
+      return null;
     }
   }
 }
