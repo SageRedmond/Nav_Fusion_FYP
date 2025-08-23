@@ -31,10 +31,11 @@ public class AnchorStorageManager : MonoBehaviour
   {
     public string id;
     public Vector3 position;
+    public Vector3 rotation;
   }
 
   [SerializeField] public AnchorSavefile m_AnchorSavefile = new AnchorSavefile();
-
+  private string MAC_IP = "192.168.0.25:8080";
 
   private Coroutine coroutine;
 
@@ -103,6 +104,7 @@ public class AnchorStorageManager : MonoBehaviour
     Anchor newAnchor = new Anchor();
     newAnchor.id = AnchorID;
     newAnchor.position = go.transform.position;
+    newAnchor.rotation = go.transform.rotation.eulerAngles;
 
     SaveAnchor(newAnchor);
   }
@@ -134,7 +136,8 @@ public class AnchorStorageManager : MonoBehaviour
   private IEnumerator SaveAnchorCoroutine(Anchor anchorObject)
   {
     // string ip = "192.168.0.71:8080";
-    string url = "http://192.168.0.25:8080/anchors";
+    // string url = "http://192.168.0.25:8080/anchors";
+    string url = $"http://{MAC_IP}/anchors";
     string anchorJsonString = JsonUtility.ToJson(anchorObject);
     Debug.Log(anchorJsonString);
     // UnityWebRequest www = UnityWebRequest.Put($"http://{ip}/anchors", anchorJsonString);
@@ -172,9 +175,8 @@ public class AnchorStorageManager : MonoBehaviour
       ! NOTE: I've enbled "Allows downloads over HTTP" in player settings for dev builds. 
       ! This allows unsecure HTTP connections!
     */
-    string ip = "192.168.0.71:8080";
 
-    UnityWebRequest www = UnityWebRequest.Get($"http://{ip}/anchors");
+    UnityWebRequest www = UnityWebRequest.Get($"http://{MAC_IP}/anchors");
     yield return www.SendWebRequest();
     if (www.result != UnityWebRequest.Result.Success)
     {
@@ -208,7 +210,11 @@ public class AnchorStorageManager : MonoBehaviour
   public void SpawnLoadedAnchor(Anchor anchorObject)
   {
     GameObject go = Instantiate(m_AnchorPrefab, m_XRSpace.transform);
-    go.transform.localPosition = anchorObject.position;
+    // go.transform.localPosition = anchorObject.position;
+    Quaternion rotation = Quaternion.Euler(anchorObject.rotation);
+
+    go.transform.SetLocalPositionAndRotation(anchorObject.position, rotation);
+
     AnchorMarker marker = go.GetComponent<AnchorMarker>();
     marker.AnchorID = anchorObject.id;
   }

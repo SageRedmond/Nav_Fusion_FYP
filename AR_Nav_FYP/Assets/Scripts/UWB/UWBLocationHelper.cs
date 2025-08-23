@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Immersal.XR;
+// using System.Numerics;
 
 public class UWBLocationHelper : MonoBehaviour
 {
@@ -76,7 +77,14 @@ public class UWBLocationHelper : MonoBehaviour
     return (maxTheta, minTheta);
   }
 
-  private IEnumerator ComputeLocalisationHint()
+  private (float maxPhi, float minPhi) ComputeLatitudeConstraints()
+  {
+    // Position must be within boundary of the room
+
+    return (0.0f, 0.0f);
+  }
+
+  private IEnumerator GetLocalisationHint()
   {
     NativeState state = NativeStateManager.State;
     string id = state.beaconId;
@@ -85,9 +93,24 @@ public class UWBLocationHelper : MonoBehaviour
       yield break;
     }
 
-    float sphereRadius = state.distance;
+    float acnhorDistance = state.distance;
 
+    Vector3? anchorPose = anchorManager.GetAnchorPoseByID(id);
+    if (anchorPose == null)
+    {
+      yield break;
+    }
+    Vector3 anchorPoseInUnitySpace = XRSpaceToUnity(m_XRSpace.transform, (Vector3)anchorPose);
 
+    (float maxTheta, float minTheta) = ComputeLongitudeConstraint(acnhorDistance, anchorPoseInUnitySpace, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
+
+    //TODO: Compute Latitude Constraint
+
+    //TODO: Pick a random point on sphere that satisfys Latitude and Longitude constraints
+
+    //TODO: Convert point to cartesion coords
+
+    //TODO: Move Camera to that point
   }
 
   private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos) {
