@@ -715,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1604687d77f42cd9aafa2d40cd4ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomName: Sitting Room
   cornerObjects: []
 --- !u!1 &137172975
 GameObject:
@@ -1269,6 +1270,7 @@ GameObject:
   - component: {fileID: 322393156}
   - component: {fileID: 322393158}
   - component: {fileID: 322393159}
+  - component: {fileID: 322393160}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1339,6 +1341,22 @@ MonoBehaviour:
   ImageTransformText: {fileID: 1531632001}
   axisPrefab: {fileID: 7552867463103445968, guid: 7deda7ec791f2416fad2d7a3a7ff3bd1, type: 3}
   imageMarker: {fileID: 0}
+--- !u!114 &322393160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322393155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb068f58273f2416cadb919a6d973c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorManager: {fileID: 88278353}
+  m_XRSpace: {fileID: 1959774578}
+  cam: {fileID: 915302330}
+  button: {fileID: 722404509}
 --- !u!1 &349457170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,25 +2406,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1235021782}
-        m_TargetAssemblyTypeName: RoomZone, Assembly-CSharp
-        m_MethodName: checkObjectInRoom
+      - m_Target: {fileID: 322393160}
+        m_TargetAssemblyTypeName: UWBLocationHelper, Assembly-CSharp
+        m_MethodName: TestLocationHint
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1647068004}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1235021782}
-        m_TargetAssemblyTypeName: RoomZone, Assembly-CSharp
-        m_MethodName: testPolygon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1647068008}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4504,6 +4510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1604687d77f42cd9aafa2d40cd4ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomName: Bedroom
   cornerObjects:
   - {fileID: 137172975}
   - {fileID: 707211559}
@@ -5628,7 +5635,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3bfc2ee5c6be0804ba8c02a4fb32b437, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5666,8 +5673,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647068004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.897, y: 0, z: 0.029}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.093, y: 1.51, z: 1.386}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5699,7 +5706,7 @@ Transform:
   m_GameObject: {fileID: 1959774575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5803,7 +5810,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e8a37d30dad4235419386b3ec67a32ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

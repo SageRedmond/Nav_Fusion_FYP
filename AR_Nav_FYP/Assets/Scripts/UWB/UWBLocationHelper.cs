@@ -5,6 +5,8 @@ using System.Text;
 using UnityEngine;
 using Immersal.XR;
 using System;
+using UnityEngine.XR.ARFoundation.VisualScripting;
+using UnityEngine.UI;
 // using System.Numerics;
 
 public class UWBLocationHelper : MonoBehaviour
@@ -16,6 +18,12 @@ public class UWBLocationHelper : MonoBehaviour
   private XRSpace m_XRSpace;
 
   [SerializeField]
+  private GameObject cam;
+
+  [SerializeField]
+  private GameObject button;
+
+  [SerializeField]
   private Dictionary<string, RoomZone> m_RoomZones = new Dictionary<string, RoomZone>();
 
   private static float MIN_HEIGHT_CONSTRAINT = 1.2f;
@@ -23,37 +31,10 @@ public class UWBLocationHelper : MonoBehaviour
 
   private Dictionary<int, XRMap> Maps = new Dictionary<int, XRMap>();
 
-  [System.Serializable]
-  public class Sphere
-  {
-    public float raduis;
-    public Vector3 center;
-  }
-
-  public class SphereLocation
-  {
-    public float latitude;
-    public float longitude;
-  }
-
-  // theta1 < Player Theta < theta2 
-  class LongitudeConstraint
-  {
-    float maxTheta;
-    float minTheta;
-
-    public LongitudeConstraint(float maxTheta, float minTheta)
-    {
-      this.maxTheta = maxTheta;
-      this.minTheta = minTheta;
-    }
-  }
-
-  [SerializeField] public Sphere anchorSphere;
-
   private void Start()
   {
     GetMaps();
+    GetRoomZones();
   }
 
   private void GetMaps()
@@ -66,29 +47,18 @@ public class UWBLocationHelper : MonoBehaviour
     }
   }
 
-  private (float maxTheta, float minTheta) ComputeLongitudeConstraint(float raduis, Vector3 anchorCoords, float hMax, float hMin)
+  private void GetRoomZones()
   {
-    // float hMax = MAX_HEIGHT_CONSTRAINT;
-    // float hMin = MIN_HEIGHT_CONSTRAINT;
-    float anchorHeight = anchorCoords.y;
-
-    float n = hMax + hMin - anchorHeight;
-    float maxTheta = Mathf.Acos(n / raduis);
-
-    float m = anchorHeight - hMin;
-    float minTheta = 180.0f - Mathf.Acos(m / raduis);
-
-    return (maxTheta, minTheta);
+    RoomZone[] rooms = FindObjectsOfType<RoomZone>();
+    foreach (RoomZone room in rooms)
+    {
+      string anchorId = GetAnchorsIdForRoom(room.RoomName);
+      m_RoomZones.Add(anchorId, room);
+      print(room.RoomName);
+    }
   }
 
-  private (float maxPhi, float minPhi) ComputeLatitudeConstraints()
-  {
-    // Position must be within boundary of the room
-
-    return (0.0f, 0.0f);
-  }
-
-
+  // Get a pose in XR space, then move the XR Space object so that the main camera is at that pose
   private IEnumerator GetLocalisationHint()
   {
     // 1. Get beacon XR location and range
@@ -110,51 +80,89 @@ public class UWBLocationHelper : MonoBehaviour
       yield break;
     }
 
-    Vector3? anchorPose = anchorManager.GetAnchorPoseByID(id);
-    if (anchorPose == null)
+    Vector3? anchorPoseXRSpace = anchorManager.GetAnchorPoseByID(id);
+    if (anchorPoseXRSpace == null)
     {
       Debug.LogError("No pose for anchor " + id);
       yield break;
     }
     // 3. Convert XR location to Unity Location
-    Vector3 anchorPoseInUnitySpace = XRSpaceToUnity(m_XRSpace.transform, (Vector3)anchorPose);
+    // Vector3 anchorPoseInUnitySpace = XRSpaceToUnity(m_XRSpace.transform, (Vector3)anchorPose);
 
     // 4. Compute Location Constraints
-    (float maxTheta, float minTheta) = ComputeLongitudeConstraint(anchorDistance, anchorPoseInUnitySpace, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
+    (float maxTheta, float minTheta) = ComputeLongitudeConstraint((Vector3)anchorPoseXRSpace, anchorDistance, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
     Debug.Log("Max Theta " + maxTheta);
     Debug.Log("Min Theta " + minTheta);
-    //TODO: Compute Latitude Constraint
+    //TODO: Compute Latitude Constraint (Phi)
 
     // 5. Pick a point on the sphere
+    Vector3 validPoseXRSpace = ComputeValidPose((Vector3)anchorPoseXRSpace, anchorDistance, maxTheta, minTheta, roomZone);
+
+    // 6. Move XR space so camera aligned with that pose
+    //6.1 Get camera coords in XR Space cam.transform.localPosition
+    Vector3 camXRPose = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, cam.transform.localPosition);
+
+    // 6.2 Create Translation Matrix Moving ValidPoseXRSpace to camXRPose
+    Vector3 translation = new Vector3(camXRPose.x - validPoseXRSpace.x,
+                                      camXRPose.y - validPoseXRSpace.y,
+                                      camXRPose.z - validPoseXRSpace.z);
+    Matrix4x4 transMatrix = Matrix4x4.Translate(translation);
+
+    // 6.3 Calculate the new pose for the xr space and set
+    Vector3 newXRSpacePose = transMatrix.MultiplyPoint3x4(m_XRSpace.transform.position);
+    m_XRSpace.transform.SetPositionAndRotation(newXRSpacePose, Quaternion.identity);
+  }
+
+  private Vector3 ComputeValidPose(Vector3 anchorPoseXRSpace, float radius, float maxTheta, float minTheta, RoomZone roomZone)
+  {
     // Casting to integer because i want to and it's easier for Random()
     var rng = new System.Random();
     // 5.1 Get random longitude
     int randomLong = rng.Next((int)Math.Round(minTheta), (int)Math.Round(maxTheta));
-    Debug.Log("Random Lat " + randomLong);
+    Debug.Log("Random Long " + randomLong);
 
-    Vector3 validPose = new Vector3(0, 0, 0);
+    Vector3 validPoseXRSpace = new Vector3(0, 0, 0);
     bool validPoseFound = false;
     while (!validPoseFound)
     {
       // 5.2 Get random latitude
       int randomLat = rng.Next(0, 361);
-      Debug.Log("Random Long " + randomLat);
+      Debug.Log("Random Lat " + randomLat);
 
       // 5.3 Convert point to cartesion coords
-      Vector3 randomPose = SphericalToCartesian(randomLat, randomLong, anchorPoseInUnitySpace, anchorDistance);
+      Vector3 randomPose = SphericalToCartesian(randomLat, randomLong, anchorPoseXRSpace, radius);
 
       // 5.4 Check if pose within room bounds
       validPoseFound = roomZone.CheckPoseInRoom(randomPose);
       if (validPoseFound)
       {
-        validPose = randomPose;
+        validPoseXRSpace = randomPose;
       }
     }
 
-    Debug.Log("Valid Pose Found at " + validPose);
+    return validPoseXRSpace;
+  }
 
-    //TODO: Move Camera to that point
-    // 6. Move camera to that pose (Convert to XR Space)
+  private (float maxTheta, float minTheta) ComputeLongitudeConstraint(Vector3 anchorCoords, float raduis, float hMax, float hMin)
+  {
+    // float hMax = MAX_HEIGHT_CONSTRAINT;
+    // float hMin = MIN_HEIGHT_CONSTRAINT;
+    float anchorHeight = anchorCoords.y;
+    // ! Error here
+    float n = hMax + hMin - anchorHeight;
+    float maxTheta = Mathf.Acos(n / raduis);
+
+    float m = anchorHeight - hMin;
+    float minTheta = 180.0f - Mathf.Acos(m / raduis);
+
+    return (maxTheta, minTheta);
+  }
+
+  private (float maxPhi, float minPhi) ComputeLatitudeConstraints()
+  {
+    // Position must be within boundary of the room
+
+    return (0.0f, 0.0f);
   }
 
   private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
@@ -171,6 +179,20 @@ public class UWBLocationHelper : MonoBehaviour
     return pos;
   }
 
+  private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
+  {
+    pos = XRSpaceOffset.inverse.MultiplyPoint(pos);
+    Matrix4x4 m = XRSpace.localToWorldMatrix;
+    pos = m.MultiplyPoint(pos);
+    return pos;
+  }
+
+  private Vector3 UnityToXRSpace(Transform XRSpace, Vector3 pos)
+  {
+    pos = UnityToXRSpace(XRSpace, Matrix4x4.identity, pos);
+    return pos;
+  }
+
   public static Vector3 SphericalToCartesian(float latitude, float longitude, Vector3 sphereCenter, float radius)
   {
     float a = radius * Mathf.Cos(longitude);
@@ -184,7 +206,6 @@ public class UWBLocationHelper : MonoBehaviour
 
     return new Vector3(x, y, z);
   }
-
   // //! Doing it manually rn because can't be bothered with editing the rest API
   // private string GetRoomNameForAnchorID(string id)
   // {
@@ -196,4 +217,61 @@ public class UWBLocationHelper : MonoBehaviour
   //       return "";
   //   }
   // }
+
+  private string GetAnchorsIdForRoom(string name)
+  {
+    switch (name)
+    {
+      case "Bedroom":
+        return "70f0576ae14090a92231974cccec402d";
+      default:
+        return "";
+    }
+  }
+
+  public void TestLocationHint(Transform testBeacon)
+  {
+    StartCoroutine(TestGettingHint(testBeacon));
+  }
+
+  public IEnumerator TestGettingHint(Transform testBeacon)
+  {
+    button.SetActive(false);
+    yield return StartCoroutine(TestLocationHintCouroutine(testBeacon));
+    button.SetActive(true);
+  }
+  public IEnumerator TestLocationHintCouroutine(Transform testBeacon)
+  {
+    Debug.Log("Starting Coroutine");
+    float anchorDistance = 1.0f;
+
+    // 2. Check that there is a room tied to the beacon
+    RoomZone roomZone = m_RoomZones["70f0576ae14090a92231974cccec402d"];
+    Vector3 anchorPoseXRSpace = testBeacon.position;
+
+    Debug.Log("ComputeLongitudeConstraint");
+    (float maxTheta, float minTheta) = ComputeLongitudeConstraint(anchorPoseXRSpace, anchorDistance, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
+    Debug.Log("Max Theta " + maxTheta);
+    Debug.Log("Min Theta " + minTheta);
+
+    // 5. Pick a point on the sphere
+    Vector3 validPoseXRSpace = ComputeValidPose((Vector3)anchorPoseXRSpace, anchorDistance, maxTheta, minTheta, roomZone);
+
+    // 6. Move XR space so camera aligned with that pose
+    //6.1 Get camera coords in XR Space cam.transform.localPosition
+    Vector3 camXRPose = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, cam.transform.localPosition);
+
+    // 6.2 Create Translation Matrix Moving ValidPoseXRSpace to camXRPose
+    Vector3 translation = new Vector3(camXRPose.x - validPoseXRSpace.x,
+                                      camXRPose.y - validPoseXRSpace.y,
+                                      camXRPose.z - validPoseXRSpace.z);
+    Matrix4x4 transMatrix = Matrix4x4.Translate(translation);
+
+    // 6.3 Calculate the new pose for the xr space and set
+    Vector3 newXRSpacePose = transMatrix.MultiplyPoint3x4(m_XRSpace.transform.position);
+    m_XRSpace.transform.SetPositionAndRotation(newXRSpacePose, Quaternion.identity);
+
+    Debug.Log("Distance anchor to cam = " + Vector3.Distance(cam.transform.localPosition, testBeacon.position));
+    yield return null;
+  }
 }
