@@ -26,8 +26,11 @@ public class UWBLocationHelper : MonoBehaviour
   [SerializeField]
   private Dictionary<string, RoomZone> m_RoomZones = new Dictionary<string, RoomZone>();
 
-  private static float MIN_HEIGHT_CONSTRAINT = 1.2f;
+  private static float MIN_HEIGHT_CONSTRAINT = 1.3f;
   private static float MAX_HEIGHT_CONSTRAINT = 0.7f;
+  private static float MAX_RAYCAST_DISTANCE = 2;
+
+  public LayerMask floorLayer;
 
   private Dictionary<int, XRMap> Maps = new Dictionary<int, XRMap>();
 
@@ -123,8 +126,10 @@ public class UWBLocationHelper : MonoBehaviour
 
     Vector3 validPoseXRSpace = new Vector3(0, 0, 0);
     bool validPoseFound = false;
+    int loopCount = 0;
     while (!validPoseFound)
     {
+      loopCount += 1;
       // 5.2 Get random latitude
       int randomLat = rng.Next(0, 361);
       Debug.Log("Random Lat " + randomLat);
@@ -138,6 +143,11 @@ public class UWBLocationHelper : MonoBehaviour
       {
         validPoseXRSpace = randomPose;
       }
+      if (loopCount >= 100)
+      {
+        Debug.LogError("To Many Loops");
+        break;
+      }
     }
 
     return validPoseXRSpace;
@@ -147,13 +157,14 @@ public class UWBLocationHelper : MonoBehaviour
   {
     // float hMax = MAX_HEIGHT_CONSTRAINT;
     // float hMin = MIN_HEIGHT_CONSTRAINT;
-    float anchorHeight = anchorCoords.y;
-    // ! Error here
-    float n = hMax + hMin - anchorHeight;
-    float maxTheta = Mathf.Acos(n / raduis);
+    // float anchorHeight = anchorCoords.y; // TODO: Change to raycasted height
+    float anchorHeight = GetDistanceAnchorToFloor(anchorCoords);
 
     float m = anchorHeight - hMin;
-    float minTheta = 180.0f - Mathf.Acos(m / raduis);
+    float maxTheta = 180.0f - (Mathf.Rad2Deg * Mathf.Acos(m / raduis));
+
+    float n = (hMax + hMin) - anchorHeight;
+    float minTheta = (Mathf.Rad2Deg * Mathf.Acos(n / raduis));
 
     return (maxTheta, minTheta);
   }
@@ -229,6 +240,21 @@ public class UWBLocationHelper : MonoBehaviour
     }
   }
 
+  private float GetDistanceAnchorToFloor(Vector3 anchorPose)
+  {
+    RaycastHit hitData;
+    Ray ray = new Ray(anchorPose, new Vector3(0.0f, -1.0f, 0.0f)); // Pointed down
+
+    if (!Physics.Raycast(ray, out hitData, MAX_RAYCAST_DISTANCE, floorLayer))
+    {
+      Debug.Log("Didn't Hit Floor");
+      return 0.0f;
+    }
+    float hitDistance = hitData.distance;
+    Debug.Log("Hit Floor " + hitDistance);
+    return hitDistance;
+  }
+  
   public void TestLocationHint(Transform testBeacon)
   {
     StartCoroutine(TestGettingHint(testBeacon));
@@ -248,6 +274,12 @@ public class UWBLocationHelper : MonoBehaviour
     // 2. Check that there is a room tied to the beacon
     RoomZone roomZone = m_RoomZones["70f0576ae14090a92231974cccec402d"];
     Vector3 anchorPoseXRSpace = testBeacon.position;
+
+    if (!roomZone.CheckPoseInRoom(anchorPoseXRSpace))
+    {
+      Debug.LogError("Anchor not inside room bounds");
+      yield return null;
+    }
 
     Debug.Log("ComputeLongitudeConstraint");
     (float maxTheta, float minTheta) = ComputeLongitudeConstraint(anchorPoseXRSpace, anchorDistance, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
