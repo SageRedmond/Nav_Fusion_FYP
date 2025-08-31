@@ -8,6 +8,7 @@ using System;
 using UnityEngine.XR.ARFoundation.VisualScripting;
 using UnityEngine.UI;
 using Unity.Mathematics;
+using Immersal.Samples;
 // using System.Numerics;
 
 public class UWBLocationHelper : MonoBehaviour
@@ -26,6 +27,9 @@ public class UWBLocationHelper : MonoBehaviour
 
   [SerializeField]
   private GameObject m_PositionPrefab;
+
+  [SerializeField]
+  private LocalizerSettingsPanel localiser;
 
   [SerializeField]
   private Dictionary<string, RoomZone> m_RoomZones = new Dictionary<string, RoomZone>();
@@ -274,6 +278,7 @@ public class UWBLocationHelper : MonoBehaviour
   }
   public IEnumerator TestGettingHint(Transform testBeacon)
   {
+    localiser.StopLocalizing();
     button.SetActive(false);
     yield return StartCoroutine(TestLocationHintCouroutine(testBeacon));
     button.SetActive(true);
@@ -295,7 +300,7 @@ public class UWBLocationHelper : MonoBehaviour
       yield return null;
     }
 
-    Debug.Log("ComputeLongitudeConstraint");
+    // Debug.Log("ComputeLongitudeConstraint");
     (float maxTheta, float minTheta) = ComputeLongitudeConstraint(anchorPoseXRSpace, anchorDistance, MAX_HEIGHT_CONSTRAINT, MIN_HEIGHT_CONSTRAINT);
     Debug.Log("Max Theta " + maxTheta);
     Debug.Log("Min Theta " + minTheta);
@@ -331,6 +336,7 @@ public class UWBLocationHelper : MonoBehaviour
     // m_XRSpace.transform.position = (newXRSpacePose * -1.0f);
 
     Debug.Log("Distance anchor to cam = " + Vector3.Distance(cam.transform.localPosition, testBeacon.position));
+    localiser.StartLocalizing();
     yield return null;
   }
 }
