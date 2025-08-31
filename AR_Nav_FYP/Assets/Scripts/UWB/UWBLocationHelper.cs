@@ -7,6 +7,7 @@ using Immersal.XR;
 using System;
 using UnityEngine.XR.ARFoundation.VisualScripting;
 using UnityEngine.UI;
+using Unity.Mathematics;
 // using System.Numerics;
 
 public class UWBLocationHelper : MonoBehaviour
@@ -22,6 +23,9 @@ public class UWBLocationHelper : MonoBehaviour
 
   [SerializeField]
   private GameObject button;
+
+  [SerializeField]
+  private GameObject m_PositionPrefab;
 
   [SerializeField]
   private Dictionary<string, RoomZone> m_RoomZones = new Dictionary<string, RoomZone>();
@@ -118,10 +122,16 @@ public class UWBLocationHelper : MonoBehaviour
 
   private Vector3 ComputeValidPose(Vector3 anchorPoseXRSpace, float radius, float maxTheta, float minTheta, RoomZone roomZone)
   {
+    Debug.LogError("Anchor Pose - " + anchorPoseXRSpace.ToString());
     // Casting to integer because i want to and it's easier for Random()
     var rng = new System.Random();
     // 5.1 Get random longitude
     int randomLong = rng.Next((int)Math.Round(minTheta), (int)Math.Round(maxTheta));
+    // Vector3 testLat = SphericalToCartesian(randomLong, 0.0f, anchorPoseXRSpace, radius);
+    // Vector3 testLong = SphericalToCartesian(0.0f, randomLong, anchorPoseXRSpace, radius);
+    // //! Here
+    // Debug.DrawLine(testLong, anchorPoseXRSpace, Color.white, 20.0f);
+    // Debug.DrawLine(testLat, anchorPoseXRSpace, Color.red, 20.0f);
     Debug.Log("Random Long " + randomLong);
 
     Vector3 validPoseXRSpace = new Vector3(0, 0, 0);
@@ -131,7 +141,7 @@ public class UWBLocationHelper : MonoBehaviour
     {
       loopCount += 1;
       // 5.2 Get random latitude
-      int randomLat = rng.Next(0, 361);
+      int randomLat = rng.Next(0, 360);
       Debug.Log("Random Lat " + randomLat);
 
       // 5.3 Convert point to cartesion coords
@@ -193,8 +203,10 @@ public class UWBLocationHelper : MonoBehaviour
   private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
   {
     pos = XRSpaceOffset.inverse.MultiplyPoint(pos);
+    Debug.LogAssertion(pos);
     Matrix4x4 m = XRSpace.localToWorldMatrix;
     pos = m.MultiplyPoint(pos);
+    Debug.LogAssertion(pos);
     return pos;
   }
 
@@ -206,10 +218,11 @@ public class UWBLocationHelper : MonoBehaviour
 
   public static Vector3 SphericalToCartesian(float latitude, float longitude, Vector3 sphereCenter, float radius)
   {
-    float a = radius * Mathf.Cos(longitude);
-    float xTemp = a * Mathf.Cos(latitude);
-    float yTemp = radius * Mathf.Sin(longitude);
-    float zTemp = a * Mathf.Sin(latitude);
+    // Made a mistake with my latitude calculation that needed to be corrected
+    float a = radius * Mathf.Cos((longitude - 90.0f) * Mathf.Deg2Rad);
+    float xTemp = a * Mathf.Cos(latitude * Mathf.Deg2Rad);
+    float yTemp = radius * Mathf.Sin((longitude - 90.0f) * Mathf.Deg2Rad);
+    float zTemp = a * Mathf.Sin(latitude * Mathf.Deg2Rad);
 
     float x = xTemp + sphereCenter.x;
     float y = yTemp + sphereCenter.y;
@@ -259,13 +272,13 @@ public class UWBLocationHelper : MonoBehaviour
   {
     StartCoroutine(TestGettingHint(testBeacon));
   }
-
   public IEnumerator TestGettingHint(Transform testBeacon)
   {
     button.SetActive(false);
     yield return StartCoroutine(TestLocationHintCouroutine(testBeacon));
     button.SetActive(true);
   }
+
   public IEnumerator TestLocationHintCouroutine(Transform testBeacon)
   {
     Debug.Log("Starting Coroutine");
@@ -274,6 +287,7 @@ public class UWBLocationHelper : MonoBehaviour
     // 2. Check that there is a room tied to the beacon
     RoomZone roomZone = m_RoomZones["70f0576ae14090a92231974cccec402d"];
     Vector3 anchorPoseXRSpace = testBeacon.position;
+    // Vector3 anchorPoseXRSpace = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, testBeacon.position);
 
     if (!roomZone.CheckPoseInRoom(anchorPoseXRSpace))
     {
@@ -287,21 +301,34 @@ public class UWBLocationHelper : MonoBehaviour
     Debug.Log("Min Theta " + minTheta);
 
     // 5. Pick a point on the sphere
-    Vector3 validPoseXRSpace = ComputeValidPose((Vector3)anchorPoseXRSpace, anchorDistance, maxTheta, minTheta, roomZone);
-
+    Vector3 validPoseXRSpace = ComputeValidPose(anchorPoseXRSpace, anchorDistance, maxTheta, minTheta, roomZone);
+    Debug.LogWarning("Valid Pose" + validPoseXRSpace.ToString());
+    GameObject go = Instantiate(m_PositionPrefab, validPoseXRSpace, Quaternion.identity, m_XRSpace.transform);
     // 6. Move XR space so camera aligned with that pose
     //6.1 Get camera coords in XR Space cam.transform.localPosition
     Vector3 camXRPose = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, cam.transform.localPosition);
-
+    Debug.LogWarning("Cam Pose" + camXRPose.ToString());
+    // Instantiate(m_PositionPrefab, camXRPose, Quaternion.identity, m_XRSpace.transform);
     // 6.2 Create Translation Matrix Moving ValidPoseXRSpace to camXRPose
-    Vector3 translation = new Vector3(camXRPose.x - validPoseXRSpace.x,
-                                      camXRPose.y - validPoseXRSpace.y,
-                                      camXRPose.z - validPoseXRSpace.z);
+    Debug.LogWarning("XR Pose" + m_XRSpace.transform.position.ToString());
+    // Vector3 translation = new Vector3((-camXRPose.x) - validPoseXRSpace.x,
+    //                                   (-camXRPose.y) - validPoseXRSpace.y,
+    //                                   (-camXRPose.z) - validPoseXRSpace.z);
+    Vector3 translation = new Vector3(((-camXRPose.x) - go.transform.localPosition.x),
+                                      ((-camXRPose.y) - go.transform.localPosition.y),
+                                      ((-camXRPose.z) - go.transform.localPosition.z));
+    // Vector3 translation = new Vector3(-(validPoseXRSpace.x - (-camXRPose.x)),
+    //                                   -(validPoseXRSpace.y - (-camXRPose.y)),
+    //                                   -(validPoseXRSpace.z - (-camXRPose.z)));
     Matrix4x4 transMatrix = Matrix4x4.Translate(translation);
-
+    Debug.LogWarning("Translation" + translation.ToString());
     // 6.3 Calculate the new pose for the xr space and set
     Vector3 newXRSpacePose = transMatrix.MultiplyPoint3x4(m_XRSpace.transform.position);
-    m_XRSpace.transform.SetPositionAndRotation(newXRSpacePose, Quaternion.identity);
+    Debug.LogWarning("New XR Pose" + newXRSpacePose.ToString());
+
+    // m_XRSpace.transform.SetPositionAndRotation(newXRSpacePose, Quaternion.identity);
+    m_XRSpace.transform.position = (newXRSpacePose);
+    // m_XRSpace.transform.position = (newXRSpacePose * -1.0f);
 
     Debug.Log("Distance anchor to cam = " + Vector3.Distance(cam.transform.localPosition, testBeacon.position));
     yield return null;
