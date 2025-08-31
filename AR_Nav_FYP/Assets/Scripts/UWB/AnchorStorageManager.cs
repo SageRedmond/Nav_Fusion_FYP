@@ -32,6 +32,7 @@ public class AnchorStorageManager : MonoBehaviour
     public string id;
     public Vector3 position;
     public Vector3 rotation;
+    public string roomName;
   }
 
   [SerializeField] public AnchorSavefile m_AnchorSavefile = new AnchorSavefile();
@@ -105,6 +106,7 @@ public class AnchorStorageManager : MonoBehaviour
     newAnchor.id = AnchorID;
     newAnchor.position = go.transform.position;
     newAnchor.rotation = go.transform.rotation.eulerAngles;
+    newAnchor.roomName = "";
 
     SaveAnchor(newAnchor);
   }

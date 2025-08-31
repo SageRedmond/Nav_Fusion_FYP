@@ -25,6 +25,7 @@ class Anchor(BaseModel):
   id: str
   position: Vector3
   rotation: Vector3
+  roomName: str
 
 class anchorsModel(BaseModel):
   anchors: list[Anchor] = []
