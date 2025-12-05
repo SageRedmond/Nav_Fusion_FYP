@@ -11,7 +11,6 @@ public class JsonDataService : iDataService
     {
         string path = Application.persistentDataPath + RelativePath;
         Debug.Log(path);
-        //Debug.Log(path);
         try
         {
             if (File.Exists(path))
@@ -32,6 +31,30 @@ public class JsonDataService : iDataService
         {
             Debug.Log($"Unable to save data due to: {e.Message} {e.StackTrace}");
             return false;
+        }
+    }
+    T iDataService.LoadData<T>(string RelativePath)
+    {
+        string path = Application.persistentDataPath + RelativePath;
+
+        if (!File.Exists(path))
+        {
+            Debug.LogError($"Cannot load file at {path}. File does not exist!");
+            throw new FileNotFoundException($"{path} does not exist!");
+        }
+
+        try
+        {
+            T data;
+
+            data = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+
+            return data;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to load data due to: {e.Message} {e.StackTrace}");
+            throw e;
         }
     }
 }

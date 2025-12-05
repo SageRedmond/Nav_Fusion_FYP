@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Recognissimo.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Estrada.csproj" />
+  <Project Path="Recognissimo.Utils.csproj" />
+  <Project Path="Recognissimo.Editor.csproj" />
+</Solution>

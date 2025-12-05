@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DataGatheringModule : MonoBehaviour
 {
@@ -21,9 +22,10 @@ public class DataGatheringModule : MonoBehaviour
 
     public void saveData()
     {
+        string date = DateTime.Now.ToLongTimeString();
         Debug.Log("Save Button Pressed");
-        string m_JSONname = "/ExperimentFiles/BeaconRanges.json";
-        testDataStruct = new TestDataStruct("Sage", "Bleh bleh bleh");
+        string m_JSONname = "/TestFile.json";
+        testDataStruct = new TestDataStruct("Sage", date);
 
         if (JsonService.SaveData(m_JSONname, testDataStruct))
         {

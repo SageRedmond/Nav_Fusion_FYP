@@ -51,7 +51,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "AR_Nav_FYP.sln",
+    "dotnet.defaultSolution": "AR_Nav_FYP.slnx",
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#fbed80",
         "activityBar.background": "#fbed80",
