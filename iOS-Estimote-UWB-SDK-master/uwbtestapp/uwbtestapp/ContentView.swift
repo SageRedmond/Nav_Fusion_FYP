@@ -24,17 +24,24 @@ struct ContentView: View {
         UnityContainer.ignoresSafeArea()
         
       } else {
-        // Unity is not running
-        Button("Start Unity", systemImage: "play", action: {
-          /* Unity startup is slow and must must occur on the
-           main thread. Use async dispatch so we can re-render
-           with a ProgressView before the UI becomes unresponsive. */
-          loading = true
-          DispatchQueue.main.async(execute: {
-            unity.start()
-            loading = false
+        VStack{
+          Button("Connect to anchors"){
+            uwb.connectToAnchorWithHighestRSSI()
+          }
+          .padding()
+          // Unity is not running
+          Button("Start Unity", systemImage: "play", action: {
+            /* Unity startup is slow and must must occur on the
+             main thread. Use async dispatch so we can re-render
+             with a ProgressView before the UI becomes unresponsive. */
+            loading = true
+            DispatchQueue.main.async(execute: {
+              unity.start()
+              loading = false
+            })
           })
-        })
+          .padding()
+        }
       }
     }
   }

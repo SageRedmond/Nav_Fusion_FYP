@@ -36,7 +36,8 @@ public class AnchorStorageManager : MonoBehaviour
   }
 
   [SerializeField] public AnchorSavefile m_AnchorSavefile = new AnchorSavefile();
-  private string MAC_IP = "192.168.0.25:8080";
+  
+  private string MAC_IP = "149.157.140.171:8080";
 
   private Coroutine coroutine;
 
@@ -93,6 +94,7 @@ public class AnchorStorageManager : MonoBehaviour
 
   public void MarkAnchor()
   {
+    Debug.Log("Marking Anchor");
     // TODO: Ensure Native State has a beaconID
     // TODO: Ensure imageTackerTransform isn't 0,0,0
     Transform imageMarker = imageTracker.imageMarker.transform;

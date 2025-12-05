@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UWB/SimpleSample.unity
+    guid: af0fdb6d7a89c44cfb03d2684f6c9e86
+  - enabled: 0
     path: Assets/Samples/Immersal SDK/2.1.1/Core Samples/Scenes/SimpleSample.unity
     guid: dc3a71fba008f4f2899362a3d0c1a3f8
   - enabled: 0
