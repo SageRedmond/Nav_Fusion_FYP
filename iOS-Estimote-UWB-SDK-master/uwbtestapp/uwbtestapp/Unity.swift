@@ -15,7 +15,13 @@ struct Vector{
   var z: Float
 }
 
+struct BeaconData{
+  var range: Float
+  var beaconID: String
+}
+
 class Unity: SetsNativeState, ObservableObject{
+  
   static let shared = Unity()
   
   @Published var beaconID: String = "" { didSet { stateDidSet() } }

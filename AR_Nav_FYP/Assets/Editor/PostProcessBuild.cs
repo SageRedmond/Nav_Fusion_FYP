@@ -23,15 +23,19 @@ public class PostProcessBuild
             string unityFrameworkTargetGuid = project.GetUnityFrameworkTargetGuid();
 
             // Set NativeState plugin header visibility to public
-            string pluginHeaderGuid = project.FindFileGuidByProjectPath("Libraries/Plugins/iOS/NativeState.h");
-            project.AddPublicHeaderToBuild(unityFrameworkTargetGuid, pluginHeaderGuid);
+            string nativeStatePluginHeaderGuid = project.FindFileGuidByProjectPath("Libraries/Plugins/iOS/NativeState.h");
+            project.AddPublicHeaderToBuild(unityFrameworkTargetGuid, nativeStatePluginHeaderGuid);
+
+            // Set UwbBeaconRange plugin header visibility to public
+            string uwbBeaconRangePluginHeaderGuid = project.FindFileGuidByProjectPath("Libraries/Plugins/iOS/UwbBeaconRange.h");
+            project.AddPublicHeaderToBuild(unityFrameworkTargetGuid, uwbBeaconRangePluginHeaderGuid);
 
             // Change data directory target membership to framework only
             string dataDirectoryGuid = project.FindFileGuidByProjectPath("Data");
-            project.RemoveFileFromBuild(unityMainTargetGuid, dataDirectoryGuid);
+            // project.RemoveFileFromBuild(unityMainTargetGuid, dataDirectoryGuid);
             project.AddFileToBuild(unityFrameworkTargetGuid, dataDirectoryGuid);
 
-            /* Add custom modulemap for NativeState plugin
+            /* Add custom modulemap for plugins
                interop with Swift and set corresponding build setting:
                developer.apple.com/documentation/xcode/build-settings-reference#Module-Map-File */
             string modulemapRelativePath = "UnityFramework/UnityFramework.modulemap";

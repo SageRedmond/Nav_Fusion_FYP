@@ -9,4 +9,9 @@ framework module UnityFramework {
       header "NativeState.h"
       export *
   }
+
+  module UwbBeaconRange{
+    header "UwbBeaconRange.h"
+    export *
+  }
 }
