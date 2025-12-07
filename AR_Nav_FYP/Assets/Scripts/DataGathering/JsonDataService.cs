@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 using System.IO;
 using System;
 
+/// <summary>
+/// Handles reading and writing objects to JSON files
+/// </summary>
 public class JsonDataService : iDataService
 {
     bool iDataService.SaveData<T>(string RelativePath, T Data)
