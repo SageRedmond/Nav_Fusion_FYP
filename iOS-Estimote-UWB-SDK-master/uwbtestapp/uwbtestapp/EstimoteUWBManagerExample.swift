@@ -11,20 +11,23 @@ import OSLog
 
 struct DiscoveredBeacon: Identifiable{
   var id: String
+  var device: CBPeripheral
   var rssi: Float
 }
 
 class EstimoteUWBManagerExample: NSObject, ObservableObject {
-  @Published var connectedBeaconId: String = ""
-  @Published var distance: Float = 0.0
+  public static let shared = EstimoteUWBManagerExample()
   
+  private var connectedBeaconId: String = ""
   private var unity = Unity.shared
   private var uwbManager: EstimoteUWBManager?
   
   private var discoveredBeacons: [DiscoveredBeacon] = []
   
+  private var shouldHandleConnectivity: Bool = false
   let logger = Logger()
-  override init() {
+  
+  private override init() {
     super.init()
     setupUWB()
   }
@@ -45,22 +48,61 @@ class EstimoteUWBManagerExample: NSObject, ObservableObject {
     }
   }
   
-  func connectToAnchorWithHighestRSSI(){
-    let anchorID = discoveredBeacons.sorted {$0.rssi > $1.rssi}.first?.id
-    print(anchorID ?? "No Id")
-    if anchorID != nil{
-      uwbManager?.connect(to: anchorID!)
+//  func connectToAnchorWithHighestRSSI(){
+//    discoveredBeacons.sort(by: {$0.rssi > $1.rssi})
+//    if let beacon = discoveredBeacons.first{
+//      let beaconID = beacon.id
+//      let beaconRSSI = beacon.rssi
+//      
+//      if beaconID != connectedBeaconId{
+//        if beaconRSSI >= -70.0 {
+//          let previousConnection = connectedBeaconId
+//          if previousConnection != "" {
+//            logger.warning("Calling Disconnect on \(previousConnection)")
+//            uwbManager?.disconnect(from: previousConnection)
+////            BeaconPeripheralMonitor.shared.disconnectPeripheral(device: beacon.device)
+//          }
+//          logger.info("Connecting to beacon: \(beaconID)")
+//          uwbManager?.connect(to: beaconID)
+//        }
+//      }
+//    }
+//    
+//    
+//  }
+  func testConnect(){
+    uwbManager?.connect(to: "450ed09104d134339be51d3cd5f8ef3c")
+  }
+  
+  func connectToBeaconsWithHighRSSI(){
+    for (index, beacon) in discoveredBeacons.enumerated() {
+        if beacon.rssi >= -70.0 {
+          uwbManager?.connect(to: beacon.id)
+          discoveredBeacons.remove(at: index)
+        }
     }
+  }
+  
+  func updateDiscoveredBeacon(beaconId: String, scannedDevice: CBPeripheral, rssi: Float){
+    if let index = discoveredBeacons.firstIndex(where: { $0.id == beaconId }) {
+        discoveredBeacons[index].rssi = rssi
+    }
+    else{
+      let beacon = DiscoveredBeacon(id: beaconId, device: scannedDevice, rssi: rssi)
+      discoveredBeacons.append(beacon)
+    }
+    connectToBeaconsWithHighRSSI()
   }
 }
 
 // REQUIRED PROTOCOL
 extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
   func didUpdatePosition(for device: EstimoteUWBDevice) {
-    self.logger.info("Position updated for device: \(device)")
+    self.logger.info("Position updated for device \(device.id): \(device.distance)")
     
     DispatchQueue.main.async{
       self.unity.setBeaconData(beaconId: device.id, range: device.distance)
+//      self.uwbManager?.disconnect(from: device.publicIdentifier)
     }
   }
   
@@ -70,14 +112,18 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
     // if shouldHandleConnectivity is set to true - then you could call manager.connect(to: device)
     // additionally you can globally call discoonect from the scope where you have inititated EstimoteUWBManager -> disconnect(from: device) or disconnect(from: publicId)
 
-    discoveredBeacons.removeAll(where: {$0.id == device.publicIdentifier})
-    let beacon = DiscoveredBeacon(id: device.publicIdentifier, rssi: rssi.floatValue)
-    discoveredBeacons.append(beacon)
+//    discoveredBeacons.removeAll(where: {$0.id == device.publicIdentifier})
+//    let beacon = DiscoveredBeacon(id: device.publicIdentifier, rssi: rssi.floatValue)
+//    discoveredBeacons.append(beacon)
   }
   
   // OPTIONAL
   func didConnect(to device: UWBIdentifiable) {
     print("Successfully connected to: \(device.publicIdentifier)")
+//    DispatchQueue.main.async{
+//      self.connectedBeaconId = device.publicIdentifier
+//    }
+    connectedBeaconId = device.publicIdentifier
   }
   
   // OPTIONAL

@@ -10,6 +10,7 @@
 		A11EC96E2E194A8700141877 /* EstimoteUWBManagerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EC96D2E194A8700141877 /* EstimoteUWBManagerExample.swift */; };
 		A1BBEE272E1963EA00B3218B /* Unity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BBEE262E1963E800B3218B /* Unity.swift */; };
 		A1BBEE412E196D0800B3218B /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1BBEE3F2E196D0800B3218B /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A1CA20C02EEF23FC00A35C50 /* BeaconPeripheralMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA20BF2EEF23F300A35C50 /* BeaconPeripheralMonitor.swift */; };
 		D076FDA92A5631C50039905B /* EstimoteUWB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0933FFA2878A4C7001FFF0E /* EstimoteUWB.xcframework */; };
 		D076FDAA2A5631C50039905B /* EstimoteUWB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0933FFA2878A4C7001FFF0E /* EstimoteUWB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0F3198727924DD300075045 /* uwbtestappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3198627924DD300075045 /* uwbtestappApp.swift */; };
@@ -37,6 +38,7 @@
 		A11EC96D2E194A8700141877 /* EstimoteUWBManagerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimoteUWBManagerExample.swift; sourceTree = "<group>"; };
 		A1BBEE262E1963E800B3218B /* Unity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unity.swift; sourceTree = "<group>"; };
 		A1BBEE3F2E196D0800B3218B /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1CA20BF2EEF23F300A35C50 /* BeaconPeripheralMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconPeripheralMonitor.swift; sourceTree = "<group>"; };
 		D0933FFA2878A4C7001FFF0E /* EstimoteUWB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = EstimoteUWB.xcframework; path = uwbtestapp/EstimoteUWB.xcframework; sourceTree = "<group>"; };
 		D0F3198327924DD300075045 /* uwbtestapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uwbtestapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F3198627924DD300075045 /* uwbtestappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uwbtestappApp.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		D0F3198527924DD300075045 /* uwbtestapp */ = {
 			isa = PBXGroup;
 			children = (
+				A1CA20BF2EEF23F300A35C50 /* BeaconPeripheralMonitor.swift */,
 				A1BBEE262E1963E800B3218B /* Unity.swift */,
 				D0F319992792521400075045 /* Info.plist */,
 				D0F3198627924DD300075045 /* uwbtestappApp.swift */,
@@ -180,6 +183,7 @@
 				D0F3198927924DD300075045 /* ContentView.swift in Sources */,
 				D0F3198727924DD300075045 /* uwbtestappApp.swift in Sources */,
 				A11EC96E2E194A8700141877 /* EstimoteUWBManagerExample.swift in Sources */,
+				A1CA20C02EEF23FC00A35C50 /* BeaconPeripheralMonitor.swift in Sources */,
 				A1BBEE272E1963EA00B3218B /* Unity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

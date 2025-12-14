@@ -203,12 +203,12 @@ public class DataGatheringModule : MonoBehaviour
         m_triggeredEvents.Clear();
     }
 
-    private void PauseGatheringData()
+    public void PauseGatheringData()
     {
         isGatheringData = false;
     }
 
-    private void ResumeGatheringData()
+    public void ResumeGatheringData()
     {
         isGatheringData = true;
     }

@@ -12,7 +12,8 @@ struct ContentView: View {
   @State private var loading = false
   @ObservedObject private var unity = Unity.shared
   
-  let uwb = EstimoteUWBManagerExample()
+  let uwb = EstimoteUWBManagerExample.shared
+  let bleMonitor = BeaconPeripheralMonitor.shared
   
   var body: some View {
     ZStack{
@@ -26,7 +27,7 @@ struct ContentView: View {
       } else {
         VStack{
           Button("Connect to anchors"){
-            uwb.connectToAnchorWithHighestRSSI()
+            uwb.testConnect()
           }
           .padding()
           // Unity is not running
