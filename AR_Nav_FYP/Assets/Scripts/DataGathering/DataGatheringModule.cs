@@ -13,6 +13,8 @@ public class DataGatheringModule : MonoBehaviour
     private List<UwbBeaconRange> m_UwbBeaconRange = new List<UwbBeaconRange>();
     private List<TriggeredEventStruct> m_triggeredEvents = new List<TriggeredEventStruct>();
 
+    private bool isGatheringData = false;
+
     #region Structs
     /// <summary>
     /// Position Relative to XR Immersal Map
@@ -61,7 +63,7 @@ public class DataGatheringModule : MonoBehaviour
         public string BeaconID;
         public string TimeStamp;
 
-        public UwbBeaconRange(float range, string beaconID)
+        public UwbBeaconRange(string beaconID, float range)
         {
             Range = range;
             BeaconID = beaconID;
@@ -90,19 +92,36 @@ public class DataGatheringModule : MonoBehaviour
     #region Adding Functions
     public void AddXRCoordinate(Vector3 pose)
     {
-        m_XRCoordinates.Add(new XRCoordinates(pose));
+        if (isGatheringData)
+        {
+            m_XRCoordinates.Add(new XRCoordinates(pose));
+        }
     }
 
     public void AddUnityCoordinate(Vector3 pose)
     {
-        m_UnityCoordinates.Add(new UnityCoordinates(pose));
+        if (isGatheringData)
+        {
+            m_UnityCoordinates.Add(new UnityCoordinates(pose));
+        }
+    }
+
+    public void AddBeaconRange(string beaconId, float range)
+    {
+        if (isGatheringData)
+        {
+            m_UwbBeaconRange.Add(new UwbBeaconRange(beaconId, range));
+        }
     }
 
     public void AddTriggeredEvent(TriggeredEvent eventName, string description)
     {
-        string name = eventName.GetName();
+        if (isGatheringData)
+        {
+            string name = eventName.GetName();
 
-        m_triggeredEvents.Add(new TriggeredEventStruct(name,description));
+            m_triggeredEvents.Add(new TriggeredEventStruct(name, description));
+        }
     }
 
     #endregion
@@ -112,6 +131,7 @@ public class DataGatheringModule : MonoBehaviour
     {
         SaveXRCoordinates();
         SaveUnityCoordinates();
+        SaveBeaconRange();
         SaveTriggeredEvents();
     }
 
@@ -141,6 +161,18 @@ public class DataGatheringModule : MonoBehaviour
         }
     }
 
+    private void SaveBeaconRange()
+    {
+        string m_JSONname = "/UwbBeaconRanges.json";
+        if (JsonService.SaveData(m_JSONname, m_UwbBeaconRange))
+        {
+            Debug.Log("UWB Beacon Ranges Saved");
+        }
+        else
+        {
+            Debug.LogError("Could not save UWB Beacon Ranges!");
+        }
+    }
     private void SaveTriggeredEvents()
     {
         string m_JSONname = "/TriggeredEvents.json";
@@ -160,16 +192,32 @@ public class DataGatheringModule : MonoBehaviour
 
     private static string GetTimeStamp()
     {
-        // return DateTime.Now.ToLongTimeString();
         return DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture);
     }
+
+    private void ClearAllData()
+    {
+        m_XRCoordinates.Clear();
+        m_UnityCoordinates.Clear();
+        m_UwbBeaconRange.Clear();
+        m_triggeredEvents.Clear();
+    }
+
+    private void PauseGatheringData()
+    {
+        isGatheringData = false;
+    }
+
+    private void ResumeGatheringData()
+    {
+        isGatheringData = true;
+    }
+
     #endregion
 
     //TODO Restart experiment button to delete all data after it has been removed
 
     //TODO Begin new experiment writing to the same file
-
-    //TODO End Trial -> Writes all collected JSON to file
 
     #region TestFunctions
     public void TriggerButtonEvent()

@@ -3,9 +3,9 @@
 id<SendsBeaconRange> beaconRangeSender;
 
 void RegisterBeaconRangeSender(id<SendsBeaconRange>  sender){
-    beaconRangeSender = sender
+    beaconRangeSender = sender;
 }
 
 void OnSendBeaconRange(BeaconRangeCallback callback){
-    beaconRangeSender.sendBeaconRange = callback
+    beaconRangeSender.sendBeaconRange = callback;
 }

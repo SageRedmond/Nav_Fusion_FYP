@@ -30,13 +30,14 @@ public static class NativeStateManager
     [AOT.MonoPInvokeCallback(typeof(SetNativeStateCallback))]
     private static void SetState(NativeState nextState)
     {
+        Debug.Log("Native State Callback");
         State = nextState;
     }
 
     static NativeStateManager()
     {
-        #if !UNITY_EDITOR
+#if !UNITY_EDITOR
             OnSetNativeState(SetState);
-        #endif
+#endif
     }
 }

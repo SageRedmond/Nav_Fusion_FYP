@@ -17,8 +17,7 @@ struct DiscoveredBeacon: Identifiable{
 class EstimoteUWBManagerExample: NSObject, ObservableObject {
   @Published var connectedBeaconId: String = ""
   @Published var distance: Float = 0.0
-//  let beaconID = "d04567bc3557ff70ca197e3c8c236119"
-//  let beaconID = "70f0576ae14090a92231974cccec402d"
+  
   private var unity = Unity.shared
   private var uwbManager: EstimoteUWBManager?
   
@@ -48,7 +47,7 @@ class EstimoteUWBManagerExample: NSObject, ObservableObject {
   
   func connectToAnchorWithHighestRSSI(){
     let anchorID = discoveredBeacons.sorted {$0.rssi > $1.rssi}.first?.id
-    print(anchorID)
+    print(anchorID ?? "No Id")
     if anchorID != nil{
       uwbManager?.connect(to: anchorID!)
     }
@@ -61,18 +60,7 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
     self.logger.info("Position updated for device: \(device)")
     
     DispatchQueue.main.async{
-      if device.id != self.connectedBeaconId{
-        self.connectedBeaconId = device.id
-        self.unity.setBeaconID(to: device.id)
-      }
-      self.distance =  device.distance
-      self.unity.setDistance(to: device.distance)
-      if let direction = device.vector{
-        self.unity.setDirection(to: direction)
-      }
-      else{
-        self.unity.setNoDirection()
-      }
+      self.unity.setBeaconData(beaconId: device.id, range: device.distance)
     }
   }
   
@@ -82,19 +70,6 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
     // if shouldHandleConnectivity is set to true - then you could call manager.connect(to: device)
     // additionally you can globally call discoonect from the scope where you have inititated EstimoteUWBManager -> disconnect(from: device) or disconnect(from: publicId)
 
-//    if rssi.intValue > highestRSSI{
-//      if currentConnectDeviceID != nil{
-//        uwbManager?.disconnect(from: currentConnectDeviceID!)
-//      }
-//      uwbManager?.connect(to: device)
-//    }
-//    if device.publicIdentifier == self.beaconID{
-//      uwbManager?.connect(to: device)
-//    }
-    
-//    if discoveredBeacons.contains(where: {$0.id == device.publicIdentifier}){
-//      discoveredBeacons.removeAll(where: {$0.id == device.publicIdentifier})
-//    }
     discoveredBeacons.removeAll(where: {$0.id == device.publicIdentifier})
     let beacon = DiscoveredBeacon(id: device.publicIdentifier, rssi: rssi.floatValue)
     discoveredBeacons.append(beacon)
@@ -116,7 +91,7 @@ extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
   }
   
   // OPTIONAL PROTOCOL FOR BEACON BLE RANGING
-  //    func didRange(for beacon: EstimoteBLEDevice) {
-  //        print("Beacon did range: \(beacon)")
-  //    }
+//      func didRange(for beacon: EstimoteBLEDevice) {
+//          print("Beacon did range: \(beacon)")
+//      }
 }

@@ -16,17 +16,17 @@ struct Vector{
 }
 
 struct BeaconData{
-  var range: Float
   var beaconID: String
+  var range: Float
 }
 
-class Unity: SetsNativeState, ObservableObject{
+class Unity: SendsBeaconRange, ObservableObject{
   
   static let shared = Unity()
   
-  @Published var beaconID: String = "" { didSet { stateDidSet() } }
-  @Published var distance: Float = 1 { didSet { stateDidSet() } }
-  @Published var direction: Vector = Vector(x: 0, y: 0, z: 0) { didSet { stateDidSet() } }
+//  @Published var beaconID: String = "" { didSet { stateDidSet() } }
+//  @Published var distance: Float = 1 { didSet { stateDidSet() } }
+//  @Published var direction: Vector = Vector(x: 0, y: 0, z: 0) { didSet { stateDidSet() } }
   
   private var loaded = false
   private let framework: UnityFramework
@@ -54,7 +54,7 @@ class Unity: SetsNativeState, ObservableObject{
      running from Xcode. The Unity-iPhone scheme also has the Thread Performance
      Checker disabled by default, perhaps for the same reason. See forum discussion:
      forum.unity.com/threads/unity-2021-3-6f1-xcode-14-ios-16-problem-unityframework-crash-before-main.1338284/ */
-    RegisterNativeStateSetter(self)
+    RegisterBeaconRangeSender(self)
   }
   
   func start() {
@@ -102,46 +102,67 @@ class Unity: SetsNativeState, ObservableObject{
     loaded = false
   }
   
-  public func setBeaconID(to value: String){
-    self.beaconID = value
-  }
+  @Published var beaconData: BeaconData = BeaconData(beaconID: "", range: 1) { didSet { beaconRangeDidSet() } }
   
-  public func setDistance(to value:Float){
-    self.distance = value
+  public func setBeaconData(beaconId: String, range: Float){
+    beaconData = BeaconData(beaconID: beaconId, range: range)
   }
+//  public func setBeaconID(to value: String){
+//    self.beaconID = value
+//  }
+//  
+//  public func setDistance(to value:Float){
+//    self.distance = value
+//  }
+//  
+//  public func setDirection(to vector: EstimoteUWB.Vector){
+//    let x = vector.x
+//    let y = vector.y
+//    let z = vector.z
+//    
+//    self.direction = Vector(x: x, y: y, z: z)
+//  }
   
-  public func setDirection(to vector: EstimoteUWB.Vector){
-    let x = vector.x
-    let y = vector.y
-    let z = vector.z
+//  public func setNoDirection(){
+//    let x: Float = 0.0
+//    let y: Float = 0.0
+//    let z: Float = 0.0
+//    
+//    self.direction = Vector(x: x, y: y, z: z)
+//  }
+  
+//  private func stateDidSet() {
+//    beaconID.withCString { beaconId_c in
+//      let nativeState = NativeState(beaconId: beaconId_c, distance: distance, x_direction: direction.x, y_direction: direction.y, z_direction: direction.z)
+//      setNativeState?(nativeState)
+//    }
+//  }
+  
+  private func beaconRangeDidSet(){
+    let beaconID = beaconData.beaconID
+    let beaconRange = beaconData.range
     
-    self.direction = Vector(x: x, y: y, z: z)
-  }
-  
-  public func setNoDirection(){
-    let x: Float = 0.0
-    let y: Float = 0.0
-    let z: Float = 0.0
-    
-    self.direction = Vector(x: x, y: y, z: z)
-  }
-  
-  private func stateDidSet() {
     beaconID.withCString { beaconId_c in
-      let nativeState = NativeState(beaconId: beaconId_c, distance: distance, x_direction: direction.x, y_direction: direction.y, z_direction: direction.z)
-      setNativeState?(nativeState)
+      sendBeaconRange?(UwbBeaconRangeData(beaconId: beaconId_c, distance: beaconRange))
     }
   }
+//  /* When a Unity script calls the NativeState plugin's OnSetNativeState function this
+//   closure will be set to a C function pointer that was marshaled from a corresponding
+//   C# delegate. See section on using delegates: docs.unity3d.com/Manual/PluginsForIOS.html */
+//  var setNativeState: SetNativeStateCallback? {
+//    didSet {
+//      if setNativeState != nil {
+//        /* We can now send state to Unity. We should assume
+//         Unity needs it immediately, so set the current state now. */
+//        stateDidSet()
+//      }
+//    }
+//  }
   
-  /* When a Unity script calls the NativeState plugin's OnSetNativeState function this
-   closure will be set to a C function pointer that was marshaled from a corresponding
-   C# delegate. See section on using delegates: docs.unity3d.com/Manual/PluginsForIOS.html */
-  var setNativeState: SetNativeStateCallback? {
+  var sendBeaconRange: BeaconRangeCallback?{
     didSet {
-      if setNativeState != nil {
-        /* We can now send state to Unity. We should assume
-         Unity needs it immediately, so set the current state now. */
-        stateDidSet()
+      if sendBeaconRange != nil {
+        beaconRangeDidSet()
       }
     }
   }
