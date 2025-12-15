@@ -18,4 +18,19 @@ public class BeaconRegistry : MonoBehaviour
             return instance;
         }
     }
+
+    private List<Beacon> Beacons = new List<Beacon>();
+
+    public void RegisterBeacon(Beacon beacon)
+    {
+        IEnumerable<Beacon> query = Beacons.Where(b => b.BeaconId == beacon.BeaconId);
+
+        if (query.Count() < 1)
+        {
+            Beacons.Add(beacon);
+            Debug.Log($"Registered beacon: {beacon.BeaconId}");
+        }
+    }
+
+    public Beacon GetBeaconById(string beaconId) => Beacons.FirstOrDefault(b => b.BeaconId == beaconId);
 }

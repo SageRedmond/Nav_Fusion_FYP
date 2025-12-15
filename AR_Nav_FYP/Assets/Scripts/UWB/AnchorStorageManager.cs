@@ -36,7 +36,7 @@ public class AnchorStorageManager : MonoBehaviour
   }
 
   [SerializeField] public AnchorSavefile m_AnchorSavefile = new AnchorSavefile();
-  
+
   private string MAC_IP = "149.157.140.171:8080";
 
   private Coroutine coroutine;
