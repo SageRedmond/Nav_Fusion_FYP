@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class BeaconSpawnEditorWindow : EditorWindow
 {
-    BeaconSpawnEditorCompanion companion;
+    BeaconSceneCompanion companion;
 
     [MenuItem("Window/Beacons")]
     public static void ShowWindow()
@@ -13,7 +13,7 @@ public class BeaconSpawnEditorWindow : EditorWindow
 
     void OnGUI()
     {
-        companion = GameObject.Find("BeaconSpawnEditorCompanion").GetComponent<BeaconSpawnEditorCompanion>();
+        companion = GameObject.Find("BeaconSceneCompanion").GetComponent<BeaconSceneCompanion>();
 
         GUILayout.Label("Get Beacons from JSON", EditorStyles.boldLabel);
 

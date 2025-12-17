@@ -26,10 +26,10 @@ struct ContentView: View {
         
       } else {
         VStack{
-          Button("Connect to anchors"){
-            uwb.testConnect()
-          }
-          .padding()
+//          Button("Connect to anchors"){
+//            uwb.testConnect()
+//          }
+//          .padding()
           // Unity is not running
           Button("Start Unity", systemImage: "play", action: {
             /* Unity startup is slow and must must occur on the

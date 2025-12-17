@@ -41,6 +41,7 @@ public class BeaconRangeTracker : MonoBehaviour
         else
         {
             Debug.LogError("BeaconRangeTracker instance or DataGatheringModule is null!");
+            return;
         }
     }
 
@@ -52,7 +53,7 @@ public class BeaconRangeTracker : MonoBehaviour
     static BeaconRangeTracker()
     {
 #if !UNITY_EDITOR
-            OnSendBeaconRange(SaveBeaconRange);
+        OnSendBeaconRange(SaveBeaconRange);
 #endif
     }
 }

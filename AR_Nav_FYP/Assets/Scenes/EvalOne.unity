@@ -4003,7 +4003,7 @@ GameObject:
   - component: {fileID: 313748469}
   - component: {fileID: 313748470}
   m_Layer: 0
-  m_Name: BeaconSpawnEditorCompanion
+  m_Name: BeaconSceneCompanion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4038,9 +4038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeaconSpawnEditorCompanion
   beaconJson: {fileID: 4900000, guid: 4a1f8e9daa4604522b44601f2fb10dce, type: 3}
   m_BeaconPrefab: {fileID: 6065125949459187188, guid: 7c8f0d595fa194fb1bfc61011e4dbea3, type: 3}
-  m_XRSpace: {fileID: 0}
-  m_BeaconList:
-    beacons: []
+  m_XRSpace: {fileID: 1959774578}
 --- !u!1 &322393155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,6 +5374,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24a0663f813d4beb91fc0c6b1e8fef36, type: 3}
+--- !u!1 &469452452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469452453}
+  - component: {fileID: 469452454}
+  m_Layer: 0
+  m_Name: LocalisationConfidenceTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &469452453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469452452}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041417373}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &469452454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469452452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962c005a04a2d4857b29d04e3a3c92dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizationConfidenceTracker
+  m_dataGatheringModule: {fileID: 2041417372}
+  captureRate: 0.3
 --- !u!1 &474638568
 GameObject:
   m_ObjectHideFlags: 0
@@ -7991,7 +8035,7 @@ GameObject:
   - component: {fileID: 771981763}
   - component: {fileID: 771981762}
   m_Layer: 5
-  m_Name: TestEventsTriggered
+  m_Name: TestSaveSurveyBeacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8061,9 +8105,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041417372}
-        m_TargetAssemblyTypeName: DataGatheringModule, Assembly-CSharp
-        m_MethodName: TriggerButtonEvent
+      - m_Target: {fileID: 313748470}
+        m_TargetAssemblyTypeName: BeaconSceneCompanion, Assembly-CSharp
+        m_MethodName: ButtonTestSaveBeacon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13510,7 +13554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Test Events Triggered
+  m_text: Test Save Beacon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13537,7 +13581,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.3
+  m_fontSize: 62.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22720,6 +22764,7 @@ Transform:
   m_Children:
   - {fileID: 1732594762}
   - {fileID: 126439665}
+  - {fileID: 469452453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2043524489

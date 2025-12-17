@@ -12,6 +12,7 @@ public class DataGatheringModule : MonoBehaviour
     private List<UnityCoordinates> m_UnityCoordinates = new List<UnityCoordinates>();
     private List<UwbBeaconRange> m_UwbBeaconRange = new List<UwbBeaconRange>();
     private List<TriggeredEventStruct> m_triggeredEvents = new List<TriggeredEventStruct>();
+    private List<LocalisationConfidence> m_localisationConfidence = new List<LocalisationConfidence>();
 
     private bool isGatheringData = false;
 
@@ -87,6 +88,18 @@ public class DataGatheringModule : MonoBehaviour
             TimeStamp = GetTimeStamp();
         }
     }
+
+    public struct LocalisationConfidence
+    {
+        public int Quality;
+        public string TimeStamp;
+
+        public LocalisationConfidence(int quality)
+        {
+            Quality = quality;
+            TimeStamp = GetTimeStamp();
+        }
+    }
     #endregion
 
     #region Adding Functions
@@ -124,6 +137,14 @@ public class DataGatheringModule : MonoBehaviour
         }
     }
 
+    public void AddLocalisationConfidence(int quality)
+    {
+        if (isGatheringData)
+        {
+            m_localisationConfidence.Add(new LocalisationConfidence(quality));
+        }
+    }
+
     #endregion
 
     #region Save Functions
@@ -133,6 +154,7 @@ public class DataGatheringModule : MonoBehaviour
         SaveUnityCoordinates();
         SaveBeaconRange();
         SaveTriggeredEvents();
+        SaveLocalisationConfidence();
     }
 
     private void SaveXRCoordinates()
@@ -183,6 +205,19 @@ public class DataGatheringModule : MonoBehaviour
         else
         {
             Debug.LogError("Could not save Triggered Events!");
+        }
+    }
+
+    private void SaveLocalisationConfidence()
+    {
+        string m_JSONname = "/LocalisationConfidence.json";
+        if (JsonService.SaveData(m_JSONname, m_localisationConfidence))
+        {
+            Debug.Log("Localisation Confidence Saved");
+        }
+        else
+        {
+            Debug.LogError("Could not save Localisation Confidence!");
         }
     }
 
