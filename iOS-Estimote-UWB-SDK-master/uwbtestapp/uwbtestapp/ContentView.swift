@@ -30,8 +30,20 @@ struct ContentView: View {
 //            uwb.testConnect()
 //          }
 //          .padding()
+          Button("Start Unity with UWB", systemImage: "play", action: {
+            /* Unity startup is slow and must must occur on the
+             main thread. Use async dispatch so we can re-render
+             with a ProgressView before the UI becomes unresponsive. */
+            BeaconPeripheralMonitor.shared.startScan() // Note bad to do this without checking if central is powered on
+            loading = true
+            DispatchQueue.main.async(execute: {
+              unity.start()
+              loading = false
+            })
+          })
+          .padding()
           // Unity is not running
-          Button("Start Unity", systemImage: "play", action: {
+          Button("Start Unity without UWB", systemImage: "play", action: {
             /* Unity startup is slow and must must occur on the
              main thread. Use async dispatch so we can re-render
              with a ProgressView before the UI becomes unresponsive. */

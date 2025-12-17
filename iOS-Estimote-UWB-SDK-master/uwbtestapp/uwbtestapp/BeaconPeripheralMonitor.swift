@@ -24,7 +24,7 @@ final class BeaconPeripheralMonitor: NSObject, ObservableObject{
   }
   
   //  var discoveredPeripherals = [CBPeripheral]()
-  func startScan() {
+  public func startScan() {
     print("Starting Scan")
     // https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/Assigned_Numbers.pdf
     
@@ -46,7 +46,7 @@ extension BeaconPeripheralMonitor: CBCentralManagerDelegate{
   func centralManagerDidUpdateState(_ central: CBCentralManager) {
     switch central.state {
     case .poweredOn:
-      startScan()
+//      startScan()
       print("Powered On")
     case .poweredOff:
       // Alert user to turn on Bluetooth

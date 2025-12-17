@@ -31,5 +31,6 @@ class LocalizationConfidenceTracker : MonoBehaviour
             return;
 
         int q = m_Sdk.TrackingStatus?.TrackingQuality ?? 0;
+        m_dataGatheringModule.AddLocalisationConfidence(q);
     }
 }

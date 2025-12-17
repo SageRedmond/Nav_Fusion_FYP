@@ -22,7 +22,10 @@ public class TrackedImageManager : MonoBehaviour
 
         try
         {
-            imageMarker = Instantiate(axisPrefab, Vector3.zero, Quaternion.identity);
+            if (imageMarker == null)
+            {
+                imageMarker = Instantiate(axisPrefab, Vector3.zero, Quaternion.identity);
+            }
 
         }
         catch (System.Exception e)

@@ -9,6 +9,8 @@ public class BeaconSceneCompanion : MonoBehaviour
     [Tooltip("Ensure to change file extension from .json to .txt")]
     public TextAsset beaconJson;
 
+    [SerializeField] private RoomNameTracker roomInfo;
+
     [SerializeField] private GameObject m_BeaconPrefab = null;
 
     [FormerlySerializedAs("m_ARSpace")]
@@ -104,6 +106,22 @@ public class BeaconSceneCompanion : MonoBehaviour
         {
             SpawnLoadedBeacons(beacon);
         }
+    }
+
+    public void SaveTrackedImageBeacon(Transform markerPose)
+    {
+        if (roomInfo.CurrentRoomID.ToString() == "Unknown")
+        {
+            return;
+        }
+        Vector3 position = markerPose.position;
+        JSONBeacon jSONBeacon = new JSONBeacon();
+        jSONBeacon.beaconId = BeaconRangeTracker.ClosestBeaconId;
+        jSONBeacon.roomId = roomInfo.CurrentRoomID.ToString();
+        jSONBeacon.xpos = position.x;
+        jSONBeacon.ypos = position.y;
+        jSONBeacon.zpos = position.z;
+        SaveNewBeacon(jSONBeacon);
     }
 
     #region Test Functions
