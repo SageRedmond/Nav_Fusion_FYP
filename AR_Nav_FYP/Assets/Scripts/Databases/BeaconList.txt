@@ -1,0 +1,1 @@
+{"beacons":[{"beaconId":"f8cf8ff90aaf0426be9d8b8657d99038","roomId":"96011","xpos":0.142778635,"ypos":2.0437386,"zpos":0.7154945}]}

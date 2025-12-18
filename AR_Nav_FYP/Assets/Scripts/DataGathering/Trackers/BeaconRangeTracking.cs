@@ -9,6 +9,8 @@ public class BeaconRangeTracker : MonoBehaviour
     [SerializeField]
     private DataGatheringModule m_dataGatheringModule;
 
+    [SerializeField] public TMP_Text ClosestBeaconText;
+
     public static UwbBeaconRangeData BeaconState { get; private set; }
     public static string ClosestBeaconId { get; private set; }
     private static BeaconRangeTracker s_instance;
@@ -21,7 +23,8 @@ public class BeaconRangeTracker : MonoBehaviour
     {
         // Set the static reference to this instance, so that m_dataGatheringModule can be refrenced
         s_instance = this;
-        CurrentClosestDistance = 0.0f;
+        CurrentClosestDistance = 100.0f;
+        ClosestBeaconId = "";
     }
 
     void Start()
@@ -48,16 +51,16 @@ public class BeaconRangeTracker : MonoBehaviour
             Debug.Log("" + BeaconState.distance);
             // Closest beacon algorithm
             CallbackCount++;
-            if (CurrentClosestDistance < newRangeData.distance)
+            if (CurrentClosestDistance > newRangeData.distance)
             {
                 CurrentClosestDistance = newRangeData.distance;
                 CurrentClosestBeaconId = newRangeData.beaconId;
             }
-            if (CallbackCount >= 50)
+            if (CallbackCount % 50 == 0)
             {
-                Debug.Log("Setting Closest Beacon");
+                Debug.Log("Setting Closest Beacon: " + CurrentClosestBeaconId);
                 ClosestBeaconId = CurrentClosestBeaconId;
-                CurrentClosestDistance = 0.0f;
+                CurrentClosestDistance = 100.0f;
                 CurrentClosestBeaconId = "";
             }
         }

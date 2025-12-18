@@ -114,13 +114,14 @@ public class BeaconSceneCompanion : MonoBehaviour
         {
             return;
         }
-        Vector3 position = markerPose.position;
+        // Vector3 position = markerPose.position;
+        GameObject go = Instantiate(m_BeaconPrefab, markerPose.position, Quaternion.identity, m_XRSpace.transform);
         JSONBeacon jSONBeacon = new JSONBeacon();
         jSONBeacon.beaconId = BeaconRangeTracker.ClosestBeaconId;
         jSONBeacon.roomId = roomInfo.CurrentRoomID.ToString();
-        jSONBeacon.xpos = position.x;
-        jSONBeacon.ypos = position.y;
-        jSONBeacon.zpos = position.z;
+        jSONBeacon.xpos = go.transform.position.x;
+        jSONBeacon.ypos = go.transform.position.y;
+        jSONBeacon.zpos = go.transform.position.z;
         SaveNewBeacon(jSONBeacon);
     }
 
