@@ -42,6 +42,7 @@ public class RoomsRegistry : MonoBehaviour
     public List<Room> GetAll() => new List<Room>(Rooms);
 
     public Room GetRoomById(string roomId) => Rooms.FirstOrDefault(r => r.RoomId == roomId);
+    public int GetFloorNumberByRoomId(string roomId) => Rooms.FirstOrDefault(r => r.RoomId == roomId).floorNumber;
 
     public List<Room> Query(System.Func<Room, bool> predicate)
     {
@@ -63,7 +64,7 @@ public class RoomsRegistry : MonoBehaviour
         }
     }
 
-    public void EnableOnlyFloorNumber(int number)
+    public void EnableOnlyRoomsWithFloorNumber(int number)
     {
         foreach (Room room in Rooms)
         {

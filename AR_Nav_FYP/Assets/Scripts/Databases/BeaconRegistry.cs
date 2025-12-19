@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class BeaconRegistry : MonoBehaviour
 {
@@ -33,4 +34,6 @@ public class BeaconRegistry : MonoBehaviour
     }
 
     public Beacon GetBeaconById(string beaconId) => Beacons.FirstOrDefault(b => b.BeaconId == beaconId);
+
+    public string GetRoomIdByBeaconId(string beaconId) => Beacons.FirstOrDefault(b => b.BeaconId == beaconId).RoomId;
 }

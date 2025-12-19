@@ -4,6 +4,6 @@ public class DatabaseUser : MonoBehaviour
 {
     public void floorLevelTest(int level)
     {
-        RoomsRegistry.Instance.EnableOnlyFloorNumber(level);
+        RoomsRegistry.Instance.EnableOnlyRoomsWithFloorNumber(level);
     }
 }

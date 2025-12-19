@@ -13,6 +13,8 @@ public class BeaconRangeTracker : MonoBehaviour
 
     public static UwbBeaconRangeData BeaconState { get; private set; }
     public static string ClosestBeaconId { get; private set; }
+    private static int ClosestBeaconFloorNumber { get; set; }
+
     private static BeaconRangeTracker s_instance;
 
     private static string CurrentClosestBeaconId { get; set; }
@@ -56,10 +58,12 @@ public class BeaconRangeTracker : MonoBehaviour
                 CurrentClosestDistance = newRangeData.distance;
                 CurrentClosestBeaconId = newRangeData.beaconId;
             }
-            if (CallbackCount % 50 == 0)
+            if (CallbackCount % 20 == 0)
             {
                 Debug.Log("Setting Closest Beacon: " + CurrentClosestBeaconId);
                 ClosestBeaconId = CurrentClosestBeaconId;
+                ClosestBeaconFloorNumber = RoomsRegistry.Instance.GetFloorNumberByRoomId(BeaconRegistry.Instance.GetRoomIdByBeaconId(ClosestBeaconId));
+
                 CurrentClosestDistance = 100.0f;
                 CurrentClosestBeaconId = "";
             }

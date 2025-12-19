@@ -9,6 +9,7 @@ public class Beacon : MonoBehaviour
     // public Vector3 Rotation;
 
     public string BeaconId => beaconId;
+    public string RoomId => roomId;
 
     void Start()
     {
