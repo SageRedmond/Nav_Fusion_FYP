@@ -36,14 +36,17 @@ public class Room : MonoBehaviour
             gameObject.SetActive(state);
             // gameObject.GetComponent<XRMap>().
 
-            // if (state == false)
-            // {
-            //     MapManager.RemoveMap(m_mapComponent.mapId);
-            // }
-            // else
-            // {
-            //     MapManager.LoadMap(m_mapComponent);
-            // }
+            if (state == false)
+            {
+                if (MapManager.TryGetMapEntry(m_mapComponent.mapId, out MapEntry entry))
+                {
+                    MapManager.RemoveMap(m_mapComponent.mapId);
+                }
+            }
+            else
+            {
+                MapManager.LoadMap(m_mapComponent);
+            }
         }
     }
 }
