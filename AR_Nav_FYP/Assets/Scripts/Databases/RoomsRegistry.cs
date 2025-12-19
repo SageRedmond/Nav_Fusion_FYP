@@ -20,10 +20,10 @@ public class RoomsRegistry : MonoBehaviour
         }
     }
 
-    // void Start()
-    // {
-    //     StartCoroutine(DisableAllRooms());
-    // }
+    void Start()
+    {
+        StartCoroutine(DisableAllRooms());
+    }
 
     private List<Room> Rooms = new List<Room>();
 

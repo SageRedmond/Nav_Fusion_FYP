@@ -13,7 +13,7 @@ public class BeaconRangeTracker : MonoBehaviour
 
     public static UwbBeaconRangeData BeaconState { get; private set; }
     public static string ClosestBeaconId { get; private set; }
-    private static int ClosestBeaconFloorNumber { get; set; }
+    public static int ClosestBeaconFloorNumber { get; set; }
 
     private static BeaconRangeTracker s_instance;
 
@@ -45,12 +45,13 @@ public class BeaconRangeTracker : MonoBehaviour
     [AOT.MonoPInvokeCallback(typeof(BeaconRangeCallback))]
     private static void SaveBeaconRange(UwbBeaconRangeData newRangeData)
     {
-        Debug.Log("" + newRangeData.beaconId);
+        // Debug.Log("" + newRangeData.beaconId);
         if (s_instance != null && s_instance.m_dataGatheringModule != null)
         {
             s_instance.m_dataGatheringModule.AddBeaconRange(newRangeData.beaconId, newRangeData.distance);
             BeaconState = newRangeData;
-            Debug.Log("" + BeaconState.distance);
+            // Debug.Log("" + BeaconState.distance);
+
             // Closest beacon algorithm
             CallbackCount++;
             if (CurrentClosestDistance > newRangeData.distance)
@@ -60,9 +61,9 @@ public class BeaconRangeTracker : MonoBehaviour
             }
             if (CallbackCount % 20 == 0)
             {
-                Debug.Log("Setting Closest Beacon: " + CurrentClosestBeaconId);
+                // Debug.Log("Setting Closest Beacon: " + CurrentClosestBeaconId);
                 ClosestBeaconId = CurrentClosestBeaconId;
-                ClosestBeaconFloorNumber = RoomsRegistry.Instance.GetFloorNumberByRoomId(BeaconRegistry.Instance.GetRoomIdByBeaconId(ClosestBeaconId));
+                // ClosestBeaconFloorNumber = RoomsRegistry.Instance.GetFloorNumberByRoomId(BeaconRegistry.Instance.GetRoomIdByBeaconId(ClosestBeaconId));
 
                 CurrentClosestDistance = 100.0f;
                 CurrentClosestBeaconId = "";

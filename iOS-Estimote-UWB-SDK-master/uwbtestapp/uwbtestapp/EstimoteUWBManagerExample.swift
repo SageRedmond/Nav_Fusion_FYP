@@ -98,7 +98,7 @@ class EstimoteUWBManagerExample: NSObject, ObservableObject {
 // REQUIRED PROTOCOL
 extension EstimoteUWBManagerExample: EstimoteUWBManagerDelegate {
   func didUpdatePosition(for device: EstimoteUWBDevice) {
-    self.logger.info("Position updated for device \(device.id): \(device.distance)")
+//    self.logger.info("Position updated for device \(device.id): \(device.distance)")
     
     DispatchQueue.main.async{
       self.unity.setBeaconData(beaconId: device.id, range: device.distance)

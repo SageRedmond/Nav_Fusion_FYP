@@ -34,8 +34,8 @@ public class RoomNameTracker : MonoBehaviour
 
     public void ShowRoomName(int[] mapIDs)
     {
-        Debug.Log("Room Name function invoked");
-        Debug.Log(string.Join(",", mapIDs));
+        // Debug.Log("Room Name function invoked");
+        // Debug.Log(string.Join(",", mapIDs));
         string roomName;
         try
         {

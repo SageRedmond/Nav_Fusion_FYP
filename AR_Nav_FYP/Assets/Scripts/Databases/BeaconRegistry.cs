@@ -36,4 +36,10 @@ public class BeaconRegistry : MonoBehaviour
     public Beacon GetBeaconById(string beaconId) => Beacons.FirstOrDefault(b => b.BeaconId == beaconId);
 
     public string GetRoomIdByBeaconId(string beaconId) => Beacons.FirstOrDefault(b => b.BeaconId == beaconId).RoomId;
+
+    public bool CheckBeaconRegistryWithId(string beaconId)
+    {
+        IEnumerable<Beacon> query = Beacons.Where(b => b.BeaconId == beaconId);
+        return query.Count() >= 1;
+    }
 }

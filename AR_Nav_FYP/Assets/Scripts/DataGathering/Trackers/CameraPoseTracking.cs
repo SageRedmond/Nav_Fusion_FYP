@@ -42,10 +42,10 @@ public class CameraPoseTracker : MonoBehaviour
     private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
     {
         pos = XRSpaceOffset.inverse.MultiplyPoint(pos);
-        Debug.LogAssertion(pos);
+        // Debug.LogAssertion(pos);
         Matrix4x4 m = XRSpace.localToWorldMatrix;
         pos = m.MultiplyPoint(pos);
-        Debug.LogAssertion(pos);
+        // Debug.LogAssertion(pos);
         return pos;
     }
 }

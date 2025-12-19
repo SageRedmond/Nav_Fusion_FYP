@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
 
     public string RoomId => roomId;
 
+    private XRMap m_mapComponent;
     // Grab the map id when this script is attached to an XRMap
     void OnValidate()
     {
@@ -17,6 +18,7 @@ public class Room : MonoBehaviour
         {
             roomId = gameObject.GetComponent<XRMap>().mapId.ToString();
             // gameObject.GetComponent<XRMap>().Visualization.Mesh.bounds
+            m_mapComponent = gameObject.GetComponent<XRMap>();
         }
     }
 
@@ -32,6 +34,16 @@ public class Room : MonoBehaviour
         {
             Debug.Log("Setting Room " + roomId + " to state " + state);
             gameObject.SetActive(state);
+            // gameObject.GetComponent<XRMap>().
+
+            // if (state == false)
+            // {
+            //     MapManager.RemoveMap(m_mapComponent.mapId);
+            // }
+            // else
+            // {
+            //     MapManager.LoadMap(m_mapComponent);
+            // }
         }
     }
 }
