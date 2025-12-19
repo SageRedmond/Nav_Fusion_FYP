@@ -108,20 +108,20 @@ public class BeaconSceneCompanion : MonoBehaviour
         }
     }
 
-    public void SaveTrackedImageBeacon(Transform markerPose)
+    public void SaveTrackedImageBeacon(Transform imagePose)
     {
         if (roomInfo.CurrentRoomID.ToString() == "Unknown")
         {
             return;
         }
         // Vector3 position = markerPose.position;
-        GameObject go = Instantiate(m_BeaconPrefab, markerPose.position, Quaternion.identity, m_XRSpace.transform);
+        GameObject go = Instantiate(m_BeaconPrefab, imagePose.position, Quaternion.identity, m_XRSpace.transform);
         JSONBeacon jSONBeacon = new JSONBeacon();
         jSONBeacon.beaconId = BeaconRangeTracker.ClosestBeaconId;
         jSONBeacon.roomId = roomInfo.CurrentRoomID.ToString();
-        jSONBeacon.xpos = go.transform.position.x;
-        jSONBeacon.ypos = go.transform.position.y;
-        jSONBeacon.zpos = go.transform.position.z;
+        jSONBeacon.xpos = go.transform.localPosition.x;
+        jSONBeacon.ypos = go.transform.localPosition.y;
+        jSONBeacon.zpos = go.transform.localPosition.z;
         SaveNewBeacon(jSONBeacon);
     }
 
