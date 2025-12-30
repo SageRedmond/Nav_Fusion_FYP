@@ -6,17 +6,17 @@
       "source": "git",
       "dependencies": {
         "com.unity.feature.development": "1.0.1",
-        "com.unity.xr.arcore": "5.1.0",
-        "com.unity.xr.arfoundation": "5.1.0",
-        "com.unity.xr.arkit": "5.1.0",
-        "com.unity.xr.openxr": "1.8.2",
-        "com.unity.textmeshpro": "3.0.6",
+        "com.unity.xr.arcore": "5.2.0",
+        "com.unity.xr.arfoundation": "5.2.0",
+        "com.unity.xr.arkit": "5.2.0",
+        "com.unity.xr.openxr": "1.15.0",
+        "com.unity.textmeshpro": "3.0.9",
         "com.unity.modules.ui": "1.0.0",
         "com.unity.2d.sprite": "1.0.0",
-        "com.unity.render-pipelines.universal": "14.0.9",
-        "com.unity.ai.navigation": "1.1.5"
+        "com.unity.render-pipelines.universal": "14.0.12",
+        "com.unity.ai.navigation": "1.1.7"
       },
-      "hash": "629a5859fabe17461a4b232415a0c125363e38dd"
+      "hash": "6d5659fbfa475bb6898e2d9df007573917bbd738"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

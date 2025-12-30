@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
 
     public string RoomId => roomId;
 
+    [SerializeField]
     private XRMap m_mapComponent;
     // Grab the map id when this script is attached to an XRMap
     void OnValidate()
@@ -17,7 +18,7 @@ public class Room : MonoBehaviour
         if (string.IsNullOrEmpty(roomId))
         {
             roomId = gameObject.GetComponent<XRMap>().mapId.ToString();
-            // gameObject.GetComponent<XRMap>().Visualization.Mesh.bounds
+
             m_mapComponent = gameObject.GetComponent<XRMap>();
         }
     }
@@ -26,6 +27,11 @@ public class Room : MonoBehaviour
     {
         // Register this room when scene loads
         RoomsRegistry.Instance.RegisterRoom(this);
+
+        if (m_mapComponent == null)
+        {
+            m_mapComponent = gameObject.GetComponent<XRMap>();
+        }
     }
 
     public void SetRoomActiveState(bool state)
@@ -34,19 +40,20 @@ public class Room : MonoBehaviour
         {
             Debug.Log("Setting Room " + roomId + " to state " + state);
             gameObject.SetActive(state);
-            // gameObject.GetComponent<XRMap>().
+            // m_mapComponent.re
+            // if (state == false)
+            // {
+            //     if (m_mapComponent == null)
+            //     {
+            //         Debug.Log("Map Component Does not Exists");
+            //     }
 
-            if (state == false)
-            {
-                if (MapManager.TryGetMapEntry(m_mapComponent.mapId, out MapEntry entry))
-                {
-                    MapManager.RemoveMap(m_mapComponent.mapId);
-                }
-            }
-            else
-            {
-                MapManager.LoadMap(m_mapComponent);
-            }
+            //     MapManager.RemoveMap(m_mapComponent.mapId, true, false);
+            // }
+            // else
+            // {
+            //     // MapManager.LoadMap(m_mapComponent);
+            // }
         }
     }
 }

@@ -16,6 +16,7 @@ public class SurveyModeCompanion : MonoBehaviour
     {
         surveyMode = !surveyMode;
         surveyModeUI.SetActive(surveyMode);
+        RoomsRegistry.Instance.EnableAllRooms();
     }
 
     public void SurveyInBeacon()

@@ -661,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 11737234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.335, z: 0}
+  m_LocalPosition: {x: 0, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -719,6 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 96011
   floorNumber: 2
+  m_mapComponent: {fileID: 0}
 --- !u!1 &19483354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +2891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 97972
   floorNumber: 1
+  m_mapComponent: {fileID: 0}
 --- !u!1001 &228329737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8741,6 +8743,10 @@ PrefabInstance:
       propertyPath: developerToken
       value: bfbbcea3c6db403638fd2c4da9658e252d877fe778e64415d9a0371cc8e734cc
       objectReference: {fileID: 0}
+    - target: {fileID: 4876485604010972054, guid: 2c6deb7afc7d34561941b1429c48ffaf, type: 3}
+      propertyPath: m_LoggingLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8861,6 +8867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 98494
   floorNumber: 0
+  m_mapComponent: {fileID: 0}
 --- !u!1 &793750659
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,6 +9455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 98492
   floorNumber: 0
+  m_mapComponent: {fileID: 0}
 --- !u!1001 &836504028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14509,7 +14517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156127275}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.39672813, z: -0, w: 0.91793615}
+  m_LocalRotation: {x: 0, y: 0.3967314, z: 0, w: 0.9179347}
   m_LocalPosition: {x: 5.21, y: 0.27, z: 7.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14572,6 +14580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 98493
   floorNumber: 2
+  m_mapComponent: {fileID: 0}
 --- !u!1001 &1167025812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15455,6 +15464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 96206
   floorNumber: 2
+  m_mapComponent: {fileID: 0}
 --- !u!1 &1237988832
 GameObject:
   m_ObjectHideFlags: 0
@@ -18666,6 +18676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 97957
   floorNumber: 2
+  m_mapComponent: {fileID: 0}
 --- !u!1 &1549048190
 GameObject:
   m_ObjectHideFlags: 0
@@ -23879,6 +23890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   roomId: 97734
   floorNumber: 1
+  m_mapComponent: {fileID: 0}
 --- !u!1 &2071632251
 GameObject:
   m_ObjectHideFlags: 0

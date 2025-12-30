@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-
+using Immersal.XR;
+using Immersal;
 
 public class RoomsRegistry : MonoBehaviour
 {
@@ -79,6 +80,13 @@ public class RoomsRegistry : MonoBehaviour
         }
     }
 
+    public void EnableAllRooms()
+    {
+        foreach (Room room in Rooms)
+        {
+            room.SetRoomActiveState(true);
+        }
+    }
     System.Collections.IEnumerator DisableAllRooms()
     {
         yield return null; // Wait one frame to allow rooms to register
@@ -87,5 +95,7 @@ public class RoomsRegistry : MonoBehaviour
         {
             room.SetRoomActiveState(false);
         }
+        // ImmersalSDK.Instance.RestartSdk();
+        // MapManager.RemoveAllMaps(true, false);
     }
 }

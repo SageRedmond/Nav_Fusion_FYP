@@ -22,32 +22,32 @@ namespace Immersal.Samples
         OnDevice,
         OnServer
     }
-    
+
     [RequireComponent(typeof(TMP_Dropdown))]
     public class MapListController : MonoBehaviour
     {
         [SerializeField]
-        private LocalizationMethodChoice m_LocMethodChoice = LocalizationMethodChoice.OnDevice; 
-        
+        private LocalizationMethodChoice m_LocMethodChoice = LocalizationMethodChoice.OnDevice;
+
         private List<SDKJob> m_Maps;
         private TMP_Dropdown m_Dropdown;
         private List<IJobAsync> m_Jobs = new List<IJobAsync>();
         private int m_JobLock = 0;
 
-        private MapLoadingOption m_MLO = new MapLoadingOption { DownloadVisualizationAtRuntime = true, m_SerializedDataSource = (int)MapDataSource.Download};
+        private MapLoadingOption m_MLO = new MapLoadingOption { DownloadVisualizationAtRuntime = true, m_SerializedDataSource = (int)MapDataSource.Download };
 
         void Start()
         {
             m_Dropdown = GetComponent<TMP_Dropdown>();
             m_Dropdown.ClearOptions();
-            m_Dropdown.AddOptions( new List<string>() { "Load map..." });
-            
+            m_Dropdown.AddOptions(new List<string>() { "Load map..." });
+
             m_MLO.m_SerializedDataSource = m_LocMethodChoice == LocalizationMethodChoice.OnDevice
                 ? (int)MapDataSource.Download
                 : -1;
 
             m_Maps = new List<SDKJob>();
-            
+
             Invoke("GetMaps", 0.5f);
         }
 
@@ -55,7 +55,7 @@ namespace Immersal.Samples
         {
             if (m_JobLock == 1)
                 return;
-            
+
             if (m_Jobs.Count > 0)
             {
                 m_JobLock = 1;
