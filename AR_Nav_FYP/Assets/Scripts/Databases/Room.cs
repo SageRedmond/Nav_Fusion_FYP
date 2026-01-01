@@ -12,6 +12,7 @@ public class Room : MonoBehaviour
 
     [SerializeField]
     private XRMap m_mapComponent;
+
     // Grab the map id when this script is attached to an XRMap
     void OnValidate()
     {

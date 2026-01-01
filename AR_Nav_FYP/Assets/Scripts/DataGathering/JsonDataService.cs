@@ -36,6 +36,7 @@ public class JsonDataService : iDataService
             return false;
         }
     }
+
     T iDataService.LoadData<T>(string RelativePath)
     {
         string path = Application.persistentDataPath + RelativePath;

@@ -129,12 +129,9 @@ public class DataGatheringModule : MonoBehaviour
 
     public void AddTriggeredEvent(TriggeredEvent eventName, string description)
     {
-        if (isGatheringData)
-        {
-            string name = eventName.GetName();
+        string name = eventName.GetName();
 
-            m_triggeredEvents.Add(new TriggeredEventStruct(name, description));
-        }
+        m_triggeredEvents.Add(new TriggeredEventStruct(name, description));
     }
 
     public void AddLocalisationConfidence(int quality)
@@ -246,6 +243,15 @@ public class DataGatheringModule : MonoBehaviour
     public void ResumeGatheringData()
     {
         isGatheringData = true;
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            Debug.Log("Focus Change Detected. Saving Experiment Data...");
+            SaveData();
+        }
     }
 
     #endregion

@@ -13,7 +13,7 @@ public class BeaconRangeTracker : MonoBehaviour
 
     public static UwbBeaconRangeData BeaconState { get; private set; }
     public static string ClosestBeaconId { get; private set; }
-    public static int ClosestBeaconFloorNumber { get; set; }
+    // public static int ClosestBeaconFloorNumber { get; set; }
 
     private static BeaconRangeTracker s_instance;
 
