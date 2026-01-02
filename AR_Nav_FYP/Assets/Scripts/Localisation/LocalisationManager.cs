@@ -3,7 +3,7 @@ using Immersal;
 using Immersal.XR;
 using Immersal.Samples;
 /// <summary>
-/// Controls when Immersal should be localising,
+/// Controls when and how Immersal should be localising,
 /// Based on available information.
 /// Manages Point Cloud activation for floor levels
 /// </summary>
@@ -51,6 +51,11 @@ public class LocalisationManager : MonoBehaviour
 
     public void SwitchToBeaconRoomLocalisation()
     {
+        // We don't want to swtich to Beacon-Room Localisation while in survey mode
+        if (LocalisationState.State == LocalisationType.MapBased)
+        {
+            return;
+        }
         CancelInvoke();
         localizerSettingsPanel.Pause();
         LocalisationState.SetState(LocalisationType.BeaconRoomBased);
@@ -92,6 +97,11 @@ public class LocalisationManager : MonoBehaviour
 
     public void SwitchToFloorLocalisation()
     {
+        // We don't want to swtich to Floor Localisation while in survey mode
+        if (LocalisationState.State == LocalisationType.MapBased)
+        {
+            return;
+        }
         CancelInvoke();
         localizerSettingsPanel.Pause();
         LocalisationState.SetState(LocalisationType.FloorBased);
@@ -112,7 +122,8 @@ public class LocalisationManager : MonoBehaviour
             string closestsBeaconId = BeaconRangeTracker.ClosestBeaconId;
             if (BeaconRegistry.Instance.CheckBeaconRegistryWithId(closestsBeaconId))
             {
-                int floorOfClosestBeacon = RoomsRegistry.Instance.GetFloorNumberByRoomId(BeaconRegistry.Instance.GetRoomIdByBeaconId(BeaconRangeTracker.ClosestBeaconId)); ;
+                string roomID = BeaconRegistry.Instance.GetRoomIdByBeaconId(BeaconRangeTracker.ClosestBeaconId);
+                int floorOfClosestBeacon = RoomsRegistry.Instance.GetFloorNumberByRoomId(roomID);
                 if (floorOfClosestBeacon != currentFloor)
                 {
                     currentFloor = floorOfClosestBeacon;
@@ -125,5 +136,18 @@ public class LocalisationManager : MonoBehaviour
         {
             Debug.LogError("Localisation state and monitoring do not match");
         }
+    }
+
+    /// <summary>
+    /// Localisation that is not beacon dependent, that uses the entire map.
+    /// The default Experience
+    /// </summary>
+    public void SwitchToMapLocalisation()
+    {
+        CancelInvoke();
+        localizerSettingsPanel.Pause();
+        LocalisationState.SetState(LocalisationType.MapBased);
+        localizerSettingsPanel.Resume();
+        Debug.Log("Started Map Localisation");
     }
 }

@@ -6,6 +6,9 @@ using Immersal;
 
 public class RoomsRegistry : MonoBehaviour
 {
+    [SerializeField] private Localizer immersalLocalizer;
+    [SerializeField] private ILocalizationMethod deviceLocaliser;
+
     private static RoomsRegistry instance;
     public static RoomsRegistry Instance
     {
@@ -13,7 +16,7 @@ public class RoomsRegistry : MonoBehaviour
         {
             if (instance == null)
             {
-                var go = new GameObject("RoomsDatabase");
+                var go = new GameObject("RoomsRegistry");
                 instance = go.AddComponent<RoomsRegistry>();
                 DontDestroyOnLoad(go);
             }
@@ -23,7 +26,15 @@ public class RoomsRegistry : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(DisableAllRooms());
+        if (immersalLocalizer == null)
+        {
+            immersalLocalizer = FindFirstObjectByType<Immersal.XR.Localizer>();
+        }
+        if (deviceLocaliser == null)
+        {
+            deviceLocaliser = GameObject.Find("DeviceLocalization").GetComponent<ILocalizationMethod>();
+        }
+        // StartCoroutine(DisableAllRoomsOnStartup());
     }
 
     private List<Room> Rooms = new List<Room>();
@@ -64,6 +75,11 @@ public class RoomsRegistry : MonoBehaviour
                 room.SetRoomActiveState(false);
             }
         }
+
+        // XRMap[] mapsEnabled = { GetRoomById(roomId).m_mapComponent };
+        // XRMap[] mapsDisabled = Query(r => r.RoomId != roomId).Select(s => s.m_mapComponent).ToArray();
+
+        // ConfigureLocaliserWithNewMaps(mapsEnabled, mapsDisabled);
     }
 
     public void EnableOnlyRoomsWithFloorNumber(int number)
@@ -79,6 +95,11 @@ public class RoomsRegistry : MonoBehaviour
                 room.SetRoomActiveState(false);
             }
         }
+
+        // XRMap[] mapsEnabled = Query(r => r.floorNumber == number).Select(s => s.m_mapComponent).ToArray();
+        // XRMap[] mapsDisabled = Query(r => r.floorNumber != number).Select(s => s.m_mapComponent).ToArray();
+
+        // ConfigureLocaliserWithNewMaps(mapsEnabled, mapsDisabled);
     }
 
     public void EnableAllRooms()
@@ -87,8 +108,22 @@ public class RoomsRegistry : MonoBehaviour
         {
             room.SetRoomActiveState(true);
         }
+
+        // XRMap[] mapsEnabled = GetAll().Select(s => s.m_mapComponent).ToArray();
+        // ConfigureLocaliserWithNewMaps(mapsEnabled, null);
     }
-    System.Collections.IEnumerator DisableAllRooms()
+
+    public void DisableAllRooms()
+    {
+        foreach (Room room in Rooms)
+        {
+            room.SetRoomActiveState(false);
+        }
+        // XRMap[] mapsDisabled = GetAll().Select(s => s.m_mapComponent).ToArray();
+        // ConfigureLocaliserWithNewMaps(null, mapsDisabled);
+    }
+
+    System.Collections.IEnumerator DisableAllRoomsOnStartup()
     {
         yield return null; // Wait one frame to allow rooms to register
 
@@ -96,7 +131,30 @@ public class RoomsRegistry : MonoBehaviour
         {
             room.SetRoomActiveState(false);
         }
-        // ImmersalSDK.Instance.RestartSdk();
-        // MapManager.RemoveAllMaps(true, false);
+
+        // XRMap[] mapsDisabled = GetAll().Select(s => s.m_mapComponent).ToArray();
+        // ConfigureLocaliserWithNewMaps(null, mapsDisabled);
+    }
+
+    private void ConfigureLocaliserWithNewMaps(XRMap[] mapsEnabled, XRMap[] mapsDisabled)
+    {
+        Dictionary<ILocalizationMethod, XRMap[]> enabledMaps = new Dictionary<ILocalizationMethod, XRMap[]> { { deviceLocaliser, mapsEnabled } };
+        Dictionary<ILocalizationMethod, XRMap[]> disabledMaps = new Dictionary<ILocalizationMethod, XRMap[]> { { deviceLocaliser, mapsDisabled } };
+
+        DefaultLocalizerConfiguration config = new DefaultLocalizerConfiguration
+        {
+            ConfigurationsToAdd = enabledMaps,
+            ConfigurationsToRemove = disabledMaps,
+            StopRunningTasks = true
+        };
+
+        try
+        {
+            immersalLocalizer.ConfigureLocalizer(config);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 }

@@ -7,4 +7,18 @@ public class DatabaseUser : MonoBehaviour
     {
         RoomsRegistry.Instance.EnableOnlyRoomsWithFloorNumber(level);
     }
+
+    public void roomIDTest()
+    {
+        RoomsRegistry.Instance.EnableOnlyRoomWithID("96011");
+    }
+
+    public void AllRoomDisabledTest()
+    {
+        RoomsRegistry.Instance.DisableAllRooms();
+    }
+    public void AllRoomEnabledTest()
+    {
+        RoomsRegistry.Instance.EnableAllRooms();
+    }
 }

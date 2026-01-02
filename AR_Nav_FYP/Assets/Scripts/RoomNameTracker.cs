@@ -49,7 +49,7 @@ public class RoomNameTracker : MonoBehaviour
 
         CurrentRoomName = roomName;
         CurrentRoomID = mapIDs[0];
-        Debug.Log(CurrentRoomName);
+        // Debug.Log(CurrentRoomName);
     }
 
     public void AddRoomIDs()

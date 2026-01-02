@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using Immersal.XR;
+using System.Threading.Tasks;
 
 [RequireComponent(typeof(XRMap))]
 public class Room : MonoBehaviour
@@ -11,7 +12,7 @@ public class Room : MonoBehaviour
     public string RoomId => roomId;
 
     [SerializeField]
-    private XRMap m_mapComponent;
+    public XRMap m_mapComponent;
 
     // Grab the map id when this script is attached to an XRMap
     void OnValidate()
@@ -42,19 +43,21 @@ public class Room : MonoBehaviour
             Debug.Log("Setting Room " + roomId + " to state " + state);
             gameObject.SetActive(state);
             // m_mapComponent.re
-            // if (state == false)
-            // {
-            //     if (m_mapComponent == null)
-            //     {
-            //         Debug.Log("Map Component Does not Exists");
-            //     }
+            if (state == false)
+            {
+                if (m_mapComponent == null)
+                {
+                    Debug.Log("Map Component Does not Exists ");
+                }
 
-            //     MapManager.RemoveMap(m_mapComponent.mapId, true, false);
-            // }
-            // else
-            // {
-            //     // MapManager.LoadMap(m_mapComponent);
-            // }
+                MapManager.RemoveMap(m_mapComponent.mapId, true, false);
+            }
+            else
+            {
+                ISceneUpdateable sceneUpdateable = m_mapComponent.gameObject.transform.GetComponentInParent<ISceneUpdateable>(true);
+                // MapManager.LoadMap(m_mapComponent);
+                MapManager.RegisterAndLoadMap(m_mapComponent, sceneUpdateable);
+            }
         }
     }
 }

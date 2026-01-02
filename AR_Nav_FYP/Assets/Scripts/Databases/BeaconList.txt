@@ -1,1 +1,18 @@
-{"beacons":[{"beaconId":"f8cf8ff90aaf0426be9d8b8657d99038","roomId":"98493","xpos":2.2185626,"ypos":1.141192,"zpos":2.11922884},{"beaconId":"f8cf8ff90aaf0426be9d8b8657d99038","roomId":"98493","xpos":2.15749764,"ypos":1.15954554,"zpos":2.09930372}]}
+{
+  "beacons": [
+    {
+      "beaconId": "f8cf8ff90aaf0426be9d8b8657d99038",
+      "roomId": "96011",
+      "xpos": 2.2185626,
+      "ypos": 1.141192,
+      "zpos": 2.11922884
+    },
+    {
+      "beaconId": "450ed09104d134339be51d3cd5f8ef3c",
+      "roomId": "98493",
+      "xpos": 4.811176,
+      "ypos": 1.03109658,
+      "zpos": 2.25668573
+    }
+  ]
+}

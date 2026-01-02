@@ -76,7 +76,7 @@ class EstimoteUWBManagerExample: NSObject, ObservableObject {
   
   func connectToBeaconsWithHighRSSI(){
     for (index, beacon) in discoveredBeacons.enumerated() {
-        if beacon.rssi >= -70.0 {
+        if beacon.rssi >= -90.0 {
           uwbManager?.connect(to: beacon.id)
           discoveredBeacons.remove(at: index)
         }
