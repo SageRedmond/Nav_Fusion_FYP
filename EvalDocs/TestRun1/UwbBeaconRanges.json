@@ -1,0 +1,1767 @@
+[
+    {
+        "Range": 3.54296565,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:45.7734340Z"
+    },
+    {
+        "Range": 3.54296565,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:45.7734720Z"
+    },
+    {
+        "Range": 3.54296565,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:45.7734960Z"
+    },
+    {
+        "Range": 3.54296565,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.0780350Z"
+    },
+    {
+        "Range": 3.37569857,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.0782460Z"
+    },
+    {
+        "Range": 3.37569857,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.0782930Z"
+    },
+    {
+        "Range": 3.14672232,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.3960260Z"
+    },
+    {
+        "Range": 3.14672232,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.3963680Z"
+    },
+    {
+        "Range": 3.14672232,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.3963990Z"
+    },
+    {
+        "Range": 2.95673323,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.6967440Z"
+    },
+    {
+        "Range": 2.95673323,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.6968080Z"
+    },
+    {
+        "Range": 2.95673323,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:46.6968470Z"
+    },
+    {
+        "Range": 2.78011942,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.0103230Z"
+    },
+    {
+        "Range": 2.78011942,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.0103770Z"
+    },
+    {
+        "Range": 2.78011942,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.0104130Z"
+    },
+    {
+        "Range": 2.78011942,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.3147750Z"
+    },
+    {
+        "Range": 2.678659,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.3152540Z"
+    },
+    {
+        "Range": 2.678659,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.3153100Z"
+    },
+    {
+        "Range": 2.63353086,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.6310890Z"
+    },
+    {
+        "Range": 2.63353086,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.6311130Z"
+    },
+    {
+        "Range": 2.63353086,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.6311930Z"
+    },
+    {
+        "Range": 7.08690834,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:47.9072970Z"
+    },
+    {
+        "Range": 7.08690834,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:47.9073680Z"
+    },
+    {
+        "Range": 7.08690834,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:47.9074050Z"
+    },
+    {
+        "Range": 7.08690834,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:47.9074400Z"
+    },
+    {
+        "Range": 2.61768413,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.9452190Z"
+    },
+    {
+        "Range": 2.61768413,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.9453460Z"
+    },
+    {
+        "Range": 2.61768413,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:47.9453900Z"
+    },
+    {
+        "Range": 8.03705,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.2305660Z"
+    },
+    {
+        "Range": 8.03705,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.2306350Z"
+    },
+    {
+        "Range": 8.03705,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.2306730Z"
+    },
+    {
+        "Range": 8.03705,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.2310440Z"
+    },
+    {
+        "Range": 2.67105961,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.2546080Z"
+    },
+    {
+        "Range": 2.67105961,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.2546720Z"
+    },
+    {
+        "Range": 2.67105961,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.2547080Z"
+    },
+    {
+        "Range": 8.152321,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.5577630Z"
+    },
+    {
+        "Range": 8.152321,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.5578210Z"
+    },
+    {
+        "Range": 8.152321,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.5578570Z"
+    },
+    {
+        "Range": 8.152321,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.5582390Z"
+    },
+    {
+        "Range": 2.74184442,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.5634460Z"
+    },
+    {
+        "Range": 2.74184442,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.5634920Z"
+    },
+    {
+        "Range": 2.74184442,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:48.5635280Z"
+    },
+    {
+        "Range": 8.106947,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.8662980Z"
+    },
+    {
+        "Range": 8.106947,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.8663540Z"
+    },
+    {
+        "Range": 8.106947,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.8663900Z"
+    },
+    {
+        "Range": 8.106947,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:48.8664250Z"
+    },
+    {
+        "Range": 2.97209525,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.1475480Z"
+    },
+    {
+        "Range": 2.97209525,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.1475990Z"
+    },
+    {
+        "Range": 2.97209525,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.1476350Z"
+    },
+    {
+        "Range": 7.94769573,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.1822510Z"
+    },
+    {
+        "Range": 7.94769573,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.1823030Z"
+    },
+    {
+        "Range": 7.94769573,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.1823390Z"
+    },
+    {
+        "Range": 7.94769573,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.1824940Z"
+    },
+    {
+        "Range": 7.82710075,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.4987330Z"
+    },
+    {
+        "Range": 7.82710075,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.4989620Z"
+    },
+    {
+        "Range": 7.82710075,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.4989800Z"
+    },
+    {
+        "Range": 7.82710075,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.4989940Z"
+    },
+    {
+        "Range": 2.97317743,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.5102260Z"
+    },
+    {
+        "Range": 2.97317743,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.5102570Z"
+    },
+    {
+        "Range": 2.97317743,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.5102700Z"
+    },
+    {
+        "Range": 7.76552963,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.8154380Z"
+    },
+    {
+        "Range": 7.76552963,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.8154800Z"
+    },
+    {
+        "Range": 7.76552963,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.8155060Z"
+    },
+    {
+        "Range": 7.76552963,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:49.8155320Z"
+    },
+    {
+        "Range": 3.00225234,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.8155610Z"
+    },
+    {
+        "Range": 3.00225234,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.8155950Z"
+    },
+    {
+        "Range": 3.00225234,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:49.8156200Z"
+    },
+    {
+        "Range": 7.58798838,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.1323650Z"
+    },
+    {
+        "Range": 7.58798838,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.1324070Z"
+    },
+    {
+        "Range": 7.58798838,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.1324370Z"
+    },
+    {
+        "Range": 7.58798838,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.1324630Z"
+    },
+    {
+        "Range": 3.065537,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.2215240Z"
+    },
+    {
+        "Range": 3.065537,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.2215830Z"
+    },
+    {
+        "Range": 3.065537,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.2216330Z"
+    },
+    {
+        "Range": 7.3676815,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.4351600Z"
+    },
+    {
+        "Range": 7.3676815,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.4352170Z"
+    },
+    {
+        "Range": 7.3676815,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.4352590Z"
+    },
+    {
+        "Range": 7.3676815,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.4352950Z"
+    },
+    {
+        "Range": 3.16111946,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.5273880Z"
+    },
+    {
+        "Range": 3.16111946,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.5274730Z"
+    },
+    {
+        "Range": 3.16111946,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.5275140Z"
+    },
+    {
+        "Range": 7.1129303,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.7473690Z"
+    },
+    {
+        "Range": 7.1129303,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.7474310Z"
+    },
+    {
+        "Range": 7.1129303,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.7474680Z"
+    },
+    {
+        "Range": 7.1129303,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:50.7475030Z"
+    },
+    {
+        "Range": 3.3217926,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.8310210Z"
+    },
+    {
+        "Range": 3.3217926,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.8311080Z"
+    },
+    {
+        "Range": 3.3217926,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:50.8311550Z"
+    },
+    {
+        "Range": 6.861276,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.0563230Z"
+    },
+    {
+        "Range": 6.861276,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.0564100Z"
+    },
+    {
+        "Range": 6.861276,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.0564500Z"
+    },
+    {
+        "Range": 6.861276,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.0564890Z"
+    },
+    {
+        "Range": 3.457714,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:51.1393970Z"
+    },
+    {
+        "Range": 3.457714,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:51.1394450Z"
+    },
+    {
+        "Range": 3.457714,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:51.1394770Z"
+    },
+    {
+        "Range": 6.657559,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.3706870Z"
+    },
+    {
+        "Range": 6.657559,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.3707430Z"
+    },
+    {
+        "Range": 6.657559,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.3707790Z"
+    },
+    {
+        "Range": 6.657559,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.3708190Z"
+    },
+    {
+        "Range": 6.290685,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.6735280Z"
+    },
+    {
+        "Range": 6.290685,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.6737830Z"
+    },
+    {
+        "Range": 6.290685,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.6738000Z"
+    },
+    {
+        "Range": 6.290685,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.6738130Z"
+    },
+    {
+        "Range": 6.04295874,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.9877610Z"
+    },
+    {
+        "Range": 6.04295874,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.9878140Z"
+    },
+    {
+        "Range": 6.04295874,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.9878490Z"
+    },
+    {
+        "Range": 6.04295874,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:51.9878840Z"
+    },
+    {
+        "Range": 5.54977036,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.4435630Z"
+    },
+    {
+        "Range": 5.54977036,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.4440640Z"
+    },
+    {
+        "Range": 5.54977036,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.4441180Z"
+    },
+    {
+        "Range": 5.54977036,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.4441570Z"
+    },
+    {
+        "Range": 8.562075,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:52.7395390Z"
+    },
+    {
+        "Range": 8.562075,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:52.7395920Z"
+    },
+    {
+        "Range": 8.562075,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:52.7396180Z"
+    },
+    {
+        "Range": 5.27401257,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.7513150Z"
+    },
+    {
+        "Range": 5.27401257,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.7513620Z"
+    },
+    {
+        "Range": 5.27401257,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.7513960Z"
+    },
+    {
+        "Range": 5.27401257,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:52.7514220Z"
+    },
+    {
+        "Range": 7.37303638,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.0461030Z"
+    },
+    {
+        "Range": 7.37303638,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.0461700Z"
+    },
+    {
+        "Range": 7.37303638,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.0462080Z"
+    },
+    {
+        "Range": 5.10839272,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.0686980Z"
+    },
+    {
+        "Range": 5.10839272,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.0687720Z"
+    },
+    {
+        "Range": 5.10839272,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.0688170Z"
+    },
+    {
+        "Range": 5.10839272,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.0688520Z"
+    },
+    {
+        "Range": 9.906235,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.3496140Z"
+    },
+    {
+        "Range": 9.906235,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.3498190Z"
+    },
+    {
+        "Range": 9.906235,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.3498590Z"
+    },
+    {
+        "Range": 4.73280239,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.3859620Z"
+    },
+    {
+        "Range": 4.73280239,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.3860360Z"
+    },
+    {
+        "Range": 4.73280239,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.3860770Z"
+    },
+    {
+        "Range": 4.73280239,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.3861120Z"
+    },
+    {
+        "Range": 9.906235,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.6608980Z"
+    },
+    {
+        "Range": 10.8154,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.6612750Z"
+    },
+    {
+        "Range": 10.8154,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.6612930Z"
+    },
+    {
+        "Range": 4.379632,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.7030890Z"
+    },
+    {
+        "Range": 4.379632,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.7031330Z"
+    },
+    {
+        "Range": 4.379632,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.7031510Z"
+    },
+    {
+        "Range": 4.379632,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:53.7054150Z"
+    },
+    {
+        "Range": 10.9979124,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.9702990Z"
+    },
+    {
+        "Range": 10.9979124,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.9703550Z"
+    },
+    {
+        "Range": 10.9979124,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:53.9705060Z"
+    },
+    {
+        "Range": 3.96288586,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.0646220Z"
+    },
+    {
+        "Range": 3.96288586,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.0648760Z"
+    },
+    {
+        "Range": 3.96288586,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.0649190Z"
+    },
+    {
+        "Range": 3.96288586,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.0649580Z"
+    },
+    {
+        "Range": 10.3431473,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.2928120Z"
+    },
+    {
+        "Range": 10.3431473,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.2928720Z"
+    },
+    {
+        "Range": 10.3431473,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.2929080Z"
+    },
+    {
+        "Range": 3.72894716,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.3675540Z"
+    },
+    {
+        "Range": 3.72894716,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.3676000Z"
+    },
+    {
+        "Range": 3.72894716,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.3676270Z"
+    },
+    {
+        "Range": 3.72894716,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.3676530Z"
+    },
+    {
+        "Range": 8.965237,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.5964470Z"
+    },
+    {
+        "Range": 8.965237,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.5965260Z"
+    },
+    {
+        "Range": 8.965237,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.5965650Z"
+    },
+    {
+        "Range": 3.44681215,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.6850110Z"
+    },
+    {
+        "Range": 3.44681215,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.6851010Z"
+    },
+    {
+        "Range": 3.44681215,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.6851430Z"
+    },
+    {
+        "Range": 3.44681215,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.6851840Z"
+    },
+    {
+        "Range": 7.852417,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.9087330Z"
+    },
+    {
+        "Range": 7.852417,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.9087760Z"
+    },
+    {
+        "Range": 7.852417,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:54.9088020Z"
+    },
+    {
+        "Range": 3.10887718,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.9931990Z"
+    },
+    {
+        "Range": 3.10887718,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.9932550Z"
+    },
+    {
+        "Range": 3.10887718,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.9932910Z"
+    },
+    {
+        "Range": 3.10887718,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:54.9933260Z"
+    },
+    {
+        "Range": 2.82177544,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.3105740Z"
+    },
+    {
+        "Range": 2.82177544,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.3106330Z"
+    },
+    {
+        "Range": 2.82177544,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.3106710Z"
+    },
+    {
+        "Range": 2.82177544,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.3108440Z"
+    },
+    {
+        "Range": 7.852417,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:55.4479150Z"
+    },
+    {
+        "Range": 10.3866549,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:55.4481010Z"
+    },
+    {
+        "Range": 10.3866549,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:21:55.4481300Z"
+    },
+    {
+        "Range": 2.63575387,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.6215110Z"
+    },
+    {
+        "Range": 2.63575387,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.6215400Z"
+    },
+    {
+        "Range": 2.63575387,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.6215520Z"
+    },
+    {
+        "Range": 2.63575387,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.6215640Z"
+    },
+    {
+        "Range": 2.2487967,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.9284640Z"
+    },
+    {
+        "Range": 2.2487967,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.9287110Z"
+    },
+    {
+        "Range": 2.2487967,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.9287610Z"
+    },
+    {
+        "Range": 2.2487967,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:55.9287990Z"
+    },
+    {
+        "Range": 2.038275,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.2381100Z"
+    },
+    {
+        "Range": 2.038275,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.2381860Z"
+    },
+    {
+        "Range": 2.038275,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.2382270Z"
+    },
+    {
+        "Range": 2.038275,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.2382730Z"
+    },
+    {
+        "Range": 1.58248019,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.6567100Z"
+    },
+    {
+        "Range": 1.58248019,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.6569700Z"
+    },
+    {
+        "Range": 1.58248019,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.6570210Z"
+    },
+    {
+        "Range": 1.58248019,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.6570680Z"
+    },
+    {
+        "Range": 1.35571408,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.9655410Z"
+    },
+    {
+        "Range": 1.35571408,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.9655970Z"
+    },
+    {
+        "Range": 1.35571408,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.9656330Z"
+    },
+    {
+        "Range": 1.35571408,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:56.9656680Z"
+    },
+    {
+        "Range": 1.15316749,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.2820890Z"
+    },
+    {
+        "Range": 1.15316749,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.2821480Z"
+    },
+    {
+        "Range": 1.15316749,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.2821890Z"
+    },
+    {
+        "Range": 1.15316749,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.2822240Z"
+    },
+    {
+        "Range": 1.15316749,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.5853060Z"
+    },
+    {
+        "Range": 0.9121383,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.5854300Z"
+    },
+    {
+        "Range": 0.9121383,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.5854440Z"
+    },
+    {
+        "Range": 0.9121383,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.5854560Z"
+    },
+    {
+        "Range": 0.9332149,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.8994940Z"
+    },
+    {
+        "Range": 0.9332149,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.8995350Z"
+    },
+    {
+        "Range": 0.9332149,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.8995610Z"
+    },
+    {
+        "Range": 0.9332149,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:57.8995870Z"
+    },
+    {
+        "Range": 1.147294,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.1994360Z"
+    },
+    {
+        "Range": 1.147294,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.1994820Z"
+    },
+    {
+        "Range": 1.147294,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.1995130Z"
+    },
+    {
+        "Range": 1.147294,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.1995390Z"
+    },
+    {
+        "Range": 1.17269468,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.5043840Z"
+    },
+    {
+        "Range": 1.17269468,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.5044690Z"
+    },
+    {
+        "Range": 1.17269468,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.5045080Z"
+    },
+    {
+        "Range": 1.17269468,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.5045490Z"
+    },
+    {
+        "Range": 1.35239577,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.8196620Z"
+    },
+    {
+        "Range": 1.35239577,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.8197150Z"
+    },
+    {
+        "Range": 1.35239577,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.8197510Z"
+    },
+    {
+        "Range": 1.35239577,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:58.8197950Z"
+    },
+    {
+        "Range": 1.35239577,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.1212440Z"
+    },
+    {
+        "Range": 1.780477,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.1217450Z"
+    },
+    {
+        "Range": 1.780477,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.1217870Z"
+    },
+    {
+        "Range": 1.780477,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.1218320Z"
+    },
+    {
+        "Range": 2.04299855,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.4318180Z"
+    },
+    {
+        "Range": 2.04299855,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.4322940Z"
+    },
+    {
+        "Range": 2.04299855,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.4323530Z"
+    },
+    {
+        "Range": 2.04299855,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:21:59.4324000Z"
+    },
+    {
+        "Range": 11.44408,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:02.9997950Z"
+    },
+    {
+        "Range": 11.44408,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:02.9998590Z"
+    },
+    {
+        "Range": 11.44408,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:02.9998990Z"
+    },
+    {
+        "Range": 11.9571037,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:03.7271640Z"
+    },
+    {
+        "Range": 11.9571037,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:03.7271930Z"
+    },
+    {
+        "Range": 11.9571037,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:03.7272080Z"
+    },
+    {
+        "Range": 5.679003,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:09.2915680Z"
+    },
+    {
+        "Range": 5.679003,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:09.2916210Z"
+    },
+    {
+        "Range": 5.679003,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:09.2916470Z"
+    },
+    {
+        "Range": 5.679003,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:09.2916720Z"
+    },
+    {
+        "Range": 6.44159126,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.1025850Z"
+    },
+    {
+        "Range": 6.44159126,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.1026440Z"
+    },
+    {
+        "Range": 6.44159126,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.1026790Z"
+    },
+    {
+        "Range": 6.44159126,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.1027140Z"
+    },
+    {
+        "Range": 6.6934514,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.4068990Z"
+    },
+    {
+        "Range": 6.6934514,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.4069650Z"
+    },
+    {
+        "Range": 6.6934514,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.4070010Z"
+    },
+    {
+        "Range": 6.6934514,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.4070390Z"
+    },
+    {
+        "Range": 6.542156,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.7535050Z"
+    },
+    {
+        "Range": 6.542156,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.7537640Z"
+    },
+    {
+        "Range": 6.542156,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.7538190Z"
+    },
+    {
+        "Range": 6.542156,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:10.7538590Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:11.2353110Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:11.2353750Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:11.2354110Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:11.2358320Z"
+    },
+    {
+        "Range": 11.9571037,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:15.6037910Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:15.6038950Z"
+    },
+    {
+        "Range": 13.1577654,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.3232000Z"
+    },
+    {
+        "Range": 13.1577654,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.3232540Z"
+    },
+    {
+        "Range": 13.1577654,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.3232900Z"
+    },
+    {
+        "Range": 13.1577654,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.3233440Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.6813110Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.6813730Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.6814090Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:16.6814440Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:23.8017120Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:23.8018390Z"
+    },
+    {
+        "Range": 13.3007641,
+        "BeaconID": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "TimeStamp": "2026-01-04T15:22:26.1285310Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:26.1285980Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:28.3047010Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:32.2287540Z"
+    },
+    {
+        "Range": 4.929697,
+        "BeaconID": "d04567bc3557ff70ca197e3c8c236119",
+        "TimeStamp": "2026-01-04T15:22:32.7255610Z"
+    },
+    {
+        "Range": 6.27243328,
+        "BeaconID": "b0be314cc25c4914d407e26063d8912b",
+        "TimeStamp": "2026-01-04T15:22:32.7256300Z"
+    },
+    {
+        "Range": 4.929697,
+        "BeaconID": "d04567bc3557ff70ca197e3c8c236119",
+        "TimeStamp": "2026-01-04T15:22:33.0279210Z"
+    },
+    {
+        "Range": 6.76663733,
+        "BeaconID": "d04567bc3557ff70ca197e3c8c236119",
+        "TimeStamp": "2026-01-04T15:22:33.3479200Z"
+    },
+    {
+        "Range": 6.76663733,
+        "BeaconID": "d04567bc3557ff70ca197e3c8c236119",
+        "TimeStamp": "2026-01-04T15:22:33.7264240Z"
+    },
+    {
+        "Range": 6.76663733,
+        "BeaconID": "d04567bc3557ff70ca197e3c8c236119",
+        "TimeStamp": "2026-01-04T15:22:40.0474870Z"
+    },
+    {
+        "Range": 1.93234229,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:40.0475170Z"
+    },
+    {
+        "Range": 2.0736835,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:41.4256080Z"
+    },
+    {
+        "Range": 1.86129713,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:41.6720170Z"
+    },
+    {
+        "Range": 1.86129713,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:41.9764900Z"
+    },
+    {
+        "Range": 1.36058283,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:42.3916390Z"
+    },
+    {
+        "Range": 1.35692811,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:42.6998570Z"
+    },
+    {
+        "Range": 1.85822368,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:43.6477090Z"
+    },
+    {
+        "Range": 1.65039051,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:43.9539950Z"
+    },
+    {
+        "Range": 1.4159596,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:44.2703060Z"
+    },
+    {
+        "Range": 1.13325751,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:44.7301760Z"
+    },
+    {
+        "Range": 0.8295683,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:45.0331490Z"
+    },
+    {
+        "Range": 0.6622843,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:45.3469240Z"
+    },
+    {
+        "Range": 0.534243,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:45.6573810Z"
+    },
+    {
+        "Range": 0.457427174,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:45.9606700Z"
+    },
+    {
+        "Range": 0.483908147,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:46.3474040Z"
+    },
+    {
+        "Range": 0.51031965,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:46.6546960Z"
+    },
+    {
+        "Range": 0.51031965,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:46.9708120Z"
+    },
+    {
+        "Range": 1.16867256,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:47.2850580Z"
+    },
+    {
+        "Range": 1.16867256,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:47.5877570Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:48.1504700Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:22:54.7778360Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:23:01.0567930Z"
+    },
+    {
+        "Range": 0.5846552,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:01.0568720Z"
+    },
+    {
+        "Range": 0.745362,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:01.3642180Z"
+    },
+    {
+        "Range": 0.8458279,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:01.6650490Z"
+    },
+    {
+        "Range": 0.8458279,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:01.9700560Z"
+    },
+    {
+        "Range": 0.93493396,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:02.2821110Z"
+    },
+    {
+        "Range": 0.93493396,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:02.5878440Z"
+    },
+    {
+        "Range": 1.026077,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:02.8975050Z"
+    },
+    {
+        "Range": 1.02867413,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:03.2059960Z"
+    },
+    {
+        "Range": 1.02867413,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:03.5232630Z"
+    },
+    {
+        "Range": 0.966436744,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:03.8365260Z"
+    },
+    {
+        "Range": 1.16040838,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:04.6210660Z"
+    },
+    {
+        "Range": 1.32436669,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:04.9341490Z"
+    },
+    {
+        "Range": 4.1580615,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:05.1619110Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:23:05.1619700Z"
+    },
+    {
+        "Range": 1.32436669,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:05.1620060Z"
+    },
+    {
+        "Range": 1.49883747,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:05.2405830Z"
+    },
+    {
+        "Range": 1.49883747,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:05.2632800Z"
+    },
+    {
+        "Range": 5.283554,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:05.4693030Z"
+    },
+    {
+        "Range": 5.40819931,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:05.7915110Z"
+    },
+    {
+        "Range": 2.12471175,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.0060700Z"
+    },
+    {
+        "Range": 2.12471175,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.0060950Z"
+    },
+    {
+        "Range": 5.40819931,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:06.0949460Z"
+    },
+    {
+        "Range": 4.79218054,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:06.4009840Z"
+    },
+    {
+        "Range": 2.55506587,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.4018700Z"
+    },
+    {
+        "Range": 2.55506587,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.4019180Z"
+    },
+    {
+        "Range": 4.79218054,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:06.7129530Z"
+    },
+    {
+        "Range": 3.093179,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.7994290Z"
+    },
+    {
+        "Range": 3.093179,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:06.7994860Z"
+    },
+    {
+        "Range": 4.460402,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:07.0258200Z"
+    },
+    {
+        "Range": 3.29301643,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:07.2019260Z"
+    },
+    {
+        "Range": 3.29301643,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:07.2020030Z"
+    },
+    {
+        "Range": 4.064973,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:07.3382880Z"
+    },
+    {
+        "Range": 4.064973,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:07.6482680Z"
+    },
+    {
+        "Range": 3.79050875,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:07.9602780Z"
+    },
+    {
+        "Range": 2.63047886,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:09.8708460Z"
+    },
+    {
+        "Range": 2.25204086,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:10.1789080Z"
+    },
+    {
+        "Range": 2.25204086,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.0906250Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:23:12.0908300Z"
+    },
+    {
+        "Range": 3.29301643,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:12.0908510Z"
+    },
+    {
+        "Range": 2.25204086,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.1316010Z"
+    },
+    {
+        "Range": 1.42626262,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.1909130Z"
+    },
+    {
+        "Range": 1.11788106,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.4388260Z"
+    },
+    {
+        "Range": 1.11788106,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.4388790Z"
+    },
+    {
+        "Range": 0.9949377,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.7564180Z"
+    },
+    {
+        "Range": 0.9949377,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:12.7564940Z"
+    },
+    {
+        "Range": 0.9949377,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:16.8818120Z"
+    },
+    {
+        "Range": 1.64209342,
+        "BeaconID": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "TimeStamp": "2026-01-04T15:23:16.8821320Z"
+    },
+    {
+        "Range": 3.29301643,
+        "BeaconID": "450ed09104d134339be51d3cd5f8ef3c",
+        "TimeStamp": "2026-01-04T15:23:16.8821830Z"
+    },
+    {
+        "Range": 2.62388134,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:16.9882730Z"
+    },
+    {
+        "Range": 2.62388134,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:16.9883390Z"
+    },
+    {
+        "Range": 2.62388134,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:16.9883760Z"
+    },
+    {
+        "Range": 3.05359554,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.2990510Z"
+    },
+    {
+        "Range": 3.05359554,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.2991050Z"
+    },
+    {
+        "Range": 3.05359554,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.2991450Z"
+    },
+    {
+        "Range": 3.17243671,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.6145460Z"
+    },
+    {
+        "Range": 3.17243671,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.6145870Z"
+    },
+    {
+        "Range": 3.17243671,
+        "BeaconID": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "TimeStamp": "2026-01-04T15:23:17.6146130Z"
+    }
+]

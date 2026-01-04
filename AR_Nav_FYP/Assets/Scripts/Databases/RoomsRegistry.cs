@@ -6,6 +6,7 @@ using Immersal;
 
 public class RoomsRegistry : MonoBehaviour
 {
+    [SerializeField] private ImmersalSDK m_sdk;
     [SerializeField] private Localizer immersalLocalizer;
     [SerializeField] private ILocalizationMethod deviceLocaliser;
 
@@ -34,7 +35,10 @@ public class RoomsRegistry : MonoBehaviour
         {
             deviceLocaliser = GameObject.Find("DeviceLocalization").GetComponent<ILocalizationMethod>();
         }
+        m_sdk = ImmersalSDK.Instance;
+
         // StartCoroutine(DisableAllRoomsOnStartup());
+        m_sdk.OnInitializationComplete.AddListener(DisableAllRooms);
     }
 
     private List<Room> Rooms = new List<Room>();
@@ -126,6 +130,8 @@ public class RoomsRegistry : MonoBehaviour
     System.Collections.IEnumerator DisableAllRoomsOnStartup()
     {
         yield return null; // Wait one frame to allow rooms to register
+
+        yield return null; // Wait one more frame to let maps register with immersal
 
         foreach (Room room in Rooms)
         {

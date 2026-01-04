@@ -46,8 +46,10 @@ public class LocalisationManager : MonoBehaviour
 
         // Don't start localising until a beacon has been found and the room has been set active
         // localizerSettingsPanel.Pause();
-        StartBeaconRoomMonitoring();
+        // StartBeaconRoomMonitoring();
+        ImmersalSDK.Instance.OnInitializationComplete.AddListener(StartBeaconRoomMonitoring);
     }
+
 
     public void SwitchToBeaconRoomLocalisation()
     {

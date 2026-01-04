@@ -35,8 +35,19 @@ public class BeaconRangeTracker : MonoBehaviour
         {
             m_dataGatheringModule = FindFirstObjectByType<DataGatheringModule>();
         }
+
+        // Once every 5 seconds, reset the closest beacon value
+        InvokeRepeating(nameof(AssignClosestBeacon), 1.0f, 5.0f);
     }
 
+    // Closest beacon algorithm
+    void AssignClosestBeacon()
+    {
+        ClosestBeaconId = CurrentClosestBeaconId;
+
+        CurrentClosestDistance = 100.0f;
+        CurrentClosestBeaconId = "";
+    }
     // Should match BeaconRangeCallback typedef in Assets/Plugins/iOS/UwbBeaconRange.h
     private delegate void BeaconRangeCallback(UwbBeaconRangeData newRangeData);
 
@@ -63,7 +74,6 @@ public class BeaconRangeTracker : MonoBehaviour
             {
                 // Debug.Log("Setting Closest Beacon: " + CurrentClosestBeaconId);
                 ClosestBeaconId = CurrentClosestBeaconId;
-                // ClosestBeaconFloorNumber = RoomsRegistry.Instance.GetFloorNumberByRoomId(BeaconRegistry.Instance.GetRoomIdByBeaconId(ClosestBeaconId));
 
                 CurrentClosestDistance = 100.0f;
                 CurrentClosestBeaconId = "";
