@@ -33,21 +33,27 @@ public class NavController : MonoBehaviour
     [HideInInspector]
     public List<Vector3> corners;
 
-    private void Start() {
+    private void Start()
+    {
         InitializeNavManager();
         CalculatedPath = new NavMeshPath();
+        Debug.Log(m_XRSpace.InitialPose);
     }
 
-    private void Update() {
-        if(!AtDestination){
+    private void Update()
+    {
+        if (!AtDestination)
+        {
             Traveling.Invoke();
-            if (managerInitialized && TargetPosition != Vector3.zero) {
+            if (managerInitialized && TargetPosition != Vector3.zero)
+            {
                 MakePath();
             }
         }
     }
 
-    private void MakePath() {
+    private void MakePath()
+    {
 
         //List<Vector3> corners;
 
@@ -60,7 +66,8 @@ public class NavController : MonoBehaviour
         Vector3 delta = targetPosition - startPosition;
         float distanceToTarget = new Vector3(delta.x, delta.y, delta.z).magnitude;
 
-        if (distanceToTarget < ArrivedDistanceThreshold) {
+        if (distanceToTarget < ArrivedDistanceThreshold)
+        {
             Debug.Log("Arrived");
             AtDestination = true;
             atDestination.Invoke();
@@ -78,14 +85,17 @@ public class NavController : MonoBehaviour
         //}
     }
 
-    private List<Vector3> FindPathNavMesh(Vector3 startPosition, Vector3 targetPosition) {
+    private List<Vector3> FindPathNavMesh(Vector3 startPosition, Vector3 targetPosition)
+    {
         NavMeshPath path = new NavMeshPath();
         List<Vector3> collapsedCorners = new List<Vector3>();
 
-        if (NavMesh.CalculatePath(startPosition, targetPosition, NavMesh.AllAreas, path)) {
+        if (NavMesh.CalculatePath(startPosition, targetPosition, NavMesh.AllAreas, path))
+        {
             List<Vector3> corners = new List<Vector3>(path.corners);
 
-            for (int i = 0; i < corners.Count; i++) {
+            for (int i = 0; i < corners.Count; i++)
+            {
                 //corners[i] = corners[i] + new Vector3(0f, m_heightOffset, 0f);
                 corners[i] = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, corners[i]);
             }
@@ -110,22 +120,28 @@ public class NavController : MonoBehaviour
         return collapsedCorners;
     }
 
-    public Vector3 nextPathPointVector() {
+    public Vector3 nextPathPointVector()
+    {
         //return CalculatedPath.corners[0];
-        try {
+        try
+        {
             return corners[1];
         }
-        catch (System.IndexOutOfRangeException) {
+        catch (System.IndexOutOfRangeException)
+        {
             Debug.Log("Out of Bounds");
             return Vector3.zero;
         }
     }
 
-    private void InitializeNavManager() {
-        if (m_XRSpace == null) {
+    private void InitializeNavManager()
+    {
+        if (m_XRSpace == null)
+        {
             m_XRSpace = FindObjectOfType<XRSpace>();
 
-            if (m_XRSpace == null) {
+            if (m_XRSpace == null)
+            {
                 Debug.LogWarning("NavigationManager: No XR Space found in scene, ensure one exists.");
                 return;
             }
@@ -136,26 +152,30 @@ public class NavController : MonoBehaviour
         managerInitialized = true;
     }
 
-    private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos) {
+    private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
+    {
         Matrix4x4 m = XRSpace.worldToLocalMatrix;
         pos = m.MultiplyPoint(pos);
         pos = XRSpaceOffset.MultiplyPoint(pos);
         return pos;
     }
 
-    private Vector3 XRSpaceToUnity(Transform XRSpace, Vector3 pos) {
+    private Vector3 XRSpaceToUnity(Transform XRSpace, Vector3 pos)
+    {
         pos = XRSpaceToUnity(XRSpace, Matrix4x4.identity, pos);
         return pos;
     }
 
-    private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos) {
+    private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
+    {
         pos = XRSpaceOffset.inverse.MultiplyPoint(pos);
         Matrix4x4 m = XRSpace.localToWorldMatrix;
         pos = m.MultiplyPoint(pos);
         return pos;
     }
 
-    private Vector3 UnityToXRSpace(Transform XRSpace, Vector3 pos) {
+    private Vector3 UnityToXRSpace(Transform XRSpace, Vector3 pos)
+    {
         pos = UnityToXRSpace(XRSpace, Matrix4x4.identity, pos);
         return pos;
     }

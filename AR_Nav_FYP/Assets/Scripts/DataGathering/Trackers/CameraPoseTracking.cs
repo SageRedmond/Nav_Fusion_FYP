@@ -32,11 +32,11 @@ public class CameraPoseTracker : MonoBehaviour
 
     private void UpdatePose()
     {
-        Vector3 cameraUnityPose = cam.localPosition;
-        Vector3 cameraXRPose = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, cameraUnityPose);
+        Vector3 cameraXRPose = cam.localPosition;
+        Vector3 cameraUnityPose = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, cameraXRPose);
 
-        m_dataGatheringModule.AddUnityCoordinate(cameraUnityPose);
         m_dataGatheringModule.AddXRCoordinate(cameraXRPose);
+        m_dataGatheringModule.AddUnityCoordinate(cameraUnityPose);
     }
 
     private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
@@ -46,6 +46,14 @@ public class CameraPoseTracker : MonoBehaviour
         Matrix4x4 m = XRSpace.localToWorldMatrix;
         pos = m.MultiplyPoint(pos);
         // Debug.LogAssertion(pos);
+        return pos;
+    }
+
+    private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
+    {
+        Matrix4x4 m = XRSpace.worldToLocalMatrix;
+        pos = m.MultiplyPoint(pos);
+        pos = XRSpaceOffset.MultiplyPoint(pos);
         return pos;
     }
 }

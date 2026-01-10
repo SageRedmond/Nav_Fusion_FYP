@@ -10,6 +10,11 @@ from datetime import datetime
 import math
 
 # region Types
+class UwbRange(BaseModel):
+    Range: float
+    BeaconID: str
+    TimeStamp: str
+
 class Beacon(BaseModel):
     beaconId: str
     roomId: str
@@ -41,6 +46,7 @@ def makeFilePath(testFileName: str) -> str:
 xrCoordinatesJSONFilePath = makeFilePath("XRCoordinates.json")
 unityCoordinatesJSONFilePath = makeFilePath("UnityCoordinates.json")
 beaconsJsonFilePath = makeFilePath("BeaconList.json")
+rangeJsonFilePath = makeFilePath("UwbBeaconRanges.json")
 
 def loadCoordsFromJson(filePath: str) -> list[Coordinate]:
     if os.path.exists(filePath):
@@ -56,10 +62,18 @@ def loadBeaconsFromJson(filePath: str):
             return [Beacon(**data) for data in json.load(json_file)]
     else:
         return []
+    
+def loadUwbRangesFromJson(filePath: str):
+    if os.path.exists(filePath):
+        with open(filePath, 'r') as json_file:
+            return [UwbRange(**data) for data in json.load(json_file)]
+    else:
+        return []
 
 xrCoordinates: list[Coordinate] = loadCoordsFromJson(xrCoordinatesJSONFilePath)
 unityCoordinates: list[Coordinate] = loadCoordsFromJson(unityCoordinatesJSONFilePath)
 beacons: list[Beacon] = loadBeaconsFromJson(beaconsJsonFilePath)
+uwbRanges: list[UwbRange] = loadUwbRangesFromJson(rangeJsonFilePath)
 
 # endregion
 
@@ -79,22 +93,6 @@ def switchHandness(pnt: list[float]) -> list[float]:
     # return result1.tolist()
     # invertZMtx = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, -1.0]])
     # return (np.matmul(result1, invertZMtx)).tolist()
-
-def switchHandnessXR(pnt: list[float]) -> list[float]:
-    angle = math.pi / 2
-    # beh = [cr.X, cr.Y, cr.Z]
-    # point = np.array([cr.X, cr.Y, cr.Z])
-    point = np.array(pnt)
-    rotationMtx = np.array([[1.0, 0.0, 0.0], [0.0, math.cos(angle), (-1.0 * math.sin(angle))], [0.0, math.sin(angle), math.cos(angle)]])
-
-    result1 = np.matmul(rotationMtx, point)
-    # finalResult = np.matmul(result1, invertYMtx)
-    # finalResult = np.matmul(point, invertYMtx)
-    # return finalResult.tolist()
-    return result1.tolist()
-    # invertZMtx = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, -1.0]])
-    # return (np.matmul(result1, invertZMtx)).tolist()
-
 # endregion
 
 def main():
@@ -124,23 +122,12 @@ rr.log(
 # region XR Points
 xrPointsArray = []
 for cr in xrCoordinates:
-    # xrPointsArray.append(switchHandness([cr.X, cr.Y, cr.Z]))
-    xrPointsArray.append(switchHandnessXR([cr.X, cr.Y, (-1.0 * cr.Z)]))
+    xrPointsArray.append(switchHandness([cr.X, cr.Y, cr.Z]))
+    # xrPointsArray.append(switchHandnessXR([cr.X, cr.Y, (-1.0 * cr.Z)]))
     # xrPointsArray.append([cr.X, cr.Y, (-1.0 * cr.Z)])
     points = np.array(xrPointsArray)
     rr.set_time("time", timestamp=datetime.fromisoformat(cr.TimeStamp))
     rr.log("paths/xrPath/points", rr.Points3D(points, radii=0.08))
-
-xr2PointsArray = []
-for cr in xrCoordinates:
-    # xr2PointsArray.append(switchHandness([cr.X, cr.Y, cr.Z]))
-    # xr2PointsArray.append(switchHandnessXR([cr.X, cr.Y, (-1.0 * cr.Z)]))
-    # xr2PointsArray.append([cr.X, (-1.0 * cr.Z), cr.Y])
-    xr2PointsArray.append([cr.X, cr.Y, (-1.0 * cr.Z)])
-    points = np.array(xr2PointsArray)
-    rr.set_time("time", timestamp=datetime.fromisoformat(cr.TimeStamp))
-    rr.log("paths/xrPath2/points", rr.Points3D(points, radii=0.08))
-# endregion
 
 # region Unity Points
 unityPointsArray = []
@@ -198,14 +185,29 @@ for idx in range(len(xrCoordinates)):
 
 # region Beacons
 beaconPoseList = []
+beaconPoseDictionary = {}
 for bcn in beacons:
-    beaconPoseList.append(switchHandness([bcn.xpos, bcn.ypos, bcn.zpos]))
+    pose = switchHandness([bcn.xpos, bcn.ypos, bcn.zpos])
+    beaconPoseDictionary[bcn.beaconId] = pose
+    beaconPoseList.append(pose)
 
 # transfromedBeaconPose = (R @ np.array(beaconPoseList).T).T + t
 
 rr.log("beacons", rr.Points3D(np.array(beaconPoseList), colors=[[186, 3, 252]], radii=0.1), static=True)
+
+for rng in uwbRanges:
+    pose = np.array(beaconPoseDictionary[rng.BeaconID])
+    rr.set_time("time", timestamp=datetime.fromisoformat(rng.TimeStamp))
+    # rr.log("ranging/beaconRange", rr.Points3D(pose, colors=[[0x91034480]], radii=(rng.Range)))
+    rr.log(
+        "ranging/beaconRange",
+        rr.Ellipsoids3D(
+            centers=[pose],  # Position of the sphere center
+            half_sizes=[rng.Range, rng.Range, rng.Range],  # Equal radii for all axes = sphere
+            colors=[[0x91034480]]  # Optional: RGBA color
+        )
+    )
 # endregion
 # endregion
 
-rr.log("testpoint", rr.Points3D(np.array([0.17, 4.64, -7.35]), colors=[[186, 3, 252]], radii=0.1), static=True)
-# endregion
+# rr.log("testpoint", rr.Points3D(np.array([0.17, 4.64, -7.35]), colors=[[3, 186, 252]], radii=0.1), static=True)
