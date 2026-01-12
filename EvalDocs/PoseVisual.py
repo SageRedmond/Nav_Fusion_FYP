@@ -39,7 +39,7 @@ class CoordinateModel(BaseModel):
 def makeFilePath(testFileName: str) -> str:
     folderPath = os.getcwd()
     os.makedirs(folderPath, exist_ok=True)
-    file_name = "TestRun1/" + testFileName
+    file_name = "TestRun2/" + testFileName
     file_path = os.path.join(folderPath, file_name)
     return file_path
 
@@ -171,8 +171,8 @@ def rigid_transform_3D(A, B):
 points_A = np.array(unityPointsArray)
 points_B = np.array(xrPointsArray)
 
-R, t = rigid_transform_3D(points_A, points_B)
-points_B_aligned = (R @ points_A.T).T + t
+R, t = rigid_transform_3D(points_B, points_A)
+points_B_aligned = (R @ points_B.T).T + t
 # print(points_B_aligned.shape)
 
 allignedPointsArray = []
@@ -198,15 +198,15 @@ rr.log("beacons", rr.Points3D(np.array(beaconPoseList), colors=[[186, 3, 252]], 
 for rng in uwbRanges:
     pose = np.array(beaconPoseDictionary[rng.BeaconID])
     rr.set_time("time", timestamp=datetime.fromisoformat(rng.TimeStamp))
-    # rr.log("ranging/beaconRange", rr.Points3D(pose, colors=[[0x91034480]], radii=(rng.Range)))
-    rr.log(
-        "ranging/beaconRange",
-        rr.Ellipsoids3D(
-            centers=[pose],  # Position of the sphere center
-            half_sizes=[rng.Range, rng.Range, rng.Range],  # Equal radii for all axes = sphere
-            colors=[[0x91034480]]  # Optional: RGBA color
-        )
-    )
+    rr.log("ranging/beaconRange", rr.Points3D(pose, colors=[[0x91034480]], radii=(rng.Range)))
+    # rr.log(
+    #     "ranging/beaconRange",
+    #     rr.Ellipsoids3D(
+    #         centers=[pose],  # Position of the sphere center
+    #         half_sizes=[rng.Range, rng.Range, rng.Range],  # Equal radii for all axes = sphere
+    #         colors=[[0x91034480]]  # Optional: RGBA color
+    #     )
+    # )
 # endregion
 # endregion
 
