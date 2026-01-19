@@ -1,0 +1,58 @@
+[
+    {
+        "beaconId": "f8cf8ff90aaf0426be9d8b8657d99038",
+        "roomId": "96011",
+        "xpos": 2.2185626,
+        "ypos": 1.141192,
+        "zpos": 2.11922884
+    },
+    {
+        "beaconId": "450ed09104d134339be51d3cd5f8ef3c",
+        "roomId": "98493",
+        "xpos": 4.811176,
+        "ypos": 1.03109658,
+        "zpos": 2.25668573
+    },
+    {
+        "beaconId": "d04567bc3557ff70ca197e3c8c236119",
+        "roomId": "97972",
+        "xpos": -3.054675,
+        "ypos": -3.02105427,
+        "zpos": 6.81167555
+    },
+    {
+        "beaconId": "7e204aacebb036b688695dc8fad6c811",
+        "roomId": "97734",
+        "xpos": 10.5576544,
+        "ypos": -2.96538115,
+        "zpos": 5.977667
+    },
+    {
+        "beaconId": "8c48f4bcdf8c950d2c52827254d3c11a",
+        "roomId": "98493",
+        "xpos": -1.21715474,
+        "ypos": 0.8937682,
+        "zpos": 4.99661636
+    },
+    {
+        "beaconId": "a07c80f9faa8bd92612086d0c4d94f1e",
+        "roomId": "98493",
+        "xpos": 10.6728611,
+        "ypos": 0.945321858,
+        "zpos": 6.370038
+    },
+    {
+        "beaconId": "d72a6d58c80d7c7f7a0b780bb7b3cd1c",
+        "roomId": "98492",
+        "xpos": 5.822005,
+        "ypos": -6.702166,
+        "zpos": 1.81013942
+    },
+    {
+        "beaconId": "b0be314cc25c4914d407e26063d8912b",
+        "roomId": "98492",
+        "xpos": -3.1827836,
+        "ypos": -6.75575638,
+        "zpos": 6.726926
+    }
+]

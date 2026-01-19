@@ -1,6 +1,9 @@
 using UnityEngine;
 using Immersal;
 using Immersal.XR;
+using TMPro;
+using UnityEngine.UI;
+using System.Diagnostics;
 
 class TriggeredEventTracker : MonoBehaviour
 {
@@ -12,6 +15,9 @@ class TriggeredEventTracker : MonoBehaviour
     private Localizer m_Localizer;
 
     private NavController m_NavController;
+
+    [SerializeField]
+    private Button m_WaypointButton;
 
     void Start()
     {
@@ -36,6 +42,11 @@ class TriggeredEventTracker : MonoBehaviour
         m_Localizer.OnFirstSuccessfulLocalization.AddListener(LogFirstSuccessfulLocalisation);
 
         m_NavController.atDestination.AddListener(LogAtDestination);
+
+        if (m_WaypointButton)
+        {
+            m_WaypointButton.onClick.AddListener(WaypointButtonStart);
+        }
     }
 
     #region Logs
@@ -52,6 +63,34 @@ class TriggeredEventTracker : MonoBehaviour
     private void LogAtDestination()
     {
         m_dataGatheringModule.AddTriggeredEvent(TriggeredEvent.DestinationReached, "");
+    }
+
+    private void LogAtWaypoint()
+    {
+        m_dataGatheringModule.AddTriggeredEvent(TriggeredEvent.AtWaypoint, "");
+    }
+
+    private void LogLeavingWaypoint()
+    {
+        m_dataGatheringModule.AddTriggeredEvent(TriggeredEvent.LeavingWaypoint, "");
+    }
+
+    private void WaypointButtonStart()
+    {
+        UnityEngine.Debug.Log("Waypoint pressed!");
+        StartCoroutine(TimeAtWaypoints());
+    }
+
+
+    System.Collections.IEnumerator TimeAtWaypoints()
+    {
+        m_WaypointButton.gameObject.SetActive(false);
+        LogAtWaypoint();
+
+        yield return new WaitForSeconds(20);
+
+        LogLeavingWaypoint();
+        m_WaypointButton.gameObject.SetActive(true);
     }
     #endregion
 }

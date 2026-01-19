@@ -147,16 +147,17 @@ public class DataGatheringModule : MonoBehaviour
     #region Save Functions
     public void SaveData()
     {
-        SaveXRCoordinates();
-        SaveUnityCoordinates();
-        SaveBeaconRange();
-        SaveTriggeredEvents();
-        SaveLocalisationConfidence();
+        string dataTime = GetTimeStamp();
+        SaveXRCoordinates(dataTime);
+        SaveUnityCoordinates(dataTime);
+        SaveBeaconRange(dataTime);
+        SaveTriggeredEvents(dataTime);
+        SaveLocalisationConfidence(dataTime);
     }
 
-    private void SaveXRCoordinates()
+    private void SaveXRCoordinates(string date)
     {
-        string m_JSONname = "/XRCoordinates.json";
+        string m_JSONname = "/XRCoordinates_" + date + ".json";
         if (JsonService.SaveData(m_JSONname, m_XRCoordinates))
         {
             Debug.Log("XR Coordinates Saved");
@@ -167,9 +168,9 @@ public class DataGatheringModule : MonoBehaviour
         }
     }
 
-    private void SaveUnityCoordinates()
+    private void SaveUnityCoordinates(string date)
     {
-        string m_JSONname = "/UnityCoordinates.json";
+        string m_JSONname = "/UnityCoordinates_" + date + ".json";
         if (JsonService.SaveData(m_JSONname, m_UnityCoordinates))
         {
             Debug.Log("Unity Coordinates Saved");
@@ -180,9 +181,9 @@ public class DataGatheringModule : MonoBehaviour
         }
     }
 
-    private void SaveBeaconRange()
+    private void SaveBeaconRange(string date)
     {
-        string m_JSONname = "/UwbBeaconRanges.json";
+        string m_JSONname = "/UwbBeaconRanges_" + date + ".json";
         if (JsonService.SaveData(m_JSONname, m_UwbBeaconRange))
         {
             Debug.Log("UWB Beacon Ranges Saved");
@@ -192,9 +193,9 @@ public class DataGatheringModule : MonoBehaviour
             Debug.LogError("Could not save UWB Beacon Ranges!");
         }
     }
-    private void SaveTriggeredEvents()
+    private void SaveTriggeredEvents(string date)
     {
-        string m_JSONname = "/TriggeredEvents.json";
+        string m_JSONname = "/TriggeredEvents_" + date + ".json";
         if (JsonService.SaveData(m_JSONname, m_triggeredEvents))
         {
             Debug.Log("Triggered Events Saved");
@@ -205,9 +206,9 @@ public class DataGatheringModule : MonoBehaviour
         }
     }
 
-    private void SaveLocalisationConfidence()
+    private void SaveLocalisationConfidence(string date)
     {
-        string m_JSONname = "/LocalisationConfidence.json";
+        string m_JSONname = "/LocalisationConfidence_" + date + ".json";
         if (JsonService.SaveData(m_JSONname, m_localisationConfidence))
         {
             Debug.Log("Localisation Confidence Saved");

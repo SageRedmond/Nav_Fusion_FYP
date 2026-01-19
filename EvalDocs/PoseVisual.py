@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from pydantic.json import pydantic_encoder
 import json
 import os
+import glob
 
 import numpy as np
 from datetime import datetime
@@ -36,17 +37,24 @@ class CoordinateModel(BaseModel):
 # endregion
 
 #region File Loading
-def makeFilePath(testFileName: str) -> str:
-    folderPath = os.getcwd()
-    os.makedirs(folderPath, exist_ok=True)
-    file_name = "TestRun2/" + testFileName
-    file_path = os.path.join(folderPath, file_name)
+testRunFolderName = "TestRun4"
+
+def makeFilePath(fileNamePattern: str) -> str:
+    folderPath = os.path.join(os.getcwd(), testRunFolderName)
+    pattern = os.path.join(folderPath, fileNamePattern)
+    # file_path = os.path.join(folderPath, file_name)
+    matching_files = glob.glob(pattern)
+    if matching_files:
+        file_path = matching_files[0]
+    else:
+        raise FileNotFoundError("No file found")
+    
     return file_path
 
-xrCoordinatesJSONFilePath = makeFilePath("XRCoordinates.json")
-unityCoordinatesJSONFilePath = makeFilePath("UnityCoordinates.json")
+xrCoordinatesJSONFilePath = makeFilePath("XRCoordinates_*.json")
+unityCoordinatesJSONFilePath = makeFilePath("UnityCoordinates_*.json")
 beaconsJsonFilePath = makeFilePath("BeaconList.json")
-rangeJsonFilePath = makeFilePath("UwbBeaconRanges.json")
+rangeJsonFilePath = makeFilePath("UwbBeaconRanges_*.json")
 
 def loadCoordsFromJson(filePath: str) -> list[Coordinate]:
     if os.path.exists(filePath):

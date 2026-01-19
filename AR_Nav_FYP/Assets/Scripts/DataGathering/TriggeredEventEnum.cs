@@ -5,7 +5,9 @@ public enum TriggeredEvent
     ButtonPressed,
     DestinationReached,
     ImmersalInitialised,
-    FirstSuccessfulLocalization
+    FirstSuccessfulLocalization,
+    AtWaypoint,
+    LeavingWaypoint
 }
 
 static class TriggeredEventMethods
@@ -22,6 +24,10 @@ static class TriggeredEventMethods
                 return "[Immersal] SDK Initialised";
             case TriggeredEvent.FirstSuccessfulLocalization:
                 return "[Immersal] First Successful Localization";
+            case TriggeredEvent.AtWaypoint:
+                return "At Waypoint";
+            case TriggeredEvent.LeavingWaypoint:
+                return "Leaving Waypoint";
             default:
                 return "";
         }
