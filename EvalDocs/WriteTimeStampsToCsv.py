@@ -43,8 +43,6 @@ def getFilePath(fileNamePattern: str, trialNumber: int) -> str:
     
     return file_path
 
-
-
 def loadEventsFromJson(filePath: str):
     if os.path.exists(filePath):
         with open(filePath, 'r') as json_file:
