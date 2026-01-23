@@ -10,8 +10,6 @@ import numpy as np
 from datetime import datetime
 import math
 
-#TODO: Remake to go through every file
-
 #region Types
 class TriggeredEvent(BaseModel):
     Name: str
@@ -20,21 +18,32 @@ class TriggeredEvent(BaseModel):
 #endregion
 
 #region File Loading
-testRunFolderName = "TestRun5"
+testRunFolderName = "TestRun5/AfterCodeEdit"
 
-def makeFilePath(fileNamePattern: str) -> str:
+def createCSVFile(fileName: str) -> str:
+    folderPath = os.path.join(os.getcwd(), testRunFolderName)
+    filePath = os.path.join(folderPath, fileName)
+    if os.path.exists(filePath):
+        raise FileExistsError("File Exists Already")
+    else:
+        open(filePath, "x")
+        return filePath
+
+def getFilePath(fileNamePattern: str, trialNumber: int) -> str:
     folderPath = os.path.join(os.getcwd(), testRunFolderName)
     pattern = os.path.join(folderPath, fileNamePattern)
     # file_path = os.path.join(folderPath, file_name)
     matching_files = glob.glob(pattern)
+    matching_files.sort()
+
     if matching_files:
-        file_path = matching_files[0]
+        file_path = matching_files[trialNumber]
     else:
         raise FileNotFoundError("No file found")
     
     return file_path
 
-triggeredEventsJsonFilePath = makeFilePath("TriggeredEvents_*.json")
+
 
 def loadEventsFromJson(filePath: str):
     if os.path.exists(filePath):
@@ -43,35 +52,45 @@ def loadEventsFromJson(filePath: str):
     else:
         return []
     
-trigEvents: list[TriggeredEvent] = loadEventsFromJson(triggeredEventsJsonFilePath)
+
 #endregion
 
-data = [["Waypoint Number", "AtWaypoint Time", "LeavingWaypoint Time"]]
+#region CSV
 
-eventsArray = np.array(trigEvents).reshape((-1, 2))
-'''
-Shape is now
-[
-[Immersal Sdk, Immersal First],
-[At, leaving],
-[At, leaving],
-[At, leaving],
-...
-]
-'''
-print(eventsArray.shape)
+trialRange = range(5)
 
-for index in range(eventsArray.shape[0]):
-    if index != 0:
-        # print(eventsArray[index])
-        waypointNumber = index - 1
-        atTime = eventsArray[index][0].TimeStamp
-        leavingTime = eventsArray[index][1].TimeStamp
-        newData = [waypointNumber, atTime, leavingTime]
-        data.append(newData)
+for trialNum in trialRange:
+    csvFileName = "TriggeredEvents_Trial_" + str(trialNum) + ".csv"
+    csvFilePath = createCSVFile(csvFileName)
 
-csvFilePath = makeFilePath("TestRun_*.csv")
+    triggeredEventsJsonFilePath = getFilePath("TriggeredEvents_*.json", trialNum)
+    trigEvents: list[TriggeredEvent] = loadEventsFromJson(triggeredEventsJsonFilePath)
+    data = [["Waypoint Number", "AtWaypoint Time", "LeavingWaypoint Time"]]
 
-with open(csvFilePath, 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerows(data)
+    eventsArray = np.array(trigEvents).reshape((-1, 2))
+    '''
+    Shape is now
+    [
+    [Immersal Sdk, Immersal First],
+    [At, leaving],
+    [At, leaving],
+    [At, leaving],
+    ...
+    ]
+    '''
+    print("Trial " + str(trialNum) + ": " + str(eventsArray.shape))
+
+    for index in range(eventsArray.shape[0]):
+        if index != 0:
+            # print(eventsArray[index])
+            waypointNumber = index - 1
+            atTime = eventsArray[index][0].TimeStamp
+            leavingTime = eventsArray[index][1].TimeStamp
+            newData = [waypointNumber, atTime, leavingTime]
+            data.append(newData)
+
+    with open(csvFilePath, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
+
+#endregion
