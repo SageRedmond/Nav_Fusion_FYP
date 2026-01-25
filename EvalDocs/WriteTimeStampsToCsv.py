@@ -55,7 +55,7 @@ def loadEventsFromJson(filePath: str):
 
 #region CSV
 
-trialRange = range(5)
+trialRange = range(4)
 
 for trialNum in trialRange:
     csvFileName = "TriggeredEvents_Trial_" + str(trialNum) + ".csv"

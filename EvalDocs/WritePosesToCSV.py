@@ -56,7 +56,7 @@ def loadCoordinatesFromJson(filePath: str):
 #endregion
 
 #region Write CSV
-trialNum = 2
+trialNum = 3
 # XR for IMU + Optical-Flow poses
 # Unity for Map poses
 coordFileType = "Unity"

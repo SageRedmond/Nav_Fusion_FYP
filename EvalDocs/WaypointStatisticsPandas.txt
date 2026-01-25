@@ -1,0 +1,25 @@
+test_df = waypointPoses[0]
+samplesCount = test_df.shape[0]
+print("Valid Times: " + str(samplesCount))
+# print(test_df.head(10))
+
+# Statistics
+centroid = (test_df["X"].mean(), test_df["Y"].mean(), test_df["Z"].mean())
+print("%.3f , %.3f, %.3f" % (centroid[0], centroid[1], centroid[2]))
+
+distancesData = []
+for rowNum in range(samplesCount):
+    sampleX = test_df["X"].loc[test_df.index[rowNum]]
+    sampleY = test_df["Y"].loc[(test_df.index[rowNum])]
+    sampleZ = test_df["Z"].loc[(test_df.index[rowNum])]
+    samplePose = (sampleX, sampleY, sampleZ)
+    # print("%.3f , %.3f, %.3f" % (samplePose[0], samplePose[1], samplePose[2]))
+
+    distance = get3dPointDistance(samplePose, centroid)
+    distancesData.append(distance)
+    # print("%.4f" % (distance))
+
+distancesSeries = pd.Series(distancesData)
+distancesSeries.describe()
+
+distancesSeries.plot.hist(stacked=True, bins=50)
