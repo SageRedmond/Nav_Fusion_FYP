@@ -56,24 +56,25 @@ def loadCoordinatesFromJson(filePath: str):
 #endregion
 
 #region Write CSV
-trialNum = 3
+# trialNum = 3
+trialRange = range(4)
 # XR for IMU + Optical-Flow poses
 # Unity for Map poses
 coordFileType = "Unity"
-filePattern = coordFileType + "Coordinates_*.json"
-coordsJsonFilePath = getFilePath(filePattern, trialNum)
-listCoords: list[Coordinate] = loadCoordinatesFromJson(coordsJsonFilePath)
 
-csvFileName = coordFileType + "Coordinates_Trial_" + str(trialNum) + ".csv"
-csvFilePath = createCSVFile(csvFileName)
+for trialNum in trialRange:
+    csvFileName = coordFileType + "Coordinates_Trial_" + str(trialNum) + ".csv"
+    csvFilePath = createCSVFile(csvFileName)
 
-data = [["X", "Y", "Z", "Timestamp"]]
+    coordsJsonFilePath = getFilePath(coordFileType + "Coordinates_*.json", trialNum)
+    listCoords: list[Coordinate] = loadCoordinatesFromJson(coordsJsonFilePath)
+    data = [["X", "Y", "Z", "Timestamp"]]
 
-for coord in listCoords:
-    data.append([coord.X, coord.Y, coord.Z, coord.TimeStamp])
+    for coord in listCoords:
+        data.append([coord.X, coord.Y, coord.Z, coord.TimeStamp])
 
-with open(csvFilePath, 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerows(data)
+    with open(csvFilePath, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
 
 #endregion

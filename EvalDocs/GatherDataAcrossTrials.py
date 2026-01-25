@@ -63,9 +63,13 @@ def getTrialWaypointCentroids(waypointPoses):
     waypointCentroids = []
 
     for wpData_df in waypointPoses:
-        centroid = (wpData_df["X"].mean(), wpData_df["Y"].mean(), wpData_df["Z"].mean())
-        # print("%.3f , %.3f, %.3f" % (centroid[0], centroid[1], centroid[2]))
-        waypointCentroids.append(centroid)
+        # centroid = [wpData_df["X"].mean(), wpData_df["Y"].mean(), wpData_df["Z"].mean()]
+        # # print("%.3f , %.3f, %.3f" % (centroid[0], centroid[1], centroid[2]))
+        # waypointCentroids.append(centroid)
+        waypointCentroids.append(wpData_df["X"].mean())
+        waypointCentroids.append(wpData_df["Y"].mean())
+        waypointCentroids.append(wpData_df["Z"].mean())
+
 
     return waypointCentroids
 
@@ -73,12 +77,20 @@ def getTrialWaypointCentroids(waypointPoses):
 def main():
     numberOfTrials = 4
 
-    data = [["WPC0", "WPC1", "WPC2", "WPC3", "WPC4", "WPC5", "WPC6", "WPC7", "WPC8", "WPC9"]]
-    csvFileName = "Gathered_Data_" + str(0) + ".csv"
-    csvFilePath = createCSVFile(csvFileName)
+    data = [["WPC0_X", "WPC0_Y", "WPC0_Z", 
+             "WPC1_X", "WPC1_Y", "WPC1_Z", 
+             "WPC2_X", "WPC2_Y", "WPC2_Z", 
+             "WPC3_X", "WPC3_Y", "WPC3_Z",
+             "WPC4_X", "WPC4_Y", "WPC4_Z", 
+             "WPC5_X", "WPC5_Y", "WPC5_Z", 
+             "WPC6_X", "WPC6_Y", "WPC6_Z", 
+             "WPC7_X", "WPC7_Y", "WPC7_Z", 
+             "WPC8_X", "WPC8_Y", "WPC8_Z", 
+             "WPC9_X", "WPC9_Y", "WPC9_Z"]]
+    gatheredDataCsvFileName = "Gathered_Data_" + str(0) + ".csv"
+    gatheredDataCsvFilePath = createCSVFile(gatheredDataCsvFileName)
 
     for trialNum in range(numberOfTrials):
-        print(trialNum)
         csvFileName = coordFileType + "Coordinates_Trial_" + str(trialNum) + ".csv"
         csvFilePath = getFilePath(csvFileName)
 
@@ -93,9 +105,9 @@ def main():
 
         waypointCentroids = getTrialWaypointCentroids(filteredWaypointPoses)
         # print(waypointCentroids)
-        # data.append(waypointCentroids)
+        data.append(waypointCentroids)
     
-    with open(csvFilePath, 'w', newline='') as csvfile:
+    with open(gatheredDataCsvFilePath, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerows(data)
 

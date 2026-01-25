@@ -18,7 +18,7 @@ class TriggeredEvent(BaseModel):
 #endregion
 
 #region File Loading
-testRunFolderName = "TestRun5/AfterCodeEdit"
+testRunFolderName = "TestRun5/CombinedData"
 
 def createCSVFile(fileName: str) -> str:
     folderPath = os.path.join(os.getcwd(), testRunFolderName)
@@ -56,7 +56,7 @@ def loadEventsFromJson(filePath: str):
 
 #region CSV
 
-trialRange = range(4)
+trialRange = range(8)
 
 for trialNum in trialRange:
     csvFileName = "TriggeredEvents_Trial_" + str(trialNum) + ".csv"
