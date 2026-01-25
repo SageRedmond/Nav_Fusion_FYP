@@ -24,7 +24,8 @@ def createCSVFile(fileName: str) -> str:
     folderPath = os.path.join(os.getcwd(), testRunFolderName)
     filePath = os.path.join(folderPath, fileName)
     if os.path.exists(filePath):
-        raise FileExistsError("File Exists Already")
+        return filePath
+        # raise FileExistsError("File Exists Already")
     else:
         open(filePath, "x")
         return filePath

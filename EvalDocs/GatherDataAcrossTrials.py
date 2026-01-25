@@ -6,7 +6,6 @@ import csv
 
 testRunFolderName = "TestRun5/AfterCodeEdit"
 coordFileType = "Unity"
-trialNum = 0
 
 NUM_WAYPOINTS = 10
 
@@ -75,10 +74,11 @@ def main():
     numberOfTrials = 4
 
     data = [["WPC0", "WPC1", "WPC2", "WPC3", "WPC4", "WPC5", "WPC6", "WPC7", "WPC8", "WPC9"]]
-    csvFileName = "Gathered_Data" + str(0) + ".csv"
+    csvFileName = "Gathered_Data_" + str(0) + ".csv"
     csvFilePath = createCSVFile(csvFileName)
 
     for trialNum in range(numberOfTrials):
+        print(trialNum)
         csvFileName = coordFileType + "Coordinates_Trial_" + str(trialNum) + ".csv"
         csvFilePath = getFilePath(csvFileName)
 
