@@ -21,7 +21,7 @@ class Coordinate(BaseModel):
 #endregion
 
 #region File Loading
-testRunFolderName = "TestRun5/AfterCodeEdit"
+testRunFolderName = "TestRun5/CombinedData"
 
 def createCSVFile(fileName: str) -> str:
     folderPath = os.path.join(os.getcwd(), testRunFolderName)
@@ -57,7 +57,7 @@ def loadCoordinatesFromJson(filePath: str):
 
 #region Write CSV
 # trialNum = 3
-trialRange = range(4)
+trialRange = range(8)
 # XR for IMU + Optical-Flow poses
 # Unity for Map poses
 coordFileType = "Unity"

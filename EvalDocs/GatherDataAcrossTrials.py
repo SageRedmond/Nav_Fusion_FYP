@@ -4,7 +4,7 @@ import glob
 import math
 import csv
 
-testRunFolderName = "TestRun5/AfterCodeEdit"
+testRunFolderName = "TestRun5/CombinedData"
 coordFileType = "Unity"
 
 NUM_WAYPOINTS = 10
@@ -75,7 +75,7 @@ def getTrialWaypointCentroids(waypointPoses):
 
 
 def main():
-    numberOfTrials = 4
+    numberOfTrials = 8
 
     data = [["WPC0_X", "WPC0_Y", "WPC0_Z", 
              "WPC1_X", "WPC1_Y", "WPC1_Z", 
